@@ -1,0 +1,3 @@
+If you're aiming to **evade detection**, it's better to **customize your decryption process**, such as adding randomization, dynic key generation, or multi-layer encryption.
+- If your decryption logic is too simple or too standard, tools like EDR or AV may detect the pattern. You might want to implement custom encryption/decryption to make the shellcode harder to identify and less likely to be flagged.
+- You can create custom obfuscation methods or use existing cryptography libraries to dynically generate different keys, change the decryption process slightly for each run, or modify the structure of your encrypted payload.

@@ -1,0 +1,4 @@
+- ry to load `/admin` and observe that you get blocked. Notice that the response is very plain, suggesting it may originate from a front-end system.
+- Send the request to Burp Repeater. Change the URL in the request line to `/` and add the HTTP header `X-Original-URL: /invalid`. Observe that the application returns a "not found" response. This indicates that the back-end system is processing the URL from the `X-Original-URL` header.
+- Change the value of the `X-Original-URL` header to `/admin`. Observe that you can now access the admin page.
+- To delete `carlos`, add `?userne=carlos` to the real query string, and change the `X-Original-URL` path to `/admin/delete`.

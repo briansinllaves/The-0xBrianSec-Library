@@ -1,0 +1,32 @@
+explain the ttp
+find domain admin session- priv esc
+contstrained dele, is for foothold
+certs is priv esc
+
+sid- why is the definition important.
+user groups
+have static msdn page
+domain id, foriegn,,, is tis sid in this domaimn
+
+
+sid conversion- rew
+from a foreign domain
+
+if pivoting from one domain to another domain, compare sid 
+sid would not resolve into a user object if from another domain
+think dns
+
+
+give scenarios and situations
+think tatics on why to resolve foreign sids.
+
+
+
+
+
+
+
+
+
+
+

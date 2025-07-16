@@ -1,0 +1,199 @@
+{
+  "main": {
+    "id": "0af662b879b068ff",
+    "type": "split",
+    "children": [
+      {
+        "id": "eca97d6fd0feb7f4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dadf8727d5368027",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "31e7fe4054fb241e",
+    "type": "split",
+    "children": [
+      {
+        "id": "11fa2bc831cfdc25",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a95a0d901532b3e0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "360cd26ff3133806",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "491384368104e45c",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "883e696ce3d1bfec",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 502.5
+  },
+  "right": {
+    "id": "9d61318834a609f7",
+    "type": "split",
+    "children": [
+      {
+        "id": "d80dbfb0e2683360",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a6b48ea10f6a4d12",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "752c9db5a07ac7ea",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4eb32df07631140c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "727b6fc3cdab684b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "dadf8727d5368027",
+  "lastOpenFiles": [
+    "Credentials/Administrator access/dpapi extract.md",
+    "Credentials/Administrator access/extract credentials from lsass.md",
+    "Credentials/Administrator access/extract credentials from sam and lsa.md",
+    "Credentials/Administrator access/hydrid-environement (azure ad connect).md",
+    "Credentials/Lsass/minidmp.md",
+    "Credentials/Administrator access/token manipulation.md",
+    "Credentials/Administrator access/after lsass dump.md",
+    "Credentials/Lsass/If on domain pc.md",
+    "Credentials/SAM/Decrypt.md",
+    "Credentials/NTLM/GatherNTLM Empty.md",
+    "Credentials/NTLM/Pasted image 20221206155102.png",
+    "Credentials/NTLM/PetitPotam.md",
+    "Credentials/Remote Gather Creds by webserver/Untitled.md",
+    "Credentials/Validate Creds.md",
+    "Credentials/Identifying Hash Types.md",
+    "Credentials/Dumping Hashes.md",
+    "Credentials/SAM/Gather SAM and secrets dump.md",
+    "PTNotes/Post Exploitation/RemoteAdmin/WMI.md",
+    "PTNotes/Post Exploitation/RemoteAdmin/note.md",
+    "AD/Attacks/PrivEsc/dcsync-have da 1st.md",
+    "AD/Attacks/Post/Get Hashes/Gather Creds from LSASS/Untitled.md",
+    "AD/Attacks/GMSA.md",
+    "AD/ACLsACEsPermissions Edit/ACL/Who in the specified OU can read.md",
+    "AD/ACLsACEsPermissions Edit/ACL/try Check for modify on group.md",
+    "AD/ACLsACEsPermissions Edit/ACL/Invoke ACL scanner and filter for 'GenericAll' rights.md",
+    "AD/ACLsACEsPermissions Edit/ACL/Get the ACLs associated with the specified search base (e.g., Domain Admins).md",
+    "AD/ACLsACEsPermissions Edit/ACL/Get the ACLs associated with the specified path-sysvol.md",
+    "PTNotes/Post Exploitation/RemoteAdmin/Pasted image 20221206161125.png",
+    "AD/Tech/MSOL",
+    "AD/Tech",
+    "AD/Attacks/PrivEsc/CertAttack Empty/ESC1 Enrollee can request cert for ANY use/Untitled",
+    "AD/Attacks/PrivEsc/CertAttack/ESC1 Enrollee can request cert for ANY use",
+    "AD/Attacks/PrivEsc/CertAttack/ESC6 Request certs for ANY user - EDITF_ATTRI BUTESUBJE CTALTnE 2 setting on CA",
+    "AD/Attacks/PrivEsc/CertAttack/ESC3 Request an enrollment agent certificate and use it to request cert on behalf of ANY user",
+    "AD/Attacks/Post/Get Hashes/Gather Creds from LSASS",
+    "Credentials/Remote Gather Creds by webserver",
+    "AD/pics/Pasted image 20231106164525.png",
+    "AD/pics/Pasted image 20231106185843.png",
+    "AD/pics/Pasted image 20231106185824.png",
+    "AD/pics/Pasted image 20231106185819.png",
+    "AD/pics/Pasted image 20231106185753.png",
+    "AD/pics/Pasted image 20231106185734.png",
+    "AD/pics/Pasted image 20231106185720.png",
+    "AD/pics/Pasted image 20231106185716.png",
+    "AD/Attacks/PrivEsc/Kerberos AS-REP",
+    "AD/Attacks/PrivEsc/3. Delegation- resources access/Unconstrained Delegation"
+  ]
+}

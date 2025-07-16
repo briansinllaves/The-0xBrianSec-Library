@@ -1,0 +1,1 @@
+Once the hacker acquires the session cookie, he can bypass the two-factor authentication. Attackers know many hijacking methods, like session sniffing, session fixation, cross-site scripting, and malware attack

@@ -1,0 +1,30 @@
+**** run the top Nmap scripts at once ***
+
+nmap -sC 192.168.122.1
+
+***  Run all the scripts within a category ***8
+
+nmap --script discovery 192.168.122.1
+
+nmap --script default,safe 192.168.122.1
+
+***   Run Nmap scripts with a wildcard *    ****
+
+nmap --script "ftp-\*" 192.168.122.1
+nmap --script "ssh-\*" 192.168.122.1
+
+****    Scan Using Nmap-Vulners / Vulscan      ****
+
+nmap --script nmap-vulners -sV -p# ###.###.###.###
+nmap --script vulscan -sV -p# ###.###.###.###
+
+**********       Do one db at a time recommended     ***
+
+nmap --script vulscan --script-args vulscandb=exploitdb.csv -sV -p22 1##.##.###.#43
+
+***     Combine into One Command  ***** 
+
+nmap --script nmap-vulners,vulscan --script-args vulscandb=scipvuldb.csv -sV -p22 1##.##.###.#21
+
+
+

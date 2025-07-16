@@ -1,0 +1,13 @@
+- With Burp running, submit an invalid userne and password, then send the `POST /login` request to Burp Repeater. Experiment with different usernes and passwords. Notice that your IP will be blocked if you make too many invalid login attempts.
+- Identify that the `X-Forwarded-For` header is supported, which allows you to spoof your IP address and bypass the IP-based brute-force protection.
+- Continue experimenting with usernes and passwords. Pay particular attention to the response times. Notice that when the userne is invalid, the response time is roughly the same. However, when you enter a valid userne (your own), the response time is increased depending on the length of the password you entered.
+- Send this request to Burp Intruder and select the attack type to **Pitchfork**. Add the `X-Forwarded-For` header.
+- Add payload positions for the `X-Forwarded-For` header and the `userne` parameter. Set the password to a very long string of characters (about 100 characters should do it).
+- On the **Payloads** tab, select payload set 1. Select the **Numbers** payload type. Enter the range 1 - 100 and set the step to 1. Set the max fraction digits to 0. This will be used to spoof your IP.
+- Select payload set 2 and add the list of usernes. Start the attack.
+- When the attack finishes, at the top of the dialog, click **Columns** and select the **Response received** and **Response completed** options. These two columns are now displayed in the results table.
+- Notice that one of the response times was significantly longer than the others. Repeat this request a few times to make sure it consistently takes longer, then make a note of this userne.
+- Create a new Burp Intruder attack for the same request. Add the `X-Forwarded-For` header again and add a payload position to it. Insert the userne that you just identified and add a payload position to the `password` parameter.
+- On the **Payloads** tab, add the list of numbers in payload set 1 and add the list of passwords to payload set 2. Start the attack.
+- When the attack is finished, find the response with a `302` status. Make a note of this password.
+- Log in using the userne and password that you identified and access the user account page to solve the lab.

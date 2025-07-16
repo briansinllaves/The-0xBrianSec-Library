@@ -1,0 +1,1 @@
+trigger on SetReneInformationFile, SetDispositionInformationFile, WriteFile, CreateFile.

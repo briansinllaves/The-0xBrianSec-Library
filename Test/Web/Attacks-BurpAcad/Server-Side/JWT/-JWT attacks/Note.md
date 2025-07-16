@@ -1,0 +1,2 @@
+a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
+https://portswigger.net/web-security/jwt

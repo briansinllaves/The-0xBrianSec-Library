@@ -1,0 +1,180 @@
+{
+  "main": {
+    "id": "fd13b6dd2408102f",
+    "type": "split",
+    "children": [
+      {
+        "id": "bd69699c9bdd7817",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "69e5cf2cb130aa8c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Appsec/Source Code Assessment/code review template.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "05ea9d1964bad633",
+    "type": "split",
+    "children": [
+      {
+        "id": "992edef8670ce453",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "675e9ba8c1f4e024",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0ce7cfb911db5a5a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a55283b758bb0c62",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6e0bfd88029cb982",
+    "type": "split",
+    "children": [
+      {
+        "id": "2b80a1a0335db8f2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9279b2e31234b286",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Appsec/Source Code Assessment/code review template.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b4cf69388052c2e9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Appsec/Source Code Assessment/code review template.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f9a3c39801f899f2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "5e39a7850ce5b46b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Appsec/Source Code Assessment/code review template.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "675e9ba8c1f4e024",
+  "lastOpenFiles": [
+    "Untitled",
+    "Appsec/dnspy-csharp-SomeDLLs/dnspy icons.md",
+    "Pasted image 20230324120717.png.md",
+    "Appsec/Source Code Assessment/code review template.md",
+    "Appsec/Source Code Assessment/Code Review Notes.md",
+    "Flow/Binary Enum.md",
+    "Flow/Attack Path.md",
+    "Test attacks/Hijacks/DLL Hijacking/DLL Hijacking.md",
+    "Test attacks/Hijacks/COM Hijack/inprocserver32-_ dll.md",
+    "Test attacks/RPC/RPCView.md",
+    "Test attacks/nedPipes/Untitled/pipe data acceptance.md",
+    "Test attacks/nedPipes/Untitled/Attack-needs work.md",
+    "Test attacks/nedPipes/Untitled/Notes.md",
+    "Test attacks/nedPipes/Untitled/IPC Chat.md",
+    "Test attacks/nedPipes/Untitled/Enum/check  permissions-needs work.md",
+    "Test attacks/nedPipes/Untitled/Enum/PipeViewer.md",
+    "Test attacks/nedPipes/101.md",
+    "Test attacks/nedPipes/Untitled/Enum/Process Explorer -needs work.md",
+    "Test attacks/Hijacks/DLL Hijacking/dll images/Pasted image 20230131135443.png",
+    "Specific/BreakRock/Untitled.md",
+    "Specific/SecVendors/Vendors.md",
+    "Specific/MacOS/Tools.md",
+    "Specific/BigDog/Untitled.md",
+    "Specific/CyberBoat/Notes.md",
+    "Specific/CyberBoat/Access.md",
+    "Specific/BreakRock",
+    "Test attacks/nedPipes/Notes.md",
+    "Test attacks/nedPipes/Attack.md"
+  ]
+}

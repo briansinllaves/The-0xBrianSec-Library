@@ -1,0 +1,36 @@
+Nmap script categories
+
+Nmap Script ne 	Description          
+
+auth        All sorts of authentication and user privilege scripts
+
+broadcast 	Network discovery scripts that use broadcast petitions 
+            for intel gathering
+
+brute 	    Set of scripts for performing brute force attacks to guess 
+            access credentials
+
+default 	The most popular Nmap scripts, using -sC by default
+
+discovery  	Scripts related to network, service and host discovery
+
+dos 	    Denial of service attack scripts used to test and 
+            perform DOS and floods
+exploit 	Used to perform service exploitation on different CVEs
+
+external 	Scripts that rely on 3rd party services or data
+
+fuzzer 	    Used to perform fussing attacks against apps, services or  
+            networks
+
+intrusive 	All the ‘aggressive’ scripts that cause a lot of network 
+            noise
+
+malware 	Malware detections and exploration scripts 
+
+safe      	Safe and non-intrusive/noisy scripts
+
+version 	OS, service and software detection scripts
+
+vuln 	    The Nmap vuln category includes vulnerability detection 
+            and exploitation scripts

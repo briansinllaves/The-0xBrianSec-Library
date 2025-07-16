@@ -1,0 +1,15 @@
+    RPC Server: The RPC server is a program that offers certain functions or services to other programs (clients) over a network or locally.
+
+    Endpoint: An endpoint is not the client but rather the network address (IP address and port) where the RPC server is accessible. It's like a door to the server.
+
+    Interfaces: RPC interfaces define the available services or methods that the server offers. They are similar to header files or a description of the available functions.
+
+    Client Request: When a program (client) wants to use a service offered by the RPC server, it identifies the server's network address, its UUID (a unique identifier), and the specific interface it needs.
+
+    Local or Remote Communication: If the RPC call is local (on the same machine), it may use ncalrpc for fast communication. Otherwise, it uses network protocols like TCP/IP.
+
+    Procedure Call: The client sends an RPC request to the server's specified interface and method (procedure). The request includes the parameters in a specific format.
+
+    Procedure Invocation: The server receives the RPC request, looks up the requested procedure in its interface, and executes the corresponding function based on the index number and format provided in the request.
+
+    Response: The server sends back the result of the procedure execution (if applicable) to the client, which then continues its operation based on the server's response.

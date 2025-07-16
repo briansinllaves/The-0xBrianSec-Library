@@ -1,0 +1,5 @@
+
+
+```
+	Get-NetDomainController -Domain $domain
+```
