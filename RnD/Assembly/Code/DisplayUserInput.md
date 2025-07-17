@@ -1,4 +1,3 @@
-Here's the revised assembly code with comments and a clearer structure:
 
 ```asm
 section .data                           ; Data segment
