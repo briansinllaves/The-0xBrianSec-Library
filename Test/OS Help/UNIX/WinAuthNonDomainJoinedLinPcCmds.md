@@ -20,7 +20,7 @@ These tools allow you to execute commands on a remote Windows machine using vali
 `winexe` allows you to run commands on a Windows machine from Linux.
 
 ```bash
-winexe -U DOMAIN\\userne%password //hostne_or_ip 'command'
+winexe -U DOMAIN\\userne%password //hostname_or_ip 'command'
 ```
 
 - **Example:**
@@ -33,7 +33,7 @@ winexe -U DOMAIN\\userne%password //hostne_or_ip 'command'
 `wmiexec.py` from the Impacket suite allows you to execute commands on a remote Windows machine over WMI.
 
 ```bash
-python3 wmiexec.py DOMAIN/userne:password@hostne_or_ip
+python3 wmiexec.py DOMAIN/userne:password@hostname_or_ip
 ```
 
 - **Example:**
@@ -49,7 +49,7 @@ You can use RDP clients like `rdesktop` or `xfreerdp` to connect to a Windows ma
 
 #### **rdesktop**
 ```bash
-rdesktop -u DOMAIN\\userne -p password hostne_or_ip
+rdesktop -u DOMAIN\\userne -p password hostname_or_ip
 ```
 
 - **Example:**
@@ -60,7 +60,7 @@ rdesktop -u DOMAIN\\userne -p password hostne_or_ip
 
 #### **xfreerdp**
 ```bash
-xfreerdp /u:DOMAIN\\userne /p:password /v:hostne_or_ip
+xfreerdp /u:DOMAIN\\userne /p:password /v:hostname_or_ip
 ```
 
 - **Example:**

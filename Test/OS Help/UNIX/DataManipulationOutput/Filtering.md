@@ -7,21 +7,21 @@ Assume you have a list of instances stored in a file or produced by a command.
 If you have a file `instances.txt` that contains a list of instances:
 
 ```plaintext
-instance1_aur
+instance1_bri
 instance2_other
-aurora_instance3
+brianora_instance3
 instance4
 ```
 
-You can filter lines that contain "aur" using the following `grep` command:
+You can filter lines that contain "bri" using the following `grep` command:
 
 ```bash
-# Using grep to filter instances that match the pattern 'aur'
-filteredInstances=$(grep -E 'aur' instances.txt)
+# Using grep to filter instances that match the pattern 'bri'
+filteredInstances=$(grep -E 'bri' instances.txt)
 ```
 
 - **Explanation:**
-  - `grep -E 'aur' instances.txt` searches for the pattern `aur` in the file `instances.txt`.
+  - `grep -E 'bri' instances.txt` searches for the pattern `bri` in the file `instances.txt`.
   - The `-E` flag is used for extended regular expressions, but in this case, it's optional since we're only looking for a simple pattern.
 
 #### **Example with `awk`:**
@@ -29,29 +29,29 @@ filteredInstances=$(grep -E 'aur' instances.txt)
 Alternatively, you can use `awk` for more complex pattern matching:
 
 ```bash
-# Using awk to filter instances that match the pattern 'aur'
-filteredInstances=$(awk '/aur/' instances.txt)
+# Using awk to filter instances that match the pattern 'bri'
+filteredInstances=$(awk '/bri/' instances.txt)
 ```
 
 - **Explanation:**
-  - `awk '/aur/' instances.txt` searches each line in `instances.txt` for the pattern `aur` and prints the matching lines.
+  - `awk '/bri/' instances.txt` searches each line in `instances.txt` for the pattern `bri` and prints the matching lines.
 
 ### **Example Output:**
 
 If `instances.txt` contains the following:
 
 ```plaintext
-instance1_aur
+instance1_bri
 instance2_other
-aurora_instance3
+brianora_instance3
 instance4
 ```
 
 **Using the `grep` or `awk` command above, the `filteredInstances` variable would contain:**
 
 ```plaintext
-instance1_aur
-aurora_instance3
+instance1_bri
+brianora_instance3
 ```
 
 ### Filtering Output with a Condition:

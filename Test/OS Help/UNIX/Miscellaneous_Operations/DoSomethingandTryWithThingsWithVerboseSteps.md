@@ -19,21 +19,21 @@ if [ -z "$instances" ]; then
     error_exit "Error: No instances retrieved."
 fi
 
-# Filter instances for 'aur' in the ne
-aur_instances=$(echo "$instances" | grep 'aur')
+# Filter instances for 'bri' in the ne
+bri_instances=$(echo "$instances" | grep 'bri')
 
-echo "Filtered instances for 'aur' in the ne."
+echo "Filtered instances for 'bri' in the ne."
 
-# Check if aurInstances variable is empty
-if [ -z "$aur_instances" ]; then
-    error_exit "Error: No instances containing 'aur' in the ne found."
+# Check if briInstances variable is empty
+if [ -z "$bri_instances" ]; then
+    error_exit "Error: No instances containing 'bri' in the ne found."
 fi
 
 # Credentials for the attempts
 declare -A credentials
 credentials=(
-    ["aurasysadmin"]="ps3]qcMr-cd~pnMNg3X[z2wEyuuTyPur_QJd+qsE9vEr[@!9TCAbzY_A5jnT-b33j82FfCexjP$!W]s_x6aY(W2FhzNkB*(venAqw4HW+7cXX2w9TEZuU-S]|S-qu*q"
-    ["aurasysadmin2"]="mX(1_nZRmyS3a{8MabVUbktAEJgBa~FKqGFN6yK9ANv_uKzpXp}ynXtQMUYmQkw7FzZaTu]fCAxW0NqRpweBrRGSU[uh5PzyDSDLwmDw|dEKzh4puR2BttgHj!gmj)y"
+    ["briasysadmin"]="p"
+    ["briasysadmin2"]="m"
 )
 
 echo "Credentials prepared for connection attempts."
@@ -58,7 +58,7 @@ while read -r instance; do
             echo "Error: Failed to connect to $instance with $userne."
         fi
     done
-done <<< "$aur_instances"
+done <<< "$bri_instances"
 ```
 
 ### Explanation:
@@ -70,7 +70,7 @@ done <<< "$aur_instances"
    - This part is simulated with a placeholder command (`some_sql_instance_discovery_command`). Replace it with the actual command you use to discover SQL instances.
 
 3. **Filtering Instances**:
-   - `grep 'aur'` is used to filter instances that contain 'aur' in their ne.
+   - `grep 'bri'` is used to filter instances that contain 'bri' in their ne.
 
 4. **Credentials**:
    - A Bash associative array `credentials` is used to store the userne-password pairs.
