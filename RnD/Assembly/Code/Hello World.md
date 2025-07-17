@@ -1,4 +1,3 @@
-Here’s the provided assembly code with additional explanation and clarity:
 
 ```asm
 section .text
