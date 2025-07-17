@@ -4,18 +4,18 @@ Schedule task path to dll hijack
 
 Check through schedule task for what is writeable and run elevated.
 Runs as system
-![[Pasted image 20230131135435.png]]
+
 
 Found exe 
  
-![[Pasted image 20230131135443.png]]
+
 
 
 **Look for dlls not found that the exe is looking for**
 	
 procmon
 setup procmon w/ filters:
-![[Pasted image 20230131135506.png]]
+
 
 
 - **Operation:** `Load Image`
@@ -62,37 +62,37 @@ C:\\Users\\admin\\source\\repos\\Updated8-17-23\\OffsecDev-main\\cpp\\DLLforTest
 
 rebuild solution
 Test that a dll function will be called
- ![[Pasted image 20231208183112.png]]
+ 
 
 A cmd window will flash
 run .\dllloader.exe 
 
-![[Pasted image 20231208183151.png]]
 
-Verify kissa.txt is in the c:\windows folder on the vm. Ok its good.
+
+Verify sinllaves.txt is in the c:\windows folder on the vm. Ok its good.
 
 -----
 PREP THE DLL BY CLONING Sys32 DLL export functions
 prep the dll and change the ne with .\prepdll.bat version. This is the dll "ne not found" (version.dll)
  
- ![[Pasted image 20230131135542.png]]
+
 uses net clone to clone functions of sys32 dll??
 
 ---------------
 Move version.dll to host machine
 
 Move dll to dir that is missing dll
- ![[Pasted image 20230131135549.png]]
+
 Run scheduled task that will trigger dll
 Review c:\windows for the kissa.txt that was created. 
- ![[Pasted image 20230131135556.png]]
+
 Ok it is. Back to procmon
 
 Check for SUCCESS validation of exploitation
  
-![[Pasted image 20230131135602.png]]
+
 Success
-![[Pasted image 20230131135609.png]]
+
 
 ### **Persistence via DLL Hijacking**
 

@@ -37,26 +37,18 @@ To protect against exploitation:
 The task has the {0358B920–0AC
 7–461F-98F4–58E32CD89148} ClassID and uses the c:\windows\system32\wininet.dll when invoked:
 
-![[Pasted image 20231213154501.png]]
 
 
 We can find it in HKLM, beat the search order by adding it in HKCU.
 
-  ![[Pasted image 20231213154646.png]]
 
 Created in HKCU, add CLSID, right-click add New> key, add your payload.
 
 Right click add new string or expanded string value.
-  ![[Pasted image 20231213154722.png]]
 
 
 At User login, catowner.txt will be in ProgramData. Whoami is executed and the output is the written in the document. 
 
-  ![[Pasted image 20231213154813.png]]
-  
-
 the CacheTask may not be in the TaskScheduler.  
-
-  ![[Pasted image 20231213154833.png]]
 
 check procmon boot logging
