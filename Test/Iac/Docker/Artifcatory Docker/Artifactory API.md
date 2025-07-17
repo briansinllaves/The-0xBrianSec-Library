@@ -2,17 +2,17 @@
 
 ### List All Repositories
 ```bash
-curl -u $user:$token https://artifacts-west.test.com/artifactory/api/repositories > repositories
+curl -u $user:$token https://art-w.test.com/artifactory/api/repositories > repositories
 ```
 
 #### In PowerShell
 ```powershell
-Invoke-RestMethod -Uri 'https://artifacts-west.test.com/artifactory/api/repositories' -Method GET -Headers @{Authorization = "Basic $([System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("${user}:${token}")))"}
+Invoke-RestMethod -Uri 'https://art-w.test.com/artifactory/api/repositories' -Method GET -Headers @{Authorization = "Basic $([System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("${user}:${token}")))"}
 ```
 
 ## AQL Queries
 ```bash
-curl -X POST -u $user:$token 'https://artifacts-west.test.com/artifactory/api/search/aql' -T aql.query
+curl -X POST -u $user:$token 'https://art-w.test.com/artifactory/api/search/aql' -T aql.query
 ```
 
 ## AQL Examples

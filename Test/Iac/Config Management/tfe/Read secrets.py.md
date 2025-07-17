@@ -7,29 +7,29 @@ print("Reading Secret from Test Vault Production...")
 
 vault_headers = {
 
-    "X-Vault-Token": "s.JtndB86fD.5rYuO",
+    "X-Vault-Token": "s.",
 
-    "X-Vault-nespace": "ifs/ptfee/ptfee-prd012/"
+    "X-Vault-nespace": "i/ptee/pe2/"
 
 }
 
-snow_secrect_response = requests.get("https://vault-us.testinternal.com:8200/v1/secret/data/snow_production", headers=vault_headers, verify=False)
+rain_secrect_response = requests.get("https://vault.internal.com:8200/v1/secret/data/sproduction", headers=vault_headers, verify=False)
 
-snow_secrect_response.raise_for_status()
+rain_secrect_response.raise_for_status()
 
-print(f"SNOW API Credentials: {snow_secrect_response.json()['data']['data']}")
+print(f"rain API Credentials: {rain_secrect_response.json()['data']['data']}")
 
-print("Setting SNow APIM Credentials as Environment Variables")
+print("Setting rain APIM Credentials as Environment Variables")
 
-snow_apim_credentials = snow_secrect_response.json()['data']['data']
+rain_apim_credentials = rain_secrect_response.json()['data']['data']
 
-os.environ["APIM_APIKEY"] = snow_apim_credentials["api_key"]
+os.environ["APIM_APIKEY"] = rain_apim_credentials["api_key"]
 
-os.environ["APIM_APIKEYSECRET"] = snow_apim_credentials["api_key_secret"]
+os.environ["APIM_APIKEYSECRET"] = rain_apim_credentials["api_key_secret"]
 
-os.environ["APIM_AUTHORIZATION"] = snow_apim_credentials["auth"]
+os.environ["APIM_AUTHORIZATION"] = rain_apim_credentials["auth"]
 
-os.environ["APIM_PROXY_AUTHORIZATION"] = snow_apim_credentials["proxy_auth"]
+os.environ["APIM_PROXY_AUTHORIZATION"] = rain_apim_credentials["proxy_auth"]
 
 print(f"API Credentials from EV: {os.environ['APIM_APIKEY']}")
 ```

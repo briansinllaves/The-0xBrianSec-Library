@@ -2,7 +2,7 @@
 
 #### Recognize GitHub Token
 - GitHub tokens start with the prefix `ghp_` followed by 35 characters that can include both uppercase and lowercase letters, and numbers.
-  Example: `ghp_0OKFEa10okoafoa21aemfEAOKFwbH`
+  Example: `ghp_0OKFEaAOKFwbH`
 
 #### Login Using GitHub Token
 ```bash

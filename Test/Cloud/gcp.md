@@ -191,4 +191,3 @@ gcloud auth login --cred-file=sa
    gcloud spanner instances list
    ```
 
-This cheat sheet provides a structured approach for conducting reconnaissance and finding authentication credentials in environments using GCP. Adjust commands and steps based on the specific context and requirements.

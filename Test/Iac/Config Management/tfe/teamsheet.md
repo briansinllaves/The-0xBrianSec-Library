@@ -1,17 +1,17 @@
 orgs TFE instances:
 
-- global.tfe.testinternal.com
+- global.tfe.center.com
 - central.tfe.testcinternal.com
 - east.tfe.test.internal.com
 - west.tfe.test.cinternal.com
-- stage.tfe.testinternal.com
+- stage.tfe.center.com
 
 aleksi recommend following this guide to fix any SSL Cert issues: [https://ranxing.wordpress.com/2019/06/15/terraform-ssl-connection-behind-proxy/](https://ranxing.wordpress.com/2019/06/15/terraform-ssl-connection-behind-proxy/)
 
 i run
 ```
 curl -k \
-  --header "Authorization: Bearer aL39C28j3aBZAg.atlasv1.gguIjcNfz5bY65LIcmryowGwf4VfYJXCvEdSV1QR1wWeTHpqpIXvzlop1jZMV7zZcsbbyU
+  --header "Authorization: Bearer aL39C28jpIXvzlop1jZMV7zZcsbbyU
 " \
   --header "Content-Type: application/vnd.api+json" \
   --request GET \
@@ -104,7 +104,7 @@ do
 
   # Make the API request and write the output to the respective file
   curl -k \
-    --header "Authorization: Bearer aL39C28j3aBZAg.atlasv1.gguIjcNfz5bY65LIcmryowGwf4VfYJXCvEdSV1QR1wWeTHpqpIXvzlop1jZMV7zZcsbbyU" \
+    --header "Authorization: Bearer aL39C28j3jZMV7zZcsbbyU" \
     --header "Content-Type: application/vnd.api+json" \
     --request GET \
     "$ENDPOINT=$org" | jq > "$ORG_OUTPUT_FILE"
@@ -141,7 +141,7 @@ do
 
   # Make the API request and write the output to the respective file
   curl -k \
-    --header "Authorization: Bearer JiwT4EVxvdFrBg.atlasv1.RecRZIEQsrgnLCh91NoRUfBxOtTHLttuwskLzyjdaGdTCRXJdrPyQpKMT1Amm15Fyec" \
+    --header "Authorization: Bearer Ji4Ec" \
     --header "Content-Type: application/vnd.api+json" \
     --request GET \
     "$ENDPOINT/$org/workspaces" | jq > "$ORG_OUTPUT_FILE"

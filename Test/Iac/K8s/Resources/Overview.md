@@ -6,10 +6,7 @@ https://cloud.hacktricks.xyz/pentesting-cloud/kubernetes-security/kubernetes-bas
 A Kubernetes cluster consists of a set of worker machines, called nodes, that run containerized applications. Every cluster has at least one worker node.
 
 Below are very high-level components in Kubernetes Cluster
-![[Pasted image 20230828170129.png]]
-![[Pasted image 20230825142531.png]]
-![[Pasted image 20230828091746.png]]
-![[Pasted image 20230828092056.png]]
+
 **Control Plane Components**
 
 
