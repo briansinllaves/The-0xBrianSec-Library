@@ -1,4 +1,3 @@
-Here's a more structured version of your original content, maintaining all the details:
 
 ---
 
