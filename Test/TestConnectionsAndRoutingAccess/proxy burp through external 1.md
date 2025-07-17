@@ -24,8 +24,3 @@ Here's a clearer and more structured version of your note:
 
    - The private key is stored in `id_rsa`, and the corresponding public key is stored in `id_rsa.pub` within the `~/.ssh` directory.
 
-
-![[Pasted image 20230526115744.png]]
-
-
-![[Pasted image 20230526120051.png]]

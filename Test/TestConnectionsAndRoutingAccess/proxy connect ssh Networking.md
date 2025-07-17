@@ -3,10 +3,6 @@ SSH
 
 Use .pem to connect to key
 
-![[Pasted image 20221206160545.png]]
-
-
-Here's a clearer and more structured version of your note:
 
 ---
 
@@ -30,8 +26,6 @@ Here's a clearer and more structured version of your note:
      1. Open PuTTYgen.
      2. Load your `.ppk` file.
      3. Go to `Conversions > Export OpenSSH key` and save it as a `.pem` file.
-
-
 
 
 
@@ -76,7 +70,4 @@ Here's a quick note on setting up a SOCKS proxy in MobaXterm:
    - Traffic from these applications will now be routed through the SSH connection via the SOCKS proxy.
 
 
-![[Pasted image 20221206160600.png]]
-
 Add ssh key 
-![[Pasted image 20221206160608.png]]

@@ -17,11 +17,6 @@
 
    - Set the Proxifier server to the Chisel proxy listener address: `127.0.0.1:1080`.
 
-![[Pasted image 20240105173244.png]]
-
-![[Pasted image 20240105135408.png]]
-
-]Here's a refined and structured version of your note incorporating the new information:
 
 ---
 

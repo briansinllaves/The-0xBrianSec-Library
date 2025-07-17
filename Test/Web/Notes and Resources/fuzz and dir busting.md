@@ -9,9 +9,9 @@ Discovery/Web-Content/IIS.fuzz.txt
 Discovery/Web-Content/apache.txt
 Discovery/Web-Content/big.txt
   
-./ffuf -u http://exp1.ABCD.com/FUZZ -v -c -w /home/brian/seclists/Discovery/Web-Content/big.txt -o /home/brian/fuzz/th-big -of html
+./ffuf -u http://e1.ABCD.com/FUZZ -v -c -w /home/brian/seclists/Discovery/Web-Content/big.txt -o /home/brian/fuzz/th-big -of html
  
-./ffuf -u https://secexa.gpgw.ABCD.com/FUZZ -v -c -w /home/brian/seclists/Discovery/Web-Content/big.txt -o /home/brian/fuzz/ms-big -of html
+./ffuf -u https://sa.gw.ABCD.com/FUZZ -v -c -w /home/brian/seclists/Discovery/Web-Content/big.txt -o /home/brian/fuzz/ms-big -of html
 
 cd /home/tools/ffuf/ 
 cd /home/brian/fuzz
