@@ -1,4 +1,3 @@
-Here's the reformatted section:
 
 ### **Getting Help**
 

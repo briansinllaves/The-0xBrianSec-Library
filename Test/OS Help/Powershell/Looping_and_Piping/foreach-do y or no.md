@@ -1,7 +1,5 @@
 take list of usernes and passwords and run in a script  to scan domain for disabled and active users. - Password assessment
 
-
-
 -----------------------------------------------------------------
 ```
 cmd > runas /netonly /user:DOMAIN\user powershell.exe

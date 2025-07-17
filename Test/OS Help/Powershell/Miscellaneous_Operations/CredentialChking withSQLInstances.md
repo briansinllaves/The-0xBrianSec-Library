@@ -5,7 +5,7 @@ Credential checking.
 
 try {
 
-    $instances = Get-SQLInstanceDomain -Verbose -DomainController 1.1.1.14
+    $instances = Get-SQLInstanceDomain -Verbose -DomainController 10.1.1.10
 
     Write-Host "Retrieved SQL Instances from specified domain."
 
@@ -27,18 +27,18 @@ if ([string]::IsNullOrEmpty($instances)) {
 
 }
 
-# Filter instances for 'aur' in the ne
+# Filter instances for 'bri' in the ne
 
-$aurInstances = $instances | Where-Object { $_ -match 'aur' }
+$briInstances = $instances | Where-Object { $_ -match 'bri' }
 
-Write-Host "Filtered instances for 'aur' in the ne."
+Write-Host "Filtered instances for 'bri' in the ne."
 
 
-# Check if aurInstances variable is null or empty
+# Check if briInstances variable is null or empty
 
-if ([string]::IsNullOrEmpty($aurInstances)) {
+if ([string]::IsNullOrEmpty($briInstances)) {
 
-    Write-Host "Error: No instances containing 'aur' in the ne found."
+    Write-Host "Error: No instances containing 'bri' in the ne found."
 
     exit
 
@@ -48,9 +48,9 @@ if ([string]::IsNullOrEmpty($aurInstances)) {
 
 $credentials = @(
 
-    @{ Userne = 'aurasysadmin'; Password = 'ps3]qcMr-cd~pnMNg3X[z2wEyuuTyPur_QJd+qsE9vEr[@!9TCAbzY_A5jnT-b33j82FfCexjP$!W]s_x6aY(W2FhzNkB*(venAqw4HW+7cXX2w9TEZuU-S]|S-qu*q' },
+    @{ Userne = 'briasysadmin'; Password = 'psu*q' },
 
-    @{ Userne = 'aurasysadmin'; Password = 'mX(1_nZRmyS3a{8MabVUbktAEJgBa~FKqGFN6yK9ANv_uKzpXp}ynXtQMUYmQkw7FzZaTu]fCAxW0NqRpweBrRGSU[uh5PzyDSDLwmDw|dEKzh4puR2BttgHj!gmj)y' }
+    @{ Userne = 'briasysadmin'; Password = 'mX3a{8Maby' }
 
 )
 
@@ -58,7 +58,7 @@ Write-Host "Credentials prepared for connection attempts."
 
 # Iterate through filtered instances and credentials
 
-foreach ($instance in $aurInstances) {
+foreach ($instance in $briInstances) {
 
     foreach ($credential in $credentials) {
 

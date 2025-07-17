@@ -1,6 +1,6 @@
 
 ```
-Get-RecursiveGroupMembers -user "brian" -domain "domain.com" -server "10.4.6.2"
+Get-RecursiveGroupMembers -user "brian" -domain "domain.com" -server "10.4.4.2"
 
 - After identifying those groups, it will recursively run `Get-RecursiveGroupMembers` for each group. This means, if `"brian"` is in `"GroupA"`, it will then look for groups that `"GroupA"` is a member of.
 - This recursion continues until all nested memberships are found and listed.
@@ -26,6 +26,6 @@ function Get-RecursiveGroupMembers {
 }
 
 # Call the function with the initial user
-Get-RecursiveGroupMembers -user "brian" -domain "domain.com" -server "10.4.6.2"
+Get-RecursiveGroupMembers -user "brian" -domain "domain.com" -server "10.4.4.2"
 
 ```

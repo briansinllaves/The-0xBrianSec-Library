@@ -1,5 +1,4 @@
 ```
-Here's the reformatted section:
 
 ### **Finding Cmdlets**
 

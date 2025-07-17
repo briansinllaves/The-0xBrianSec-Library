@@ -2,10 +2,10 @@
 Use a `for` loop to iterate over a range with more control:
 ```powershell
 for ($i = 1; $i -lt 99; $i++) {
-   "17.165.1.$i"
+   "10.165.1.$i"
 }
 ```
-This generates IP addresses from "17.165.1.1" to "17.165.1.98".
+This generates IP addresses from "10.165.1.1" to "10.165.1.98".
 
 ### **ForEach Loop**
 Use `ForEach` to iterate over a collection of objects:

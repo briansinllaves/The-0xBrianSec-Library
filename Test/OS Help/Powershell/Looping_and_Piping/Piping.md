@@ -8,7 +8,7 @@ $sids = Get-DomainTrust -Domain ABCDglb.com -Server 10.186.1.1
 
 # Loop through each domain in $sids and perform the Get-DomainSID cmdlet
 foreach($domain in $sids) {
-    Get-DomainSID -Domain $domain.Targetne -Server 10.186.16.23
+    Get-DomainSID -Domain $domain.Targetne -Server 10.100.10.23
 }
 
 # Save the Targetne property from $sids to a file without table headers
@@ -63,11 +63,4 @@ $lara.carlicense
 Import-Csv notes.txt | ForEach-Object {
     Test-NetConnection -Computerne $_.Computerne -Port $_.Port
 }
-```
-
-### Example CSV File (`notes.txt`):
-
-```plaintext
-Computerne,Port
-Jogn001,80
 ```

@@ -1,4 +1,4 @@
-Here's how you can convert the provided Linux shell script methods for copying files into multiple directories into PowerShell:
+methods for copying files into multiple directories into PowerShell:
 
 ### **Method 1: Using a `for` Loop in PowerShell**
 

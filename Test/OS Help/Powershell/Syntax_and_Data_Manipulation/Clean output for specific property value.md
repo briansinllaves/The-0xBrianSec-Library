@@ -45,7 +45,7 @@
     ```powershell
     $sids = Get-DomainTrust -Domain ABCDglb.com -Server 10.6.6.3
     foreach ($domain in $sids) {
-        Get-DomainSID -Domain $domain -Server 10.1.6.3
+        Get-DomainSID -Domain $domain -Server 10.1.1.3
     }
     ```
 
