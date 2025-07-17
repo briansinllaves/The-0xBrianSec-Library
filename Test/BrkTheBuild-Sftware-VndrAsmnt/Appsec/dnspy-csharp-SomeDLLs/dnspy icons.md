@@ -1,1 +1,1 @@
-![[Pasted image 20240829164222.png]]
+use the ones from vscode or osomething. 
