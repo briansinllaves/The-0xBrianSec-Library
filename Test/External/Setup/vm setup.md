@@ -3,22 +3,23 @@
 ### Resource Group Information
 
 #### Resource Group
-- **ne**: [PentestTeam](https://portal.azure.com/#@ABCD.onmicrosoft.com/resource/subscriptions/14277680-2e31-4855-92e5-f337d3/resourceGroups/PentestTeam "PentestTeam")
+- **ne**: [PentestTeam](https://portal.azure.com/#@ABCD.onmicrosoft.com/resource/subscriptions/14d3/resourceGroups/PentestTeam "PentestTeam")
 - **Status**: Running
 - **Location**: East US
 
 #### Subscription
-- **ne**: [PZI-zlop1-E-SUB308](https://portal.azure.com/#@ABCD.onmicrosoft.com/resource/subscriptions/14277680-2e31-4855-92e5-23rf "PZI-zlop1-E-SUB308")
-- **ID**: 14277680-2e31-4855-92e5-fdbfb11337d3
+- **ne**: [SUB3](https://portal.azure.com/#@ABCD.onmicrosoft.com/resource/subscriptions/aa "SUB3")
+- **ID**: 14
 
 #### Virtual Machine
 - **Computer ne**: Proxy-2
 - **Operating System**: Linux (Ubuntu 20.04)
 - **Size**: Standard B2s (2 vCPUs, 4 GiB memory)
-- **Public IP Address**: [4.157.64.71](https://portal.azure.com/#blade/HubsExtension/ResourceMenuBlade/id/%2Fsubscriptions%2F0-2e31-4855-92e5-fdbfb11337d3%2FresourceGroups%2FPentestTeam%2Fproviders%2FMicrosoft.Network%2FpublicIPAddresses%2FProxy-2-ip/menuid/configuration)
-- **Private IP Address**: 10.1.1.1
-- **Virtual Network/Subnet**: [Proxy-2-vnet/default](https://portal.azure.com/#blade/HubsExtension/ResourceMenuBlade/id/%2Fsubscriptions%2F14277680-2e31-4855-92e5-fdbfb11337d3%2FresourceGroups%2FPentestTeam%2Fproviders%2FMicrosoft.Network%2FvirtualNetworks%2FProxy-2-vnet "Proxy-2-vnet/default")
+- **Public IP Address**: [ip](https://portal.azure.com/#blade/HubsExtension/ResourceMenuBlade/id/%2Fsubscriptions%2F0%2FresourceGroups%2FPentestTeam%2Fproviders%2FMicrosoft.Network%2FpublicIPAddresses%2FProxy-2-ip/menuid/configuration)
+- **Private IP Address**: 10.11.2.3
+- **Virtual Network/Subnet**: [Proxy-2-vnet/default](https://portal.azure.com/#blade/HubsExtension/ResourceMenuBlade/id/%2Fsubscriptions%2F3%2FresourceGroups%2FPentestTeam%2Fproviders%2FMicrosoft.Network%2FvirtualNetworks%2FProxy-2-vnet "Proxy-2-vnet/default")
 - **DNS ne**: [Not configured](https://portal.azure.com/#blade/HubsExtension/ResourceMenuBlade/id/%2Fsubscriptions%2F14277680-2e31-4855-92e5-fd7d3%2FresourceGroups%2FPentestTeam%2Fproviders%2FMicrosoft.Network%2FpublicIPAddresses%2FProxy-2-ip/menuid/configuration "Not configured")
+
 - **Health State**: -
 
 #### VM Details
@@ -72,7 +73,7 @@
 - **Source Image Plan**: 20_04-lts-gen2
 
 #### Disk
-- **OS Disk**: Proxy-2_OsDisk_1_db2094488347aad927d07
+- **OS Disk**: Proxy-2_OsDisk_1_db20
 - **Encryption at Host**: Disabled
 - **Azure Disk Encryption**: Not enabled
 - **Ephemeral OS Disk**: N/A
@@ -86,7 +87,6 @@
 - **Azure Spot**: -
 - **Azure Spot Eviction Policy**: -
 
-![[Pasted image 20240709175317.png]]
 ### Setup and Tools Configuration
 
 #### Configure Virtual Network

@@ -34,17 +34,17 @@ done < dnslist.txt > nsdighostne.txt
 1. **Prepare the `dnslist.txt` file**: Add IPs to `dnslist.txt`.
 2. **Navigate to the DNS folder**: 
    ```bash
-   cd /home/brian/targets/southAfrica/dns/
+   cd /home/brian/targets/south/dns/
    ```
 3. **Run the `dig.sh` script**:
    ```bash
-   cp ~/scopes/southAfricascope.txt dnslist.txt
+   cp ~/scopes/southadamcope.txt dnslist.txt
    ./dig.sh
    ```
 4. **Set Execute Permissions**: Ensure scripts and files have correct permissions.
    ```bash
    chmod +x dig.sh
-   chmod +x /home/brian/targets/southAfrica/dns/
+   chmod +x /home/brian/targets/south/dns/
    ```
 
 ### Bulk DNS Lookup Script

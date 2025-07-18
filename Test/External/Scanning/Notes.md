@@ -54,35 +54,35 @@
 2. **Nmap Scan with SQL**:
    - **Command**:
      ```bash
-     nmap -vv -n -Pn -sV -p443,1433,1434,1443,5002,5022,5024,5026,16000,16001,16002,16666,16012,16016,16018,16020,16021,16048 40.70.144.193 --open
+     nmap -vv -n -Pn -sV -p443,1433,1434,1443,5002,5022,5024,5026,16000,16001,16002,16666,16012,16016,16018,16020,16021,16048 ip --open
      $ips | %{ Get-SQLConnectionTest -Instance $_ -Verbose  }
      ```
    - **Explanation**:
      - `-p <ports>`: Specifies the ports to scan.
-     - `40.70.144.193`: Target IP address.
+     - `ip`: Target IP address.
      - `Get-SQLConnectionTest -Instance $_ -Verbose`: Tests SQL connections for the listed instances.
 
 3. **Top Ports Scan**:
    - **Command**:
      ```bash
-     nmap -vv -n -Pn -sT --top-ports 2000 --open -iL runzero_hosts --resolve-all -oA nmap_scans/runz_hosts_2000
+     nmap -vv -n -Pn -sT --top-ports 2000 --open -iL zero_hosts --resolve-all -oA nmap_scans/_hosts_2000
      ```
    - **Explanation**:
      - `--top-ports 2000`: Scans the top 2000 ports.
-     - `-iL runzero_hosts`: Input file with a list of targets.
+     - `-iL lollipop_hosts`: Input file with a list of targets.
      - `--resolve-all`: Resolves all hosts.
      - `-oA nmap_scans/runz_hosts_2000`: Output in all formats (normal, XML, and grepable).
 
 4. **Targeted Nmap Scan**:
    - **Command**:
      ```bash
-     nmap -vv -sT -sV -Pn -T4 51.8.178.187 --top-ports 1000 --open -oA dataaccel-51.8.178.187
+     nmap -vv -sT -sV -Pn -T4 ip --top-ports 1000 --open -oA stuff-ip
      ```
    - **Explanation**:
-     - `51.8.178.187`: Target IP address.
+     - `5: Target IP address.
      - `-sT`: TCP connect scan.
      - `-sV`: Version detection.
      - `-T4`: Aggressive timing template.
      - `--top-ports 1000`: Scans the top 1000 ports.
-     - `-oA dataaccel-51.8.178.187`: Output in all formats (normal, XML, and grepable).
+     - `-oA data-ip`: Output in all formats (normal, XML, and grepable).
 

@@ -2,10 +2,10 @@
 
 #### FFUF Command
 ```bash
-ffuf -u https://GLOBAL-MERGER-CHARTS-FE.AZUREWEBSITES.NET/FUZZ -w /opt/SecLists/Discovery/Web-Content/big.txt -r -e .txt,.html,.js,.css,.xml,.aspx,.asp -o ./output.txt -fc 200,201
+ffuf -u https://GLOBeMERGER.AZUREWEBSITES.NET/FUZZ -w /opt/SecLists/Discovery/Web-Content/big.txt -r -e .txt,.html,.js,.css,.xml,.aspx,.asp -o ./output.txt -fc 200,201
 ```
 
-- **`-u https://GLOBAL-MERGER-CHARTS-FE.AZUREWEBSITES.NET/FUZZ`**: Target URL with `FUZZ` placeholder.
+- **`-u https://GLOBeMERGER.AZUREWEBSITES.NET/FUZZ`**: Target URL with `FUZZ` placeholder.
 - **`-w /opt/SecLists/Discovery/Web-Content/big.txt`**: Path to the wordlist.
 - **`-r`**: Recursion option.
 - **`-e .txt,.html,.js,.css,.xml,.aspx,.asp`**: File extensions to fuzz.
@@ -16,25 +16,25 @@ This command can reveal WAF behavior if every request returns a status code 200.
 
 #### Nikto Command
 ```bash
-nikto -h https://GLOBAL-MERGER-CHARTS-FE.AZUREWEBSITES.NET
+nikto -h https://GLOBeMERGER.AZUREWEBSITES.NET
 ```
-- **`-h https://GLOBAL-MERGER-CHARTS-FE.AZUREWEBSITES.NET`**: Target host to scan.
+- **`-h https://GLOBeERGER.AZUREWEBSITES.NET`**: Target host to scan.
 
 #### DirBuster Usage
 1. **Start DirBuster**:
    ```bash
    java -jar /path/to/DirBuster-1.0-RC1.jar
    ```
-2. **Set the Target URL**: Enter `https://GLOBAL-MERGER-CHARTS-FE.AZUREWEBSITES.NET` in the target URL field.
+2. **Set the Target URL**: Enter `https://GLOBeMERGER.AZUREWEBSITES.NET` in the target URL field.
 3. **Configure Options**:
    - **Wordlist**: Select `/opt/SecLists/Discovery/Web-Content/big.txt`.
    - **Extensions**: Add `.txt,.html,.js,.css,.xml,.aspx,.asp`.
 
 #### DirSearch Command
 ```bash
-dirsearch -u https://GLOBAL-MERGER-CHARTS-FE.AZUREWEBSITES.NET -w /opt/SecLists/Discovery/Web-Content/big.txt -e txt,html,js,css,xml,aspx,asp
+dirsearch -u https://GLOBeMERGER.AZUREWEBSITES.NET -w /opt/SecLists/Discovery/Web-Content/big.txt -e txt,html,js,css,xml,aspx,asp
 ```
-- **`-u https://GLOBAL-MERGER-CHARTS-FE.AZUREWEBSITES.NET`**: Target URL.
+- **`-u https://GLOBeMERGER.AZUREWEBSITES.NET`**: Target URL.
 - **`-w /opt/SecLists/Discovery/Web-Content/big.txt`**: Path to the wordlist.
 - **`-e txt,html,js,css,xml,aspx,asp`**: File extensions to scan for.
 
