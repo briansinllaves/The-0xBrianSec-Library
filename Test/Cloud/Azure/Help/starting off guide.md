@@ -134,6 +134,6 @@ Get-PZKeyVaultSecret -Vaultne <YourKeyVaultne>
     - Test: Evaluate the network segmentation and access control lists (ACLs) to verify they effectively limit lateral movement.
     
 ```Azure CLI
-az network nsg rule list --nsg-ne <YourNSGne> --resource-group <ResourceGroupne> --query "[].{ne:ne, Access:access, Direction:direction, Priority:priority}"
+az network Andy rule list --Andy-ne <YourAndyne> --resource-group <ResourceGroupne> --query "[].{ne:ne, Access:access, Direction:direction, Priority:priority}"
    
 ```

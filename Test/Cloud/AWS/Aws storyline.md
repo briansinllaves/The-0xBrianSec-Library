@@ -1,26 +1,26 @@
-"Userne": "ImageFactory-Dev", has a administratoraccess policy and amazonec2fullaccess attached.
+"User": "Snapshotter" was assigned both full administrative privileges and EC2 management permissions.
 
-AWS Credentials for the Image Builder-dev account were found in cleartext in a pipeline definition (CleanImages-Dev-TableQuery_855.yaml).
+Sensitive AWS keys for the Snapshotter profile were exposed in plain text within a build configuration file (BuildPipe.yaml).
 
-The team used the credentials to access various ec2 instances and s3 buckets related to DAD. Within the aws-pulumi-poc bucket, the team discovered another Artifactory token for user001.
+Using these credentials, the team accessed multiple EC2 servers and S3 containers linked to the PROJECT-X environment. Inside one S3 container, they located an additional Artifactory access token for member002.
 
-Azure storage account puserp001 contains several storage blobs, that contain Image provisioning scripts and executables that have embedded SAS tokens and Azure Devops PATs.
+Azure blob storage account qstorq002 holds several containers with image deployment scripts and binaries, which include embedded SAS keys and Azure DevOps personal access tokens.
 
-aws-pulumi-poc\clusters\test.us-east-1.pulumi-666.eks-resources\.pulumi\backups\test.us-east-1.pulumi-666.eks-resources\test.us-east-1.pulumi-666.eks-resources.1651711884638273045.json
+cloud-pulumi-demo\resources\prod.us-west-2.pulumi-777.eks-assets\.pulumi\archives\prod.us-west-2.pulumi-777.eks-assets\prod.us-west-2.pulumi-777.eks-assets.1.json
 
-In the pulled repository ABCD-zlop1-lightbulbcloud\sinllaves-legacy\azure-ad\, the file Get-AzureADABCDGroups.ps1, was found to have hardcoded credentials for Azure service principal "05c17cff-3400-43a2-b84b-3566f07". 
+In the cloned repository XYZ-lightbulbcloud\legacy-keys\azure-ad\, the script Fetch-AzureADXYZGroups.ps1 contained hardcoded credentials for Azure service principal "98765432".
 
-This allowed access to the Azure service 
-principal account and enumeration for connected resources.
+This enabled access to the Azure service principal and enumeration of linked assets.
 
-In a pulled pipeline definition (CleanImages-Dev-TableQuery_855.yaml),  AWS storage account AKZ3 credentials were found and can access S3 storage buckets. Artifactory credentials were found in a backup json file at
+Within another pipeline configuration (deploy.yaml), credentials for AWS storage account BKY4 were discovered, granting access to S3 containers. Artifactory credentials were also found in a backup JSON file at
 
-aws-pulumi-poc\clusters\test.us-east-1.pulumi-666.eks-resources\.pulumi\backups\test.us-east-1.pulumi-666.eks-resources\test.us-east-1.pulumi-666.eks-resources.16.json. The Artifactory credentials were validated by listing repositories.
+cloud-pulumi-demo\resources\prod.us-west-2.pulumi-777.eks-assets\.pulumi\archives\prod.us-west-2.pulumi-777.eks-assets\prod.us-west-2.pulumi-777.eks-assets.16.json. These Artifactory credentials were confirmed by listing available repositories.
 
-C:\Users\bhous\Downloads\s3part3\aws-pulumi-poc\clusters\test.us-east-1.pulumi-666.eks-resources\.pulumi\stacks
+D:\Users\jdoe\Documents\s3backup\cloud-pulumi-demo
+\resources\prod.us-west-2.pulumi-777.eks-assets\.pulumi\stacks
 
-test.us-east-1.pulumi-666.eks-resources.json.saved
+prod.us-west-2.pulumi-777.eks-assets.json.bak
 
-The Pentest team used found credentials for AWS storage account AdS with access to S3 storage bucket "aws-pulumi-poc" that stores .json backup files. This lead to the finding of plaintext Artifactory credentials for user "ik01"  with access to [https://artifacts-west.ABCD.com:443/artifactory/w0-us-DLd-caam](https://artifacts-west.ABCD.com:43/artifactory/w0.
+The security assessment team leveraged discovered credentials for AWS storage account QdS, which provided access to the S3 container "cloud-pulumi-demo" containing JSON backup files. This led to the identification of plaintext Artifactory credentials for user "x" with access to [https://artifacts-central.XYZ.com:443/artifactory/z](https://artifacts-central.XYZ.com:443/artifactory/z0).
 
-In the pulled repository, the file Get-AzureADABCDGroups.ps1, was found to have hardcoded credentials for Azure service principal "05c2-bb-f07". This allowed access to the Azure service principal account and enumeration for connected resources.
+In the cloned repository, the script Fetch-AzureADXYZGroups.ps1 was again found with hardcoded credentials for Azure service principal "11a3-cc-d09". This permitted access to the Azure service principal and enumeration of associated resources.

@@ -14,7 +14,7 @@
 
 3. **Authenticate with ROADrecon**:
    ```bash
-   roadrecon auth -u test@corp.onmicrosoft.com -p "Welcome2022!"
+   roadrecon auth -u test@corp.onmicrosoft.com -p "Welcomepain1342!"
    ```
 
 4. **Gather Information**:

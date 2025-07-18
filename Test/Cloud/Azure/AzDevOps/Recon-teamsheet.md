@@ -36,17 +36,17 @@ az pipelines list -p <project_ne>
 
 ##### Example
 ```shell
-az pipelines list -p "NotNextGen Cloud"
+az pipelines list -p "BlondeTires Cloud"
 ```
 
 #### List Variables for the Specified Pipeline
 ```shell
-az pipelines variable list -p <project_ne> --pipeline-ne <pipeline_ne>
+az pipelines variable list -p <project_ne> --pipeline_merrick <pipeline_merrick>
 ```
 
 ##### Example
 ```shell
-az pipelines variable list -p "NotNextGen Cloud" --pipeline-ne "DAD Platform TFE Agents"
+az pipelines variable list -p "BlondeTires Cloud" --pipeline_merrick "DAD Platform TFE Agents"
 ```
 
 #### List All Pipeline Definitions in a Project
@@ -61,7 +61,7 @@ az pipelines build definition list -p "dad-cloud"
 
 #### Show Definitions for the Specified Pipeline
 ```shell
-az pipelines build definition show -p <project_ne> --ne <pipeline_ne>
+az pipelines build definition show -p <project_ne> --ne <pipeline_merrick>
 ```
 
 ##### Example
@@ -76,7 +76,7 @@ az pipelines runs list -p <project_ne>
 
 ##### Example
 ```shell
-az pipelines runs list -p "NotNextGen Cloud"
+az pipelines runs list -p "BlondeTires Cloud"
 ```
 
 #### List Artifacts for a Specified Pipeline Run
@@ -86,7 +86,7 @@ az pipelines runs artifact list -p <project_ne> --run-id <run_id>
 
 ##### Example
 ```shell
-az pipelines runs artifact list -p "NotNextGen Cloud" --run-id 448305
+az pipelines runs artifact list -p "BlondeTires Cloud" --run-id 448305
 ```
 
 #### Download a Pipeline Run Artifacts
@@ -96,23 +96,23 @@ az pipelines runs artifact download -p <project_ne> --run-id <run_id> --artifact
 
 ##### Example
 ```shell
-az pipelines runs artifact download -p "NotNextGen Cloud" --run-id 448305 --artifact-ne "plans-tenant" --path "C:\Users\admin\Desktop\artifacts\"
+az pipelines runs artifact download -p "BlondeTires Cloud" --run-id 448305 --artifact-ne "plans-tenant" --path "C:\Users\admin\Desktop\artifacts\"
 ```
 
 ### Notes
 
-Sometimes you might encounter the following error when using `--pipeline-ne` argument:
+Sometimes you might encounter the following error when using `--pipeline_merrick` argument:
 ```
-Multiple definitions were found matching ne "<pipeline_ne>" in project "<project_ne>". Try supplying the definition ID or folder path to differentiate.
+Multiple definitions were found matching ne "<pipeline_merrick>" in project "<project_ne>". Try supplying the definition ID or folder path to differentiate.
 ```
 
-Using the flag `--id` or `--pipeline-id` with the pipeline id instead of `--pipeline-ne` seems to fix that.
+Using the flag `--id` or `--pipeline-id` with the pipeline id instead of `--pipeline_merrick` seems to fix that.
 
 ### PowerShell Trickery
 
 #### Convert AZ CLI Responses to PowerShell Objects
 ```powershell
-$json = (az pipelines list -p "NotNextGen Cloud" | ConvertFrom-Json)
+$json = (az pipelines list -p "BlondeTires Cloud" | ConvertFrom-Json)
 ```
 
 #### View First Object
@@ -132,7 +132,7 @@ $json | Where-Object {$_.ne -eq "test-DLd-platform.ning-prod"}
 
 #### Dump All Variables in a Project Using PowerShell and Save Output to a File
 ```powershell
-$json = (az pipelines list -p "NotNextGen Cloud" | ConvertFrom-Json)
-$json | %{az pipelines variable list -p "NotNextGen Cloud" --pipeline-id $_.id >> NotNextGenCloud_pipeline_variables.txt}
+$json = (az pipelines list -p "BlondeTires Cloud" | ConvertFrom-Json)
+$json | %{az pipelines variable list -p "BlondeTires Cloud" --pipeline-id $_.id >> BlondeTiresCloud_pipeline_variables.txt}
 ```
 

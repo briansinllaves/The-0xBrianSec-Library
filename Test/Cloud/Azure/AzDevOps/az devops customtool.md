@@ -42,7 +42,7 @@ az pipelines build definition show --id 652 -p "dad-cloud" as another.user@ABCD.
 
 #### Fetch Repository Information from Artifactory
 ```shell
-curl -u ci_us-ifs-NotNextGen-stg-helm:eyJ2ZXIiO.... https://artifacts-west.ABCD.com/artifactory/api/repositories > repositories From "Publish Helm Chart to Artifactory" pipeline logs
+curl -u ci_us-ifs-NotNextGen-stg-helm:eyJ2O.... https://artifacts-west.ABCD.com/artifactory/api/repositories > repositories From "Publish Helm Chart to Artifactory" pipeline logs
 ```
 
 #### Invoke Web Request to Get Build Information from Azure DevOps

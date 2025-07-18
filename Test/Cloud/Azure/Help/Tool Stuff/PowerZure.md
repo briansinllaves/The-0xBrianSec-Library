@@ -22,9 +22,9 @@ Get-AzAdApplication > AzAdApplication.txt
 "Show-AzureKeyVaultContent -All
 Show-AzureStorageContent -All -Verbose
 Get-AzureTarget"
-Get-AzContainerRegistry -SubscriptionId "012ae8b12"
-Connect-AzContainerRegistry -ne "us00"
-Get-AzKeyVault -SubscriptionId "012a59-3179-4bb12"
+Get-AzContainerRegistry -SubscriptionId "0"
+Connect-AzContainerRegistry -ne "us"
+Get-AzKeyVault -SubscriptionId "0"
 
 ```
 

@@ -84,12 +84,7 @@ InitEventLog
 $title = "AAD B2B Guest Account"
 
 # Define AAD B2B variables
-$aadB2bGroups = @("GG-CO-RCPD-PPROD-PORTAIL-ASC-MEMB,21702873-29f7-4b89-b8cf-8c24ec2b72a6", `
-        "GG-CO-RCPD-PPROD-PORTAIL-ASC-VISIT,7c0524f9-3031-4af5-82eb-9e9d8e62d91e", `
-        "GG-CO-RCPD-PPROD-PORTAIL-BCSC-MEMB,a7dba315-1ba5-44f5-abc1-733125649e13", `
-        "GG-CO-RCPD-PPROD-PORTAIL-BCSC-VISIT,a2eb7f48-58bf-4a4d-93d5-f9db656b36b5", `
-        "GG-CO-RCPD-PPROD-PORTAIL-MSC-MEMB,5813daa0-c808-4e57-9498-ed36c077ac84", `
-        "GG-CO-RCPD-PPROD-PORTAIL-MSC-VISIT,e7971647-0ccf-4dfc-bfad-6e0f6f5c4dee")
+$aadB2bGroups = @("GMB,282")
 
 $adShadowAccountOU = "<DEFINIR>" #Organizational Unit for placing shadow accounts
 $adShadowAccountOUArchive = "<DEFINIR>" #Organizational Unit for moving disabled shadows

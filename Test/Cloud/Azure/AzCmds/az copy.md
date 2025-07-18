@@ -13,6 +13,6 @@
     
 
     ```
-    azcopy copy "https://pzidp001.blob.core.windows.net/yumreposcript/startup.sh?sv=2018-03-28&ss=bfqt&srt=sco&sp=rlacp&se=2100-07-31T16:41:42Z&st=2019-07-31T08:41:42Z&spr=https&sig=1iM%3D" "/tmp/customscript/startup.sh" --recursive=true  
+    azcopy copy "https://p1.blob.core.windows.net/yumreposcript/startup.sh?" "/tmp/customscript/startup.sh" --recursive=true  
     ```
 

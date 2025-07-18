@@ -18,7 +18,7 @@ use storage explorer
     
 7. Enter the following information:
     
-    - Account ne: Enter your storage account ne (e.g., "dcsmdpstorageacc").
+    - Account ne: Enter your storage account ne (e.g., "dstorageacct").
     - Account Key: Enter your storage account key.
     - Use HTTPS: Check this option.
 8. Click on the "Next" button.

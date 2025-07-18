@@ -80,6 +80,3 @@ cat /etc/kubernetes/azure.json
 
 Understanding the location and method to access the `azure.json` file is crucial for managing and securing Service Principal credentials in AKS.
 
-	![[Pasted image 20221206171142.png]]
-	
-	

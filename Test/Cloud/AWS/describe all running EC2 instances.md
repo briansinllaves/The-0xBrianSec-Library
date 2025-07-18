@@ -1,4 +1,4 @@
-Set-AWSCredential -AccessKey Apanda5ZF3 -SecretKey XJPsssss0t0aVOg
+Set-AWSCredential -AccessKey Apanda -SecretKey XVOg
 
 aws ec2 describe-instances
 

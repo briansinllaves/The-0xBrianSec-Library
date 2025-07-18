@@ -2,13 +2,13 @@ found a appid and app secret
 
 
 ```
-#$AppId = "05c17a2-b84b-8b87"
-#$AppSecret = "il95_pF_C3yc"
+#$AppId = "087"
+#$AppSecret = "yc"
 #$Scope = "https://graph.microsoft.com/.default"
 #$Tenantne = "test.onmicrosoft.com"
 #$Url = "https://login.microsoftonline.com/$Tenantne/oauth2/v2.0/token"
-$sub = "8aed0-2399-4bcd-b5f2-6e85495c"
-$sp = "05cff-340b84b-8b6f07"
+$sub = "8"
+$sp = "0"
 ```
 
 ```

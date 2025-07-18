@@ -22,7 +22,7 @@
 5. **Key File Discovery**
    - Found a PEM file:
      ```
-     ABCD-zlop1-lightbulbcloud\ABCD-zlop1-lightbulbcloud\ServiceNowToSailpoint\NSGSNOWGroupsPrivateK.pem
+     ABCD-zlop1-lightbulbcloud\ABCD-zlop1-lightbulbcloud\ServiceNowToSailpoint\NightNOGroupPrivateK.pem
      ```
 
 6. **Next Steps**

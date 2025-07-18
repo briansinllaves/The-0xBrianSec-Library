@@ -44,7 +44,7 @@ Reference: [kubectl Utility with Rancher](https://docs.ranchermanager.rancher.io
 
 #### Login to Rancher with Skip-Verify Option
 ```shell
-.\rancher.exe login https://rancher-sandbox.ABCD.com --skip-verify -t token-wvb6m:569cbdb9n
+.\rancher.exe login https://rancher-sandbox.ABCD.com --skip-verify -t token-wv:56
 ```
 
 Reference: [Rancher CLI](https://docs.ranchermanager.rancher.io/v2.5/reference-guides/cli-with-rancher/rancher-cli)
