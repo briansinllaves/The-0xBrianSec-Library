@@ -5,7 +5,7 @@ $instances.  (print one field from object output)
 
 $instance.count
 
-$filteredInstances = $instances | Where-Object { $_.Instance -like '*aur*' -or $_.Instance -match 'aur' -or $_.Instance -contains 'aur'}
+$filteredInstances = $instances | Where-Object { $_.Instance -like '*pop*' -or $_.Instance -match 'pop' -or $_.Instance -contains 'aur'}
 
 $filteredInstances[0]   is var with array, it gets first object of list of output
 

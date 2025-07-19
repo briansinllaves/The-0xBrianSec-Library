@@ -32,8 +32,8 @@ fi
 # Credentials for the attempts
 declare -A credentials
 credentials=(
-    ["aurasysadmin"]="ps3]qcMr-cd~pnMNg3X[z2wEyuuTyPur_QJd+qsE9vEr[@!9TCAbzY_A5jnT-b33j82FfCexjP$!W]s_x6aY(W2FhzNkB*(venAqw4HW+7cXX2w9TEZuU-S]|S-qu*q"
-    ["aurasysadmin2"]="mX(1_nZRmyS3a{8MabVUbktAEJgBa~FKqGFN6yK9ANv_uKzpXp}ynXtQMUYmQkw7FzZaTu]fCAxW0NqRpweBrRGSU[uh5PzyDSDLwmDw|dEKzh4puR2BttgHj!gmj)y"
+    ["sysadminj"]="p*q"
+    ["sysadminj2"]="mj)y"
 )
 
 echo "Credentials prepared for connection attempts."

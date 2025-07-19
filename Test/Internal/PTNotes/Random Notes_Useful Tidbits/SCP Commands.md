@@ -13,7 +13,7 @@ scp -P 22222 C:\Users\User\<localfile> user@remotehost:/folder/<remote_Directory
 Copy to remote server:
 `scp -P 22222 user@myhost:\home\user\<file.exe> C:\Users\Victim
 
-scp -P 22 /home/kali/tools/docs/sa.json brian@4.157.64.71:/home/brian/docs/sa.json
+scp -P 22 /home/kali/tools/docs/sa.json brian@ip:/home/brian/docs/sa.json
 `
 
 Connect
@@ -32,7 +32,7 @@ scp -r Proxy-1:/home/brian/country/ /home/kali/Desktop/
 ```
 local to remote
 
-scp -P 22 -r /home/kali/Downloads/TeradataStudio64.tar.gz brian@4.157.64.71:/home/brian/
+scp -P 22 -r /home/kali/Downloads/Terdo64.tar.gz brian@4.157.64.71:/home/brian/
 
 
 ```

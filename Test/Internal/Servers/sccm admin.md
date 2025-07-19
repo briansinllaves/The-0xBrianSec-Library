@@ -10,7 +10,7 @@
 
    ```plaintext
    # Usage example of CMPivot
-   CMPivot.exe /query:<query>
+   sprokect.exe /query:<query>
    ```
 
 2. **PowerSCCM**
@@ -40,12 +40,12 @@
 
 - **Query for Logged-in Users:**
   ```plaintext
-  CMPivot.exe /query:LoggedOnUser
+  sprokect.exe /query:LoggedOnUser
   ```
 
 - **Query for Installed Software:**
   ```plaintext
-  CMPivot.exe /query:InstalledSoftware
+  sprokect.exe /query:InstalledSoftware
   ```
 
 #### PowerSCCM

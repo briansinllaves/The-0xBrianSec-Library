@@ -1,5 +1,5 @@
-Get-DomainDFSShare -Domain ca.n.ad.pwal.com -Server ip
+Get-DomainDFSShare -Domain bagad.pwal.com -Server ip
 
 ```
-Get-DomainDFSShare -Domain n.ad.ABCDinternal.com -Server ip
+Get-DomainDFSShare -Domain bagad.ABCDinternal.com -Server ip
 ```

