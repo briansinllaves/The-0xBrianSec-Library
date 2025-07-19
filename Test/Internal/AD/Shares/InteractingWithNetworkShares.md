@@ -70,6 +70,6 @@
 2. **Advanced Operations with smbclient.py:**
    - **Command:**
      ```plaintext
-     python3 smbclient.py -hashes aad3b4351404ee:<Redacted>administrator@10.24.78.9
+     python3 smbclient.py -hashes aad3b4351404ee:<Redacted>administrator@10.24.7.9
      ```
    - **Use Case:** Perform more advanced SMB operations, such as file enumeration or downloading all files in a directory, using NTLM hashes for authentication.

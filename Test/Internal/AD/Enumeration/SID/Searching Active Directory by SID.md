@@ -3,7 +3,7 @@ Using Get-DomainObject
 
 ```
 # Define the SID
-$sid = 'S-1-5-21-3661641031-396-1577785'
+$sid = 'S-1-5-21-3685'
 
 # Search for the object by SID
 $adObject = $sid | Get-DomainObject -Properties distinguishedne

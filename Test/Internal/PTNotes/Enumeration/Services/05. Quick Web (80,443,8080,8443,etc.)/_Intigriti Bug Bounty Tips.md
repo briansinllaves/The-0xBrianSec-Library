@@ -7,7 +7,6 @@ Found credentials but no Wordpress login page?
 
 Go to `/wp-admin/install.php` and WordPress will reveal the exact location!
 
-![39dcb6665b661f1811acbdf5d40bb4f4.png](c1dbc8b7566f490aad9b6c5193bd3869.png)
 
 Credit: @sw33tLie
 

@@ -1,5 +1,5 @@
 ```
-Get-DomainObjectAcl -Identity truu-evaluation-svc  -ResolveGUIDs -RightsFilter All -Server 10.0
+Get-DomainObjectAcl -Identity truu-eval-svc  -ResolveGUIDs -RightsFilter All -Server 10.0
 ```
 
 if not work try in a ps x86

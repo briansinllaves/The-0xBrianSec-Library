@@ -9,7 +9,7 @@
 2. **Get a List of Domain Trusts for a Specific Domain with a Specified Server:**
 
    ```powershell
-   Get-DomainTrust -Domain ca.n.ad.prnal.com -Server 10.2.402.12
+   Get-DomainTrust -Domain ca.n.ad.prnal.com -Server 10.2.4.2
    ```
 
 3. **Get Details on External Trusts for a Specific Forest:**

@@ -1,4 +1,4 @@
-nmap -sn 172.16.64.0/24 -oN discovery.nmap
+nmap -sn 172.1.6.0/24 -oN discovery.nmap
 
 cat discovery.nmap | grep "for" | grep -v "\.13" | cut -d " " -f 5 > ips.txt 
 

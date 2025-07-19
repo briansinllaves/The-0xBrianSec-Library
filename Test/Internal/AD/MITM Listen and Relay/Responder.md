@@ -95,6 +95,6 @@ This setup might be useful in complex network environments where you need to con
 1. **Identify Weak SMB Configurations:**
    - **Command:**
      ```bash
-     python3 RunFinger.py -i 172.21.0.0/24
+     python3 RunFinger.py -i 172.87.0.0/24
      ```
    - **Use Case:** Locate systems vulnerable to SMB relay attacks.

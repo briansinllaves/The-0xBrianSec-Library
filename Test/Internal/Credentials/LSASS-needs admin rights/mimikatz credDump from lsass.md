@@ -9,7 +9,7 @@ If there are any errors where a cleartext password is recovered without the asso
 ```powershell
 chntpw -i SYSTEMHIVE
 9
-cd ControlSet001
+cd Conp
 cd Services
 find service ne from secretsdump output - usually starts with _SC_
 cd <service ne minus the “_SC_”>

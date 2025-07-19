@@ -1,5 +1,5 @@
 ```
-runas /user:bhou08 /netonly mmc  mstsc=rdp
+runas /user:bhou /netonly mmc  mstsc=rdp
 
 
 ```

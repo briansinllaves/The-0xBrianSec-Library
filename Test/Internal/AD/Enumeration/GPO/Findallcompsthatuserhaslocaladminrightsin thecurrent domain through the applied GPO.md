@@ -1,7 +1,7 @@
 
-    Find all computers that ”Aziz” has local administrator rights in the current domain through the applied GPO:
+    Find all computers that ”Azod” has local administrator rights in the current domain through the applied GPO:
     
 ```
-        Find-GPOLocation -Userne Aziz
+        Find-GPOLocation -Username Azod
 
 ```

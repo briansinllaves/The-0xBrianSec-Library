@@ -1,4 +1,4 @@
-S-1-5-21-1004336348-1177238915-682666330-512
+S-1-5-21-100-512
 The SID for Apple Domain Admins has:
 A revision level (1)
 An identifier authority (5, NT Authority)

@@ -1,7 +1,7 @@
 ```
-$userne = " Ddagentuser "
+$userne = " secretagentuser "
 
-$password = ConvertTo-SecureString "Dd4y)arXY7+WmMBK" -AsPlainText -Force
+$password = ConvertTo-SecureString "DK" -AsPlainText -Force
 
 $credential = New-Object System.Management.Automation.PSCredential($userne, $password)
 

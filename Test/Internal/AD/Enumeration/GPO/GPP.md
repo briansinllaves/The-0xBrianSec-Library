@@ -4,12 +4,12 @@ It supports a broader range of settings including mapped drives, scheduled tasks
 
 
 ```
-python3 Get-GPPPassword.py -hashes AAD3EE:<removed> ABCDglb.com/jak0@ip
+python3 Get-GPPPassword.py -hashes AAD3EE:<removed> ABCDglb.com/j@ip
 ```
 
 
 To get the computers using the passwords set by the GPP, we can use
 
 ```
-Get-NetOU -GUID "{31B2F340-016D-11D2-945F-00C04FB984F9}" | %{ Get-NetComputer -ADSPath $_ }
+Get-NetOU -GUID "{31B9}" | %{ Get-NetComputer -ADSPath $_ }
 ```

@@ -5,5 +5,5 @@ Import-Module GroupPolicy
 
 ```ps
 
-Get-GPOReport –All –ReportType HTML –Path c:\Users\jaskew005\Desktop\globex_gpos.html –Domain globex.com –Server ip
+Get-GPOReport –All –ReportType HTML –Path c:\Users\jayjay\Desktop\globex_gpos.html –Domain globex.com –Server ip
 

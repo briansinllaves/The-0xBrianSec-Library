@@ -11,7 +11,7 @@
   ```
 
   ```plaintext
-  ADMIN:KQWXHJKL25HXLJWJ78NF8B4HC6F8
+  ADMIN:KQF8
   ```
 
 - **Location:** Typically found in older systems or LM hash dumps.
@@ -39,7 +39,7 @@
   ```
 
   ```plaintext
-  ADMIN:8846F7EAEE8FB117AD06BDD830B7586C
+  ADMIN:8846C
   ```
 
 - **Location:** Found in `C:\Windows\System32\config\SAM` or extracted from Active Directory dumps.
@@ -127,7 +127,7 @@
   ```
 
   ```plaintext
-  ADMIN@DOMAIN.COM:446545234A2A43F79ECF3E00E8D6FBC
+  ADMIN@DOMAIN.COM:44654FBC
   ```
 
 - **Location:** Extracted using tools like `impacket`’s `GetUserSPNs.py`.
@@ -155,7 +155,7 @@
   ```
 
   ```plaintext
-  ADMIN@DOMAIN.COM:3442123F4A8A9CF2B67A1E2A17EB4B1
+  ADMIN@DOMAIN.COM:344212A17EB4B1
   ```
 
 - **Location:** Extracted using tools like `impacket`’s `GetUserSPNs.py`.
@@ -177,8 +177,7 @@
   ```
 
   ```plaintext
-  ADMIN@DOMAIN.COM:9B8C6235A92D2A5B4E8B6A8F1B2C3D4
-  ```
+  ADMIN@DOMAIN.COM:9B8C6235A92D2A5B4
 
 - **Location:** Extracted using tools like `impacket`’s `GetUserSPNs.py`.
 
@@ -199,8 +198,7 @@
   ```
 
   ```plaintext
-  ADMIN@DOMAIN.COM:FA2F1C8A4F8A2B3C5D1E4E2A9B6D8F7
-  ```
+  ADMIN@DOMAIN.COM:FA2F1C8A4F8
 
 - **Location:** Extracted from AS-REP roast hashes using tools like `impacket`’s `GetNPUsers.py`.
 
@@ -239,7 +237,7 @@
 - **MSSQL (2005) Example:**
 
   ```plaintext
-  USERnE:0x010018102152f8f28c8499d8ef263c53f8be369d799f931b2fbe
+  USERnE:0x0100181029f931b2fbe
   ```
 
 - **Location:** Extracted from MSSQL server databases.

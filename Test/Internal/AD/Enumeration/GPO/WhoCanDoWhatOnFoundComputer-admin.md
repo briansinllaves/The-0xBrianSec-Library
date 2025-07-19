@@ -18,7 +18,7 @@ Get Domain gpo for a computer
 
 ```
 
-$gpos = Get-DomainGPO -ComputerIdentity "BOM13" -Server DEG.ABCDglb.com  
+$gpos = Get-DomainGPO -ComputerIdentity "B3" -Server DE.ABCDglb.com  
 
 # !!  check regardless of error 
 ```
@@ -51,16 +51,16 @@ Import-Module GroupPolicy
 Get-command -module GroupPolicy
 
 ```
-Get-GPOReport -ne "IN - Local_Administrator_Access" -Server DEGONADIDEGP001.ABCDglb.com -ReportType HTML -Path "C:\Users\briantest\Desktop\example.html"  
+Get-GPOReport -ne "Local_Administrator_Access" -Server help.ABCDglb.com -ReportType HTML -Path "C:\Users\briantest\Desktop\example.html"  
 ```
 
-![[Pasted image 20231031181624.png]]
+
 If a GpLink is not enforced, the associated GPO will apply to the linked OU and all child objects, unless any OU within that tree blocks inheritance.
 
 
 delegations, who has what permissions on this gpo
 
-![[Pasted image 20231031181943.png]]
+
 
 Restricted Group - who are admins/ who can login
 
@@ -68,23 +68,18 @@ who are the Doers on the computer
 
 Dig more into Restricted groups, add to local admin group
 
-$members = Get-DomainGroupMember "GLB_AURA_WinAdm_P01" -Recurse
-
-![[Pasted image 20231031185455.png]]
+$members = Get-DomainGroupMember "WindowsAdmmin123" -Recurse
 
 
 
-$members = Get-DomainGroupMember "IN_Local_Administrator" -Recurse
+$members = Get-DomainGroupMember "ILocal_Administrator" -Recurse
 
 ok, only for specific reasons
-![[Pasted image 20231031190559.png]]
-
-ok
-![[Pasted image 20231031190805.png]]
 
 
-problematic, he can local admin to computer as a group member of tier 1 as a t2 user.
-![[Pasted image 20231031190839.png]]
+
+problematic, he can go local admin to computer as a group member of tier 1 as a t2 user.
+
 
 lets see what we have on prod or add to target list, check if we have creds
 

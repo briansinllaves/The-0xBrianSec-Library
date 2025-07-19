@@ -9,5 +9,3 @@ Tactic: Query the function on the domain controllers and files shares to identif
 Get-NetSession -Computerne sqlserver
 
 ```
-
-**![](https://lh7-us.googleusercontent.com/427q2zFoygsuJrx4r2eS7zAcgeYNLK0CtkMBOIFIAobeMEhStx5ObEc0HHkedQFSlkNBOpsDGF346BKtq6wwLaMwCtJP8Uk-GHZBSRBilCwGYhwMNi-zdJX-BGDehrU94-zxqTnmLaazY7caQK-Dj1ej4KWj1T2q)**

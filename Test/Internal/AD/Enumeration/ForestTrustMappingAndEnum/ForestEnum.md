@@ -11,7 +11,7 @@ Forests are the widest containers in Active Directory. Breaking forests and pare
 2. **Export Trust Mappings to a CSV File:**
 
    ```powershell
-   Get-DomainTrustMapping -Server 10.24.4.14 -API | Export-CSV -NoTypeInformation DomainTrustMapping.csv
+   Get-DomainTrustMapping -Server 10.2.4.1 -API | Export-CSV -NoTypeInformation DomainTrustMapping.csv
    ```
 
 3. **Export Information About Foreign Group Members to a CSV File:**

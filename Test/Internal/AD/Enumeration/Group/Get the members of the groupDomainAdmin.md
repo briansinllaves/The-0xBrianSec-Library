@@ -1,3 +1,3 @@
 ```
-		Get-NetGroupMember -Groupne "Domain Admins" -MemberIdentity AI_PuroSQLUser1 -Domain bigdog.com -Server 10.4.6.2
+		Get-NetGroupMember -Groupne "Domain Admins" -MemberIdentity SQLUser1 -Domain bigdog.com -Server 10.4.6.2
 ```

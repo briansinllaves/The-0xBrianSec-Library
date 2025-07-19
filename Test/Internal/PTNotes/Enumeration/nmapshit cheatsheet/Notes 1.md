@@ -59,7 +59,7 @@
      ```
    - **Explanation**:
      - `-p <ports>`: Specifies the ports to scan.
-     - `40.70.144.193`: Target IP address.
+     - `40.7.1.1`: Target IP address.
      - `Get-SQLConnectionTest -Instance $_ -Verbose`: Tests SQL connections for the listed instances.
 
 3. **Top Ports Scan**:
@@ -76,13 +76,13 @@
 4. **Targeted Nmap Scan**:
    - **Command**:
      ```bash
-     nmap -vv -sT -sV -Pn -T4 51.8.178.187 --top-ports 1000 --open -oA dataaccel-51.8.178.187
+     nmap -vv -sT -sV -Pn -T4 10.8.1.1 --top-ports 1000 --open -oA data-11.55.55.55
      ```
    - **Explanation**:
-     - `51.8.178.187`: Target IP address.
+     - `15.155.151.1`: Target IP address.
      - `-sT`: TCP connect scan.
      - `-sV`: Version detection.
      - `-T4`: Aggressive timing template.
      - `--top-ports 1000`: Scans the top 1000 ports.
-     - `-oA dataaccel-51.8.178.187`: Output in all formats (normal, XML, and grepable).
+     - `-oA data-11.55.55.55`: Output in all formats (normal, XML, and grepable).
 
