@@ -32,7 +32,7 @@ scp -r Proxy-1:/home/brian/country/ /home/kali/Desktop/
 ```
 local to remote
 
-scp -P 22 -r /home/kali/Downloads/Terdo64.tar.gz brian@4.157.64.71:/home/brian/
+scp -P 22 -r /home/kali/Downloads/Terdo64.tar.gz brian@ip:/home/brian/
 
 
 ```
