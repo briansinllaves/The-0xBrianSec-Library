@@ -11,7 +11,7 @@ PS C:\Tools\KeyTabExtract> python .\keytabextract.py .\krb5.keytab
 [*] AES256-CTS-HMAC-SHA1 key found. Will attempt hash extraction.
 [*] AES128-CTS-HMAC-SHA1 hash discovered. Will attempt hash extraction.
 [+] Keytab File successfully imported.
-        REALM : n.AD.ABCDINTERNAL.COM
+        REALM : AD.ABCD.COM
         SERVICE PRINCIPAL : LATL0$/
         NTLM HASH : <redacted>
         AES-256 HASH : <redacted>

