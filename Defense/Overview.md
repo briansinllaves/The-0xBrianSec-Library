@@ -1,6 +1,7 @@
 # 🛡️ Defense Strategy Overview
 
-_“Translate exploits into budget-backed defense. Executive security strategy by 0xBrianSec.”_
+_**"Align real-world risk to strategic, cost-effective controls. A defense minded approach—maximizing native capabilities before budget expansion."**
+ by 0xBrianSec._
 
 ---
 
@@ -219,8 +220,12 @@ Use **NIST CSF** for reporting posture in business terms:
 - **Make vendors prove their software is secure**. No trust without validation.
 - **Sandbox everything** and deploy layered monitoring—from host, to user, to network.
 
+
 ---
 
-_These strategies are field-proven. If it’s able to offend, we’ll use it to defend._  
+
+“These approaches are proven in practice. If it secures the enterprise without added spend, it earns its place in our strategy.”*
 – 0xBrianSec
+
+
 
