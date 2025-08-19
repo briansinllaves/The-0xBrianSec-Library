@@ -1,0 +1,23 @@
+# Target size and capability
+
+| Org Type         | Asset Count | AV/EDR Maturity                  | Reasoning                                                                                 |
+|------------------|-------------|----------------------------------|------------------------------------------------------------------------------------------|
+| Dentist Office   | <25         | None or Microsoft Defender only  | No AV tuning, quick recon/dump and exit is safest                                        |
+| Auto Shop Chain  | <50         | 1 AV (McAfee/Symantec/etc)       | Slight chaining OK if they’re not logging memory activity                                |
+| Small MSP        | 50–100      | Defender + cloud AV or EDR light | Chain 2–3 tasks, exit before behavioral engines trigger                                  |
+| Law Firm         | 100–200     | Defender + SentinelOne/CrowdStrike | EDR will log beacon-style loops; sleep+task logic with TTL preferred                   |
+| Medium SaaS Firm | 200–300     | CrowdStrike + logging + response | Use short loop to deploy lateral modules, then inject memory-only beacon                 |
+
+---
+
+**Red Team/Malware Operator Context:**
+
+- **Asset Count**: Smaller orgs often lack mature detection and response, but larger orgs have more eyes, logging, and automated response. Adjust dwell time and operational tempo accordingly.
+- **AV/EDR Maturity**: The more mature the EDR, the more likely memory, process, and behavioral analytics are in play. Avoid long-running beacons or obvious loops in mature environments.
+- **Chaining/Tasking**: In low-maturity orgs, chaining multiple actions is less risky. In high-maturity orgs, keep actions atomic and short-lived to avoid detection by behavioral engines.
+- **Persistence**: Avoid persistence in highly monitored environments unless absolutely necessary. Favor memory-only or ephemeral techniques.
+- **Lateral Movement**: In orgs with advanced EDR, lateral movement should be minimal, stealthy, and preferably memory-only (e.g., reflective DLL injection, in-memory C2).
+- **Logging/Response**: Assume all endpoint and network activity is logged in mature orgs. Use living-off-the-land binaries (LOLBins), native tools, and blend with normal user activity.
+- **OpSec**: Always consider the risk of detection versus the value of the objective. Have a clear exit plan and avoid unnecessary noise.
+
+
