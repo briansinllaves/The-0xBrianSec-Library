@@ -1,54 +1,84 @@
+# Red Team OPSEC Playbook
 
+This playbook outlines operational security (OPSEC) techniques for building and maintaining resilient red team infrastructure. It combines **host-level**, **network-level**, and **infrastructure-level** evasion strategies while layering in deception. Treat this as a **living document**—update it with new decoys, rotate domains, and refine your profiles after each engagement.
 
- Additional OPSEC Notes
-    • Log Segregation: push logs off-site to SIEM or storage account
-    
-    • Time-based Blocks: only allow connections during engagement hours
-    • Port Knocking: require pre-knock sequence before port 22 opens
-    
-    • User-Agent Randomization: rotate UA per beacon
+---
 
-    • Certificate Pinning: pin your own CA on clients to prevent MitM
-    
-    Keep this as your living OPSEC playbook—update with new decoys, rotate domains, and refine your profiles as needed.
-    
+## Additional OPSEC Notes
 
-# Deploy Decoy Web Content
+* **Log Segregation**
+  Push logs off-site to a dedicated SIEM or cloud storage account. This ensures that if one redirector or C2 node is compromised, logs are still preserved. It also reduces forensic artifacts left on the server itself.
 
-Making the Site Look Legit (Avoiding Detection)
-Here’s how to reduce the chance of your domain being flagged as malicious:
-1. Choose a Clean Domain & Subdomains
-    • Use a clean domain name from reputable registrars (not expired/abused domains).
-    • Avoid sketchy words in names (hack, malware, etc.).
-    • Use legit-looking terms: telemetry, cdn, assets, tasks, mail.
-2. Deploy Decoy Web Content
-Use legit-looking content to make each subdomain appear “normal” if browsed:
-Subdomain	Example Decoy Content
-telemetry.*	JSON telemetry page or auto-refreshing dashboard
-cdn.*	Host CSS/JS/images, common assets like fonts or fake PDFs
-assets.*	Public file repository layout, or mimic SharePoint/Dropbox
-tasks.*	Swagger UI or health-check API interface (/api/health)
+* **Time-Based Blocks**
+  Configure services to only allow inbound connections during engagement hours. This reduces exposure time and can confuse automated scanners that attempt connections outside those windows.
 
-You can use:
-    • Static templates (/var/www/html/index.html)
-    • Fake pages with open-source HTML templates
-    • JavaScript-based dashboards
-    • WordPress if you want to go full decoy
-3. Avoid Flagging by Reputational Engines
-    • Don’t use IPs previously flagged by VirusTotal, Talos, etc.
-    • Avoid uploading malware from known IPs/domains.
-    • Don’t register the domain, then immediately do C2 — warm it up (wait ~48hrs).
-    • Add basic SEO metadata and SSL certs via Let’s Encrypt.
-4. Add Robots.txt and sitemap.xml
+* **Port Knocking**
+  Require a pre-knock sequence before sensitive ports (like SSH on 22) are opened. This helps avoid mass-scanning detection and forces an attacker/analyst to know the secret sequence before access is possible.
 
-bash
-Copy code
+* **User-Agent Randomization**
+  Rotate User-Agent strings per beacon or request. Sticking with a static string makes your traffic easier to fingerprint, while rotation helps blend into normal browsing patterns.
+
+* **Certificate Pinning**
+  Pin your own Certificate Authority (CA) in clients to prevent SSL/TLS interception via enterprise middleboxes. This ensures that only your issued certs are trusted by the beacon, raising the bar against defenders running transparent proxies.
+
+---
+
+## Deploying Decoy Web Content
+
+Defenders and reputation services will often browse your domain to determine whether it looks malicious. To avoid getting flagged, **make the site look legitimate**.
+
+### 1. Choose a Clean Domain & Subdomains
+
+* Always use a clean domain name from reputable registrars, not expired or recycled ones.
+* Avoid suspicious keywords (`hack`, `exploit`, `test`).
+* Use enterprise-friendly terms for subdomains:
+
+  * `telemetry.*`
+  * `cdn.*`
+  * `assets.*`
+  * `tasks.*`
+  * `mail.*`
+
+### 2. Deploy Decoy Web Content
+
+Make each subdomain appear as if it serves a legitimate business purpose:
+
+| Subdomain     | Example Decoy Content                            |
+| ------------- | ------------------------------------------------ |
+| `telemetry.*` | JSON telemetry page or auto-refreshing dashboard |
+| `cdn.*`       | CSS/JS/images, fonts, or PDFs                    |
+| `assets.*`    | Public file repo or fake SharePoint/Dropbox view |
+| `tasks.*`     | Swagger UI or health-check API interface         |
+
+Practical approaches:
+
+* Place static templates in `/var/www/html/index.html`.
+* Use open-source HTML themes for dashboards.
+* Fake API endpoints with `Swagger` or `GraphQL` explorers.
+* WordPress installs if you want to go “full decoy.”
+
+### 3. Avoid Reputation Engine Flagging
+
+* Don’t use IPs already flagged by VirusTotal, Talos, etc.
+* Avoid uploading malware from the same IP/domain used for C2.
+* Warm up new domains for 24–48 hours before use.
+* Add SEO metadata and SSL certs via Let’s Encrypt to make domains blend.
+
+### 4. Robots.txt and Sitemap
+
+Adding `robots.txt` and `sitemap.xml` improves legitimacy:
+
+**robots.txt**
+
+```bash
 # /var/www/html/robots.txt
 User-agent: *
 Disallow: /admin/
+```
 
-xml
-Copy code
+**sitemap.xml**
+
+```xml
 <!-- /var/www/html/sitemap.xml -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -56,127 +86,122 @@ Copy code
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
+```
 
-# note
+---
 
-• Log Segregation: push logs off-site to SIEM or storage account
-• Time-based Blocks: only allow connections during engagement hours
-• Port Knocking: require pre-knock sequence before port 22 opens
-• User-Agent Randomization: rotate UA per beacon
-• Certificate Pinning: pin your own CA on clients to prevent MitM
+## IP Rotation & Anonymity
 
-# IP Rotation & Anonymity
+* **Scheduled IP Swaps**
+  Rotate redirector IPs every 6–12 hours with cron jobs (`swap-ip.sh`).
 
-• swap-ip.sh every 6–12 hrs via cron
-• VPS Pools: script create/destroy droplets on DO/Hetzner
-• Azure CLI dynamic detach/attach public-IP
-TOR Entry Nodes: Route select outbound tasks through Tor (hidden-service redirector)
+* **VPS Pools**
+  Script the creation/destruction of droplets in providers like DO or Hetzner. Rapid churn prevents defenders from easily pinning infrastructure.
 
-# Automation: Let’s Encrypt
+* **Dynamic Public IPs**
+  With Azure CLI, detach and reattach public IPs for new “clean” addresses on demand.
 
-• AutoSSL with Let’s Encrypt on all public services
-• Or purchase cheap wildcard certs (Namecheap)
-• Terminate SSL at redirector or on each VM (Apache/Nginx + cert management)
+* **Tor Integration**
+  For select outbound tasks, route traffic through Tor entry nodes or deploy hidden-service redirectors. Adds an additional anonymity layer.
 
-# Install Certbot and Nginx plugin
+---
+
+## Automation: SSL/TLS
+
+* **Let’s Encrypt AutoSSL**
+  Automate cert issuance and renewal with Certbot.
+* **Wildcard Certificates**
+  Purchase from registrars like Namecheap if you need persistent wildcard coverage.
+* **Placement**
+  Terminate SSL either at redirectors or per VM (Nginx/Apache with auto-renew).
+
+**Install Certbot**
+
+```bash
 sudo apt update
 sudo apt install -y certbot python3-certbot-nginx
+```
 
-# Obtain & install cert for your domain
-# (assumes nginx host blocks on 443)
+**Obtain & Install Certificate**
+
+```bash
 sudo certbot --nginx \
   --agree-tos \
   --non-interactive \
   --email ops@yourdomain.com \
   -d redirector.yourdomain.com
+```
 
-# Auto-renewal (runs twice daily)
-# Edit /etc/crontab and add:
-# 0 0,12 * * * root certbot renew --quiet --deploy-hook "systemctl reload nginx"
+**Auto-Renew (Crontab)**
 
-# Dual Redirector Chaining
+```bash
+0 0,12 * * * root certbot renew --quiet --deploy-hook "systemctl reload nginx"
+```
 
-Yes—just drop a new file terraform/redirector2.tf alongside the others. Example:
+---
 
-hcl
-Copy code
-# Public IP for 2nd redirector
+## Dual Redirector Chaining
+
+Chaining multiple redirectors improves resilience and complicates attribution.
+
+**Terraform Example (Redirector2 VM)**
+
+```hcl
 resource "azurerm_public_ip" "redirector2_ip" {
   name                = "redirector2-pip"
   location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
 }
-# NIC for 2nd redirector
-resource "azurerm_network_interface" "redirector2_nic" {
-  name                = "redirector2-nic"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-ip_configuration {
-    name                          = "redirector2-ipcfg"
-    subnet_id                     = azurerm_subnet.main.id
-    private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.redirector2_ip.id
-  }
-}
-# VM for 2nd redirector
+...
 resource "azurerm_linux_virtual_machine" "redirector2" {
   name                  = "redirector02"
   location              = var.location
-  resource_group_name   = var.resource_group_name
-  network_interface_ids = [azurerm_network_interface.redirector2_nic.id]
+  ...
   size                  = "Standard_B1s"
   admin_username        = var.admin_username
   admin_password        = var.vm_password
-os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
-  }
-source_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "22_04-lts"
-    version   = "latest"
-  }
+  ...
 }
-Then in terraform/firewalls.tf or a new redirector2-firewall.tf, allow 443 to redirector2_nic:
+```
 
-hcl
-Copy code
-# Allow HTTPS to 2nd redirector
+**Firewall Rule Example**
+
+```hcl
 resource "azurerm_network_security_rule" "allow_https_r2" {
   name                        = "Allow_HTTPS_R2"
   priority                    = 110
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_port_range           = "*"
   destination_port_ranges     = ["443"]
   source_address_prefix       = "*"
   destination_address_prefix  = azurerm_public_ip.redirector2_ip.ip_address
   network_security_group_name = azurerm_network_security_group.redirector_nsg.name
 }
-Finally, on redirector01, update your iptables to send all HTTPS to redirector2:
+```
 
-bash
-Copy code
-# On redirector01:
+**iptables Forwarding**
+
+```bash
 iptables -t nat -A PREROUTING -p tcp --dport 443 \
   -j DNAT --to-destination <redirector2_private_ip>:443
 iptables -A FORWARD -p tcp -d <redirector2_private_ip> --dport 443 -j ACCEPT
-Drop that file into the terraform/ folder, terraform init && terraform apply, and you’ll have dual redirector chaining.
+```
 
+---
 
-# Hidden C2 Traffic Profiles
+## Hidden C2 Traffic Profiles
 
+C2 traffic must look ordinary to blend with enterprise traffic.
 
-    • Custom URI: Use random-looking paths (e.g., /api/v2/update?ver=3.1.4)
-    • User-Agent Spoofing: Mimic common browsers
-    • Chunked Transfer: Hide payload in HTTP chunks
-    • Example Havoc Listener Config
+* **Custom URI Paths:** Use random but benign-looking paths (`/api/v2/update?ver=3.1.4`).
+* **User-Agent Spoofing:** Match Chrome, Edge, or Firefox UAs.
+* **Chunked Transfer Encoding:** Break payloads into HTTP chunks to evade static inspection.
 
-json
+**Havoc Listener Config Example**
 
+```json
 {
   "Profile": {
     "Name": "EdgeUpdate",
@@ -187,52 +212,71 @@ json
     "URI": "/svc/update/v1/check"
   }
 }
+```
 
+---
 
-# Anti-Scanning & Decoy Redirects
+## Anti-Scanning & Decoy Redirects
 
-    • nginx.conf snippet on redirector or per-VM
+* **nginx.conf Example**
 
-nginx
-
+```nginx
 server {
   listen 443 ssl;
   server_name *.yourdomain.com;
-# Legitimate locations
+
   location = /updates/   { proxy_pass http://taskmgr; }
   location = /portal/    { proxy_pass http://taskmgr; }
   location = /files/     { proxy_pass http://payload; }
-# Any other path → honeypot
 
+  # Default → decoy site
   location / {
     return 302 https://decoy.yourdomain.com$request_uri;
   }
 }
-    • Robots.txt: Disallow real paths, allow decoy.
-    • Fail2Ban: Ban IPs with strange scan patterns.
+```
 
+* Add `robots.txt` to block real paths but allow decoy crawling.
+* Use **Fail2Ban** to automatically block IPs with scanning patterns.
 
-# Tor Integration & Hidden Service
+---
 
+## Tor Integration & Hidden Service
 
-# /etc/tor/torrc
+Deploying hidden services provides resilient, anonymous C2 fallback.
+
+**Torrc Example**
+
+```conf
 HiddenServiceDir /var/lib/tor/hs_c2/
 HiddenServicePort 443 127.0.0.1:40056
-    • HiddenServiceDir → Tor writes onion address here
-    • HiddenServicePort → map onion:443 → local C2 port
+```
 
-# start Tor
+* `HiddenServiceDir`: Tor stores onion hostname here.
+* `HiddenServicePort`: Maps onion port → local C2 port.
+
+**Enable Tor**
+
+```bash
 sudo systemctl enable tor
 sudo systemctl start tor
-# fetch onion address
 sudo cat /var/lib/tor/hs_c2/hostname
-    
-    • SSH over Tor:
-# on your local machine
-tor &                             # ensure Tor client running
-    • ssh -o "ProxyCommand nc -x localhost:9050 %h %p" \
+```
+
+**SSH over Tor**
+
+```bash
+ssh -o "ProxyCommand nc -x localhost:9050 %h %p" \
   adminuser@<your_onion_address>
+```
 
+---
 
+# Closing Notes
 
+* Keep OPSEC **layered**: network deception (domain aging, fronting), host evasion (port knocking, time-based access), and content camouflage (decoy sites).
+* Treat every engagement as an opportunity to **rotate domains**, refresh certificates, and refine traffic profiles.
+* Remember: **defenders evolve quickly**—static playbooks get burned. Keep this document alive.
+
+---
 
