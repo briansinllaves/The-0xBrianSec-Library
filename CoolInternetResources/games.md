@@ -1,0 +1,17 @@
+# Games
+
+- [http://h4k.in/xssinexcess](http://h4k.in/xssinexcess)
+- [http://www.hackergames.net/ | list all the hacking fun sites](http://www.hackergames.net/)
+- [http://www.wechall.net | the biggest?](http://www.wechall.net/)
+- [http://www.smashthestack.org](http://www.smashthestack.org/)
+- [http://www.hack-test.com/](http://www.hack-test.com/)
+- [http://www.hackthissite.org/](http://www.hackthissite.org/)
+- [http://www.hackgame.it/](http://www.hackgame.it/)
+- [http://www.slavehack.com/](http://www.slavehack.com/)
+- [http://wib.geekplace.org/](http://wib.geekplace.org/)
+- [http://www.try2hack.nl/](http://www.try2hack.nl/)
+- [http://www.hackquest.de/](http://www.hackquest.de/)
+- [http://www.hackergames.net/](http://www.hackergames.net/)
+- [http://www.enigmagroup.org/](http://www.enigmagroup.org/)
+- [http://www.hackerslab.org/](http://www.hackerslab.org/)
+- [http://www.hellboundhackers.org](http://www.hellboundhackers.org/)
