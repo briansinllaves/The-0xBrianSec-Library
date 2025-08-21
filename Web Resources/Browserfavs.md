@@ -59,77 +59,41 @@
 
 
 ## RedTeam Tor Advanced Hacker tricks
-- [Introduction - Red Team Notes 2.0](https://www.ired.team/)
-- [GitHub - rootsecdev/Azure-Red-Team: Azure Security Resources and Notes](https://github.com/rootsecdev/Azure-Red-Team)
-- [windows-ad/Evasion.md · 0xJs/RedTeaming_CheatSheet](https://github.com/0xJs/RedTeaming_CheatSheet/blob/main/windows-ad/Evasion.md)
-- [persistence-info.github.io](https://persistence-info.github.io/)
-- [Starkiller](https://github.com/BC-SECURITY/Starkiller)
-- [The Havoc framework | Lorenzo Meacci](https://blog.lmeacci.com/havoc-framework)
-- [PrintNightmare | The Hacker Recipes](https://www.thehacker.recipes/ad/movement/abuse-of-functionality/printing/printnightmare)
-- [ScareCrow – EDR Bypass Payload Framework](https://github.com/Tylous/ScareCrow)
-- [Red-Teaming-Toolkit (infosecn1nja)](https://github.com/infosecn1nja/Red-Teaming-Toolkit)
-- [SauronEye – Search tool for secrets](https://github.com/vivami/SauronEye)
-- [LOTS Project - Living Off Trusted Sites](https://lots-project.com/)
-- [GTFOBins](https://gtfobins.github.io/)
-- [LOLBAS](https://lolbas-project.github.io/)
+### Frameworks & Infrastructure  
+- [Havoc Framework · GitHub](https://github.com/HavocFramework)  
+- [The Havoc framework | Lorenzo Meacci](https://github.com/HavocFramework)  
+- [ScareCrow – EDR Bypass Payload Framework](https://github.com/)  
+- [GitHub - mantvydasb/Red-Team-Infrastructure-Automation](https://github.com/mantvydasb/Red-Team-Infrastructure-Automation)  
+- [GitHub - m8sec/Dispatch](https://github.com/m8sec/Dispatch)  
+- [Ligolo-ng - D3p4K](https://github.com/nicocha30/ligolo-ng)  
 
+### Tradecraft, OPSEC & Notes  
+- [GitHub - WesleyWong420/OPSEC-Tradecraft](https://github.com/WesleyWong420/OPSEC-Tradecraft)  
+- [sinllaves's list / RedTeamScripts · GitHub](https://github.com/sinllaves/RedTeamScripts)  
+- [Introduction - Red Team Notes 2.0]()  
+- [GitHub - rootsecdev/Azure-Red-Team](https://github.com/rootsecdev/Azure-Red-Team)  
+- [windows-ad/Evasion.md · 0xJs/RedTeaming_CheatSheet](https://github.com/0xJs/RedTeaming_CheatSheet)  
+- [persistence-info.github.io](https://persistence-info.github.io)  
+- [Red-Teaming-Toolkit (infosecn1nja)](https://github.com/infosecn1nja/Red-Teaming-Toolkit)  
 
-- [nishang/Out-Word.ps1 at master · samratashok/nishang · GitHub](https://github.com/samratashok/nishang/blob/master/Client/Out-Word.ps1)
-- [Send email in HTA using JavaScript and hide the sender's email address - Stack Overflow](https://stackoverflow.com/questions/2568634/send-email-in-hta-using-javascript-and-hide-the-senders-email-address)
-- [GitHub - bigb0sss/Microsoft365_devicePhish: Phishing Abusing Microsoft 365 OAuth Authorization Flow](https://github.com/bigb0sss/Microsoft365_devicePhish)
-- [Red Team Techniques: Gaining access on an external engagement through spear-phishing](https://medium.com/@eslam3kl/red-team-techniques-gaining-access-on-an-external-engagement-through-spear-phishing-8a4ef6622f8d)
-- [GitHub - yrutschle/sslh: Applicative Protocol Multiplexer (e.g. share SSH and HTTPS on the same port) - red team GitHub - matro7sh/221b: Bake shellcode to get malicious.exe](https://github.com/yrutschle/sslh)
-- [GitHub - matro7sh/azure-mindmap: a map for the azure oriented pentests](https://github.com/matro7sh/azure-mindmap)
-- [trustedsecuritysolution.com - details](https://us-east-1.console.aws.amazon.com/route53/home?#ListRecordSets/Z06183344NQG7F660USB)
-- [Sign in to Microsoft Azure](https://login.microsoftonline.com/)
-- [GitHub - mantvydasb/Red-Team-Infrastructure-Automation: Disposable and resilient red team infrastructure with Terraform](https://github.com/mantvydasb/Red-Team-Infrastructure-Automation)
-- [GitHub - Dnshbbu/Recon_wrapper: This repo is to wrap a number of recon tools into a single script](https://github.com/Dnshbbu/Recon_wrapper)
-- [AZ-500 Microsoft Azure Administrator - YouTube](https://www.youtube.com/playlist?list=PLahhVEj9XNTfrVnZaub9jEgN9tmH1T6-r)
-- [slyd0g/WhiteChocolateMacademiaNut: Interact with Chromium-based browsers' debug port to view open tabs, installed extensions, and cookies - red team -convert exe to cer github - Search](https://github.com/slyd0g/WhiteChocolateMacademiaNut)
-- [jeanlucdupont (jeanlucdupont) / Repositories · GitHub](https://github.com/jeanlucdupont?tab=repositories)
-- [GitHub - jeanlucdupont/EXEfromDNS: PoC that downloads an executable from public DNS servers](https://github.com/jeanlucdupont/EXEfromDNS)
-- [GitHub - jeanlucdupont/certchecker: SSL certificate monitoring system](https://github.com/jeanlucdupont/certchecker)
-- [GitHub - jeanlucdupont/PingLeak: PoC that shows how easy it is to exfiltrate data over ICMP](https://github.com/jeanlucdupont/PingLeak)
-- [GitHub - jeanlucdupont/EXEfromCER: PoC that downloads an executable from a public SSL certificate](https://github.com/jeanlucdupont/EXEfromCER)
-- [GitHub - jeanlucdupont/EXEfromPNG: Good ol' stegano'](https://github.com/jeanlucdupont/EXEfromPNG)
-- [GitHub - jeanlucdupont/localadmin: Script that lists local admin on Windows machines by querying Azure](https://github.com/jeanlucdupont/localadmin)
-- [GitHub - jeanlucdupont/groupstreee: PowerShell that detects recursive groups in Azure AD, and more.](https://github.com/jeanlucdupont/groupstreee)
-- [GitHub - jeanlucdupont/basic-grc: A basic GRC (Governance Risk and Compliance) tool](https://github.com/jeanlucdupont/basic-grc)
-- [GitHub - jeanlucdupont/scancc: Scans for credit card numbers (PAN) in text and Office document. Redact PAN after backup.](https://github.com/jeanlucdupont/scancc)
-- [GitHub - jeanlucdupont/chromepass: Get all passwords stored by Chrome on WINDOWS.](https://github.com/jeanlucdupont/chromepass)
-- [GitHub - wariv/DarkLnk: Build sneaky & malicious LNK files.](https://github.com/wariv/DarkLnk)
-- [GitHub - TROUBLE-1/AzDevRecon: AzDevRecon is a powerful web-based enumeration tool for offensive security professionals, red teamers, and pentesters targeting Azure DevOps. It leverages token-based authentication to uncover projects, repositories, pipelines, secrets, and user permissions helping identify misconfigurations and security gaps in DevOps environments.](https://github.com/TROUBLE-1/AzDevRecon)
-- [Semperis Research Uncovers Critical Flaw in Windows Server 2025 Exposing Managed Service Accounts to Golden dMSA Attack - Semperis](https://www.semperis.com/blog/golden-dmsa-attack-windows-server-2025-exposes-managed-service-accounts/)
-- [GitHub - Semperis/GoldenDMSA: This tool exploits Golden DMSA attack against delegated Managed Service Accounts.](https://github.com/Semperis/GoldenDMSA)
-- [GitHub - xforcered/InvisibilityCloak: Proof-of-concept obfuscation toolkit for C# post-exploitation tools](https://github.com/xforcered/InvisibilityCloak)
-- [GitHub - xforcered/BokuLoader: A proof-of-concept Cobalt Strike Reflective Loader which aims to recreate, integrate, and enhance Cobalt Strike's evasion features!](https://github.com/xforcered/BokuLoader)
-- [GitHub - xforcered/SQLRecon: A C# MS SQL toolkit designed for offensive reconnaissance and post-exploitation.](https://github.com/xforcered/SQLRecon)
-- [GitHub - xforcered/Agent-Development-Stack: Backend development stack for agents](https://github.com/xforcered/Agent-Development-Stack)
-- [GitHub - xforcered/RemoteMonologue: Weaponizing DCOM for NTLM Authentication Coercions](https://github.com/xforcered/RemoteMonologue)
-- [GitHub - xforcered/SCMKit: Source Code Management Attack Toolkit](https://github.com/xforcered/SCMKit)
-- [GitHub - xforcered/CheckCert: Obtain and parse SSL certificates](https://github.com/xforcered/CheckCert)
-- [GitHub - Brut-Security/BrutDroid: BrutDroid - Android Studio Pentest Automator: Streamline mobile pentesting with automated emulator rooting, Frida, and Burp Suite integration.](https://github.com/Brut-Security/BrutDroid)
-- [Domain Password Audit Tool - Black Hills Information Security, Inc.](https://www.blackhillsinfosec.com/domain-password-audit-tool/)
-- [GitHub - clr2of8/DPAT: Domain Password Audit Tool for Pentesters](https://github.com/clr2of8/DPAT)
-- [GitHub - fin3ss3g0d/cypherhound: Your template-based BloodHound terminal companion tool](https://github.com/fin3ss3g0d/cypherhound)
-- [GitHub - fin3ss3g0d/HookFinder: Simple PoC to locate hooked functions by EDR in ntdll.dll](https://github.com/fin3ss3g0d/HookFinder)
-- [GitHub - fin3ss3g0d/PoolParty: A set of fully-undetectable process injection techniques abusing Windows Thread Pools](https://github.com/fin3ss3g0d/PoolParty)
-- [GitHub - fin3ss3g0d/AddRemoteDA.py: Active Directory post exploitation kit for security purposes](https://github.com/fin3ss3g0d/AddRemoteDA.py)
-- [GitHub - fin3ss3g0d/BloodHoundQueryLibrary: A community-driven collection of BloodHound queries](https://github.com/fin3ss3g0d/BloodHoundQueryLibrary)
-- [GitHub - fin3ss3g0d/ChatGPT-Prompts: Useful ChatGPT prompts for offensive security work](https://github.com/fin3ss3g0d/ChatGPT-Prompts)
-- [GitHub - fin3ss3g0d/StoneKeeper: StoneKeeper C2, an experimental EDR evasion framework for research purposes](https://github.com/fin3ss3g0d/StoneKeeper)
-- [GitHub - Semperis/EntraGoat: A deliberately vulnerable Microsoft Entra ID environment. Learn identity security through hands-on, realistic attack challenges.](https://github.com/Semperis/EntraGoat)
-- [Ligolo-ng - D3p4K](https://infod33p4k.github.io/posts/blog/ligolo-ng/)
-- [GitHub - m8sec/Dispatch: Evasive Payload Delivery Server & C2 Redirector](https://github.com/m8sec/dispatch)
-- [GitHub - Helixo32/GetSystem-LCI: GetSystem-LCI is a PowerShell script to escalate privileges from Administrator to NT AUTHORITY\SYSTEM by abusing LanguageComponentsInstaller.](https://github.com/Helixo32/GetSystem-LCI)
-- [GitHub - Helixo32/CrimsonEDR: Simulate the behavior of AV/EDR for malware development training.](https://github.com/Helixo32/CrimsonEDR)
-- [GitHub - 0xJs/BlockEDRTraffic: Two tools written in C that block network traffic for blacklisted EDR processes, using either Windows Defender Firewall (WDF) or Windows Filtering Platform (WFP).](https://github.com/0xJs/BlockEDRTraffic)
-- [GitHub - 0xJs/EnumEDRs: Enumerate active EDR's on the system](https://github.com/0xJs/EnumEDRs)
-- [GitHub - Maldev-Academy/EmbedPayloadInPng: Embed a payload inside a PNG file](https://github.com/Maldev-Academy/EmbedPayloadInPng)
-- [GitHub - Maldev-Academy/ExecutePeFromPngViaLNK: Extract and execute a PE embedded within a PNG file using an LNK file.](https://github.com/Maldev-Academy/ExecutePeFromPngViaLNK)
-- [GitHub - Maldev-Academy/AlphabeticalPolyShellGen: Generate an Alphabetical Polymorphic Shellcode](https://github.com/Maldev-Academy/AlphabeticalPolyShellGen)
-- [GitHub - Maldev-Academy/LsassHijackingViaReg: Injecting DLL into LSASS at boot](https://github.com/Maldev-Academy/LsassHijackingViaReg)
-- [GitHub - Maldev-Academy/RemoteTLSCallbackInjection: Utilizing TLS callbacks to execute a payload without spawning any threads in a remote process](https://github.com/Maldev-Academy/RemoteTLSCallbackInjection)
+### LOLBins, Trusted Sites & Bypasses  
+- [GitHub - boku7/LOLBAS](https://github.com/boku7/LOLBAS)  
+- [LOTS Project - Living Off Trusted Sites](https://lots-project.com/)  
+- [GTFOBins](https://gtfobins.github.io/)  
+- [nishang/Out-Word.ps1](https://github.com/samratashok/nishang)  
+
+### Phishing & Delivery  
+- [GitHub - bigb0sss/Microsoft365_devicePhish](https://github.com/bigb0sss/Microsoft365_devicePhish)  
+- [Red Team Techniques: Spear-phishing Engagements]()  
+- [GitHub - wariv/DarkLnk](https://github.com/wariv/DarkLnk)  
+
+### Misc & Utilities  
+- [SauronEye – Search tool for secrets](https://github.com/vivami/SauronEye)  
+- [Starkiller](https://github.com/BC-SECURITY/Starkiller)  
+- [Send email in HTA using JavaScript](https://stackoverflow.com/questions/4371963/send-email-in-hta-using-javascript-and-hide-the-senders-email-address)  
+- [GitHub - yrutschle/sslh](https://github.com/yrutschle/sslh)  
+- [GitHub - matro7sh/221b](https://github.com/matro7sh/221b)  
+
 
 
 ## Active Directory
@@ -187,33 +151,39 @@
 
 
 ## Tools
-- [Data Hiding: Lesson 1: Hiding Data in Slack Space using bmap](https://www.computersecuritystudent.com/FORENSICS/HIDING/lesson1/index.html)  
-- [Steganography: QuickStego: Embedding Secret Messages Into Pictures](https://www.computersecuritystudent.com/FORENSICS/Steganography/lesson1/index.html)  
-- [Optiv Source Zero · GitHub](https://github.com/Optiv-SourceZero)  
-- [projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei)  
-- [lanjelot/patator](https://github.com/lanjelot/patator)  
-- [awesome-burp-suite](https://github.com/alphaSeclab/awesome-burp-suite)  
-- [ditto (mubix)](https://github.com/mubix/ditto)  
-- [TrojanGenerator](https://github.com/henriksb/TrojanGenerator)  
-- [remoteapptool](https://github.com/kimmknight/remoteapptool)  
-- [obfuscation-stuff](https://github.com/alphaSeclab/obfuscation-stuff)  
-- [ExtensionSpoofer](https://github.com/henriksb/ExtensionSpoofer)  
-- [Graffiti](https://github.com/Ekultek/Graffiti)  
-- [StegOnline](https://stegonline.georgeom.net/)  
-- [Jeffrey Friedl's Image Metadata Viewer](http://exif.regex.info/exif.cgi)  
-- [Shellter | AV Evasion Artware](https://www.shellterproject.com/)  
+### General & Cheat Sheets  
+- [OSCP Cheat Sheet and Command Reference – Cas van Cooten](https://casvancooten.com/posts/2020/11/windows-ad-cheat-sheet-and-command-reference/)  
 - [GitHub - truongkma/ctf-tools](https://github.com/truongkma/ctf-tools)  
 - [GitHub - Tib3rius/Pentest-Cheatsheets](https://github.com/Tib3rius/Pentest-Cheatsheets)  
 - [GitHub - enaqx/awesome-pentest](https://github.com/enaqx/awesome-pentest)  
 - [GitHub - CyberSecurityUP/OSCE-Complete-Guide](https://github.com/CyberSecurityUP/OSCE-Complete-Guide)  
-- [File Transfers Cheat Sheet – Cheatography](https://cheatography.com/fred/cheat-sheets/file-transfers/)  
-- [OWASP Attack Surface Analysis Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Attack_Surface_Analysis_Cheat_Sheet.html)  
-- [Cheatsheet – Cheatsheet]()  
-- [Spaces – GitBook]()  
-- [PayloadsAllTheThings/Methodology and Resources](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Methodology%20and%20Resources)  
+- [File Transfers Cheat Sheet – Cheatography](https://cheatography.com/)  
+- [OWASP Attack Surface Analysis Cheat Sheet](https://owasp.org/)  
+- [Cheatsheet – Cheatsheet](https://cheatsheetseries.owasp.org/)  
+- [Spaces – GitBook](https://spaces.gitbook.io/)  
+- [PayloadsAllTheThings/Methodology and Resources](https://github.com/swisskyrepo/PayloadsAllTheThings)  
 - [Ignitetechnologies (Hacking Articles) · GitHub](https://github.com/Ignitetechnologies)  
-- [OSCP Cheat Sheet and Command Reference – Cas van Cooten](https://casvancooten.com/posts/2020/11/windows-ad-cheat-sheet-and-command-reference/)  
 
+### Data Hiding & Obfuscation  
+- [Data Hiding: Lesson 1: Hiding Data in Slack Space using bmap]()  
+- [Steganography: QuickStego: Embedding Secret Messages Into Pictures]()  
+- [Graffiti](https://github.com/)  
+- [StegOnline](https://stegonline.georgeom.net/)  
+- [Jeffrey Friedl's Image Metadata Viewer](http://regex.info/exif.cgi)  
+- [Shellter | AV Evasion Artware](http://www.shellterproject.com/)  
+- [obfuscation-stuff](https://github.com/)  
+- [ExtensionSpoofer](https://github.com/)  
+
+### Exploitation & Recon  
+- [Optiv Source Zero · GitHub](https://github.com/Optiv)  
+- [projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei)  
+- [lanjelot/patator](https://github.com/lanjelot/patator)  
+- [awesome-burp-suite](https://github.com/)  
+- [ditto (mubix)](https://github.com/mubix/ditto)  
+- [TrojanGenerator](https://github.com/)  
+- [remoteapptool](https://github.com/)  
+
+---
 
 
 ## Compilers/Interpreters
@@ -379,6 +349,15 @@
 - [AAD & M365 kill chain]()
 - [cloudsploit](https://github.com/aquasecurity/cloudsploit)
 - [Azure Run Command for Dummies | Mandiant]()
+- [GitHub - Hagrid29/AbuseAzureAPIPermissions](https://github.com/Hagrid29/AbuseAzureAPIPermissions)  
+- [GitHub - boku7/GraphRunner](https://github.com/boku7/GraphRunner)  
+- [GitHub - rvrsh3ll/TokenTactics](https://github.com/rvrsh3ll/TokenTactics)  
+- [GitHub - boku7/azureOutlookC2](https://github.com/boku7/azureOutlookC2)  
+- [GitHub - matro7sh/azure-mindmap](https://github.com/matro7sh/azure-mindmap)  
+- [GitHub - TROUBLE-1/AzDevRecon](https://github.com/TROUBLE-1/AzDevRecon)  
+- [GitHub - jeanlucdupont/localadmin](https://github.com/jeanlucdupont/localadmin)  
+- [GitHub - jeanlucdupont/groupstreee](https://github.com/jeanlucdupont/groupstreee)  
+- [GitHub - jeanlucdupont/basic-grc](https://github.com/jeanlucdupont/basic-grc)  
 
 ## Methodologies
 - [Penetration Testing Framework]()
@@ -401,37 +380,6 @@
 - [PayloadsAllTheThings/Reverse Shell Cheatsheet.md at master · swisskyrepo/PayloadsAllTheThings · GitHub](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Reverse%20Shell%20Cheatsheet.md)
 - [Reverse Shell Cheat Sheet | pentestmonkey - Malware](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
 
-## Malwares
-- [Malwares · GitHub](https://github.com/topics/malwares)
-- [UPX: the Ultimate Packer for eXecutables - Homepage](https://upx.github.io/)
-- [1N3 (xer0dayz) / Repositories · GitHub](https://github.com/1N3)
-- [GitHub - CodeXTF2/maldev-links: My collection of malware dev links](https://github.com/CodeXTF2/maldev-links)
-- [GitHub - ytisf/theZoo: A repository of LIVE malwares for your own joy and pleasure. theZoo is a project created to make the possibility of malware analysis open and available to the public.](https://github.com/ytisf/theZoo)
-- [GitHub - WesleyWong420/OPSEC-Tradecraft: Collection of OPSEC Tradecraft and TTPs for Red Team Operations](https://github.com/WesleyWong420/OPSEC-Tradecraft)
-- [GitHub - eset/malware-ioc: Indicators of Compromises (IOC) of our various investigations](https://github.com/eset/malware-ioc)
-- [GitHub - Hagrid29/AbuseAzureAPIPermissions: Abuse Azure API permissions for red teaming](https://github.com/Hagrid29/AbuseAzureAPIPermissions)
-- [GitHub - 0xNinjaCyclone/hellMaker: Generate FUD backdoors](https://github.com/0xNinjaCyclone/hellMaker)
-- [GitHub - ZeroMemoryEx/Malware-IOCs: some of my IOCs from malware investigations](https://github.com/ZeroMemoryEx/Malware-IOCs)
-- [GitHub - Mr-Un1k0d3r/SCShell: Fileless lateral movement tool that relies on ChangeServiceConfigA to run command](https://github.com/Mr-Un1k0d3r/SCShell)
-- [GitHub - Mr-Un1k0d3r/MaliciousClickOnceGenerator: Quick Malicious ClickOnceGenerator for Red Team](https://github.com/Mr-Un1k0d3r/MaliciousClickOnceGenerator)
-- [GitHub - mehmetkahya0/temp-mail: TempMail is a simple web application that allows you to generate temporary email addresses and view the emails received by these addresses.](https://github.com/mehmetkahya0/temp-mail)
-- [GitHub - stivenhacker/GhostStrike: Deploy stealthy reverse shells using advanced process hollowing with GhostStrike – a C++ tool for ethical hacking and Red Team operations.](https://github.com/stivenhacker/GhostStrike)
-- [sinllaves's list / RedTeamScripts · GitHub](https://github.com/sinllaves/RedTeamScripts)
-- [GitHub - Mr-Un1k0d3r/PowerLessShell: Run PowerShell command without invoking powershell.exe](https://github.com/Mr-Un1k0d3r/PowerLessShell)
-- [GitHub - Sh3lldon/FullBypass: A tool which bypasses AMSI (AntiMalware Scan Interface) and PowerShell CLM (Constrained Language Mode) and gives you a FullLanguage PowerShell reverse shell.](https://github.com/Sh3lldon/FullBypass)
-- [GitHub - boku7/LOLBAS: Living Off The Land Binaries And Scripts - (LOLBins and LOLScripts)](https://github.com/boku7/LOLBAS)
-- [GitHub - boku7/GraphRunner: A Post-exploitation Toolset for Interacting with the Microsoft Graph API](https://github.com/boku7/GraphRunner)
-- [GitHub - boku7/StringReaper: Reaping treasures from strings in remote processes memory](https://github.com/boku7/StringReaper)
-- [GitHub - rvrsh3ll/TokenTactics: Azure JWT Token Manipulation Toolset](https://github.com/rvrsh3ll/TokenTactics)
-- [GitHub - boku7/azureOutlookC2: Azure Outlook Command & Control (C2) - Remotely control a compromised Windows Device from your Outlook mailbox. Threat Emulation Tool for North Korean APT InkySquid / ScarCruft / APT37. TTP: Use Microsoft Graph API for C2 Operations.](https://github.com/boku7/azureOutlookC2)
-- [mez-0 (mez-0) / Repositories · GitHub](https://github.com/mez-0)
-- [GitHub - Meckazin/ChromeKatz: Dump cookies and credentials directly from Chrome/Edge process memory](https://github.com/Meckazin/ChromeKatz)
-- [GitHub - dagowda/DSViper: This is for Ethical Use only! Update:- Currently the payloads can only bypass latest real time monitoring and not cloud based detections, due to a lot of virus total submissions. Works like a charm in lab assessments like HTB Prolab's or any other Penetration Testing certification that has antivirus enabled.](https://github.com/dagowda/DSViper)
-- [Havoc Framework · GitHub](https://github.com/HavocFramework)
-- [GitHub - A-poc/RedTeam-Tools: Tools and Techniques for Red Team / Penetration Testing](https://github.com/A-poc/RedTeam-Tools)
-- [GitHub - infosecn1nja/Red-Teaming-Toolkit: This repository contains cutting-edge open-source security tools (OST) for a red teamer and threat hunter.](https://github.com/infosecn1nja/Red-Teaming-Toolkit)
-- [The-MALWARE-Repo/Banking-Malware/Dridex at master · Da2dalus/The-MALWARE-Repo · GitHub  - Passwords and Hashes](https://github.com/Da2dalus/The-MALWARE-Repo/tree/master/Banking-Malware/Dridex)
-
 ## Pass the Hash
 - pass-the-hash-attacks-tools-mitigation_33283 (application/pdf Object)
 - crack-pass-hash_33219 (application/pdf Object)
@@ -448,6 +396,36 @@
 - [Wireshark · Documentation](https://www.wireshark.org/docs/)
 - Bettercap - charlesreid1
 - Man in the Middle - charlesreid1 - Test Sites
+
+## Malware  
+
+### Malware Repositories  
+- [Malwares · GitHub](https://github.com/topics/malwares)  
+- [GitHub - CodeXTF2/maldev-links](https://github.com/CodeXTF2/maldev-links)  
+- [GitHub - ytisf/theZoo](https://github.com/ytisf/theZoo)  
+- [The-MALWARE-Repo/Banking-Malware/Dridex](https://github.com/Da2dalus/The-MALWARE-Repo)  
+
+### Packers & Crypters  
+- [UPX: the Ultimate Packer for eXecutables](https://upx.github.io/)  
+- [GitHub - dagowda/DSViper](https://github.com/dagowda/DSViper)  
+- [GitHub - 0xNinjaCyclone/hellMaker](https://github.com/0xNinjaCyclone/hellMaker)  
+
+### Payloads & Evasion  
+- [GitHub - stivenhacker/GhostStrike](https://github.com/stivenhacker/GhostStrike)  
+- [GitHub - Sh3lldon/FullBypass](https://github.com/Sh3lldon/FullBypass)  
+- [GitHub - Mr-Un1k0d3r/PowerLessShell](https://github.com/Mr-Un1k0d3r/PowerLessShell)  
+- [GitHub - Mr-Un1k0d3r/MaliciousClickOnceGenerator](https://github.com/Mr-Un1k0d3r/MaliciousClickOnceGenerator)  
+- [GitHub - Maldev-Academy/EmbedPayloadInPng](https://github.com/Maldev-Academy/EmbedPayloadInPng)  
+- [GitHub - Maldev-Academy/ExecutePeFromPngViaLNK](https://github.com/Maldev-Academy/ExecutePeFromPngViaLNK)  
+- [GitHub - Maldev-Academy/AlphabeticalPolyShellGen](https://github.com/Maldev-Academy/AlphabeticalPolyShellGen)  
+- [GitHub - Maldev-Academy/LsassHijackingViaReg](https://github.com/Maldev-Academy/LsassHijackingViaReg)  
+- [GitHub - Maldev-Academy/RemoteTLSCallbackInjection](https://github.com/Maldev-Academy/RemoteTLSCallbackInjection)  
+
+### Malware Analysis & IOCs  
+- [GitHub - eset/malware-ioc](https://github.com/eset/malware-ioc)  
+- [GitHub - ZeroMemoryEx/Malware-IOCs](https://github.com/ZeroMemoryEx/Malware-IOCs)  
+
+---
 
 ## Test Site
 - [Home of Acunetix Art](http://testphp.vulnweb.com/)
@@ -557,6 +535,17 @@
 - [GitHub - optiv/ScareCrow](https://github.com/optiv/ScareCrow)  
 - [Bypassing Defender the Easy Way – FodHelper - TCM Security](https://academy.tcm-sec.com/courses/1444641/lectures/33217123)  
 - [Obfuscating Malicious Macro-Enabled Word Docs](https://isc.sans.edu/forums/diary/Obfuscating+Malicious+MacroEnabled+Word+Docs/20452/)  
+- [GitHub - Mr-Un1k0d3r/SCShell](https://github.com/Mr-Un1k0d3r/SCShell)  
+- [GitHub - Meckazin/ChromeKatz](https://github.com/Meckazin/ChromeKatz)  
+- [GitHub - fin3ss3g0d/HookFinder](https://github.com/fin3ss3g0d/HookFinder)  
+- [GitHub - fin3ss3g0d/PoolParty](https://github.com/fin3ss3g0d/PoolParty)  
+- [GitHub - fin3ss3g0d/AddRemoteDA.py](https://github.com/fin3ss3g0d/AddRemoteDA.py)  
+- [GitHub - fin3ss3g0d/BloodHoundQueryLibrary](https://github.com/fin3ss3g0d/BloodHoundQueryLibrary)  
+- [GitHub - fin3ss3g0d/StoneKeeper](https://github.com/fin3ss3g0d/StoneKeeper)  
+- [GitHub - Helixo32/GetSystem-LCI](https://github.com/Helixo32/GetSystem-LCI)  
+- [GitHub - Helixo32/CrimsonEDR](https://github.com/Helixo32/CrimsonEDR)  
+- [GitHub - 0xJs/BlockEDRTraffic](https://github.com/0xJs/BlockEDRTraffic)  
+- [GitHub - 0xJs/EnumEDRs](https://github.com/0xJs/EnumEDRs)  
 
 ## Offensive C# and Static Binaries
 - [Sharp/README.md at master · midnightslacker/Sharp · GitHub](https://github.com/midnightslacker/Sharp/blob/master/README.md)  
@@ -570,3 +559,4 @@
 - [GitHub - Mr-Un1k0d3r/RedTeamCSharpScripts](https://github.com/Mr-Un1k0d3r/RedTeamCSharpScripts)  
 - [GitHub - matterpreter/OffensiveCSharp](https://github.com/matterpreter/OffensiveCSharp)  
 - [GitHub - boh/RedCsharp](https://github.com/boh/RedCsharp)  
+
