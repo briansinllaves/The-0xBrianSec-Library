@@ -1,4 +1,4 @@
-# EnableResourceLocking
+# Enable Resource Locking
 
 ## Azure Resource Locks
 
