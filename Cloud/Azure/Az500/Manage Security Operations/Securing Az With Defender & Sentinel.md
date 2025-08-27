@@ -1,4 +1,4 @@
-# Securing Az With Defender &Sentinel
+# Securing Az With Defender & Sentinel
 
 ## Microsoft Defender for Cloud
 
