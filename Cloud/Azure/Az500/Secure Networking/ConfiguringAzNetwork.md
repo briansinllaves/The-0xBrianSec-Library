@@ -1,310 +1,544 @@
+# Configuring Azure Network
 
-    # ConfiguringAzNetwork
+## Managing VNets Using the Portal
 
-    > **Your raw notes are preserved verbatim below**, then expanded with senior-operator theory, validated commands, and Q&A with ✅ marking the correct answers.
+### Initial Setup Considerations
 
-    ---
-    ## Original Notes (Preserved Verbatim)
-    ```
-    Secure networking ConfiguringAzNetwork Managing Vnets using the portal start at 3:18
+**Resource Group Planning:**
+- Consider what resources you're working with when choosing resource group
+- Plan for future resource dependencies and management
 
-	• In setup, when choosing the resource group, consider what resources your are working with
-	• If you want Add another ipv6 for the subnet aaaa:bbbb:cccc:dddd::/64 
+**IPv6 Configuration:**
+- Can add IPv6 addressing for subnets
+- IPv6 subnet format: `aaaa:bbbb:cccc:dddd::/64`
+- IPv6 subnets are always /64
 
-Managing Vnets using the CLI
-	• Check az network commands
-		○ Az network --help
-		○ Az network vnet create --help
+---
 
-	• Create a vnet
-		○ Az network vnet create -g MyResourceGroup -n MyVnet --address-prefix 192.0.0/16 --subnet-name MySubnet --subnet-prefixes 192.168.1.0/24
-	• Subnets must get there address blocks from the Vnet
+## Managing VNets Using the CLI
 
-	• Get Vnet names
-		○ Az network vnet list --query [].name
+### Command Help and Discovery
 
-	• Show all subnets in all vnets
-		○ Az network vnet list --query [].subnets[].name            
-			§ The [] because we have a collection of subnet names in a collection of vnets
+**Available Commands:**
+```bash
+az network --help
+az network vnet create --help
+```
 
-	• Create subnet
-		○ Az network vnet subnet create -g App1 --vtnet-name vnet3 -n subnet2 --address-prefixes 192.168.2.0/24
-			§ -g = resource group
+### VNet Creation
 
+**Create VNet with Subnet:**
+```bash
+az network vnet create -g MyResourceGroup -n MyVnet --address-prefixes 192.0.0.0/16 --subnet-name MySubnet --subnet-prefixes 192.168.1.0/24
+```
 
-Managing Vnets using Powershell
-	• Get-commmand *virtualnetwork*
+**Important:** Subnets must get their address blocks from the VNet address space
 
-	• Create a vnet and subnet
-		○ Subnet config must fall in vnet range
-		○ $subnet = NewAzVirtualNetworkSubnetConfig -name Subnet1 -AddressPrefix 30.0.1.0/24
-		○ $subnet
-		○ NewAzVirtualNetwork -ResourceGroupName App1 -Location USEast -name vnet4 -AddressPrefix 30.0.0.0/16 -Subnet $subnet 
+### VNet Information Commands
 
-	• Add another subnet
-		○ Preplan address space, sub needs to fit in vnet
-		○ Get a reference stored to a variable
-		○ $vnet=Get-AzVirtualNetwork -name vnet4
-		○ Add-AzVirtualNetworkSubnetConfig -Name Subnet2 -VirtualNetwork $vnet -AddressPrefix "30.0.2.0/24"
-		○ Commit by using Set
-			§ $vnet | Set-AzVirtualNetwork
-
-
-Configuring Network Watcher
-	• Search Network Watcher, by given region
-	• Monitors traffic connection between componets or between vnets, or componets like a vm interface in a vnet reaching out to the internet or the opposite. 
-	• You can capture internet ingress net traffic.
-	• Check routing problems
-	• Monitoring | Topolgy, choose az sub, resource group, vnet
-	• Ip flow verify
-		○ Netint, udp, outbound, local ip 10.0.0.4:65000 RemoteIP:8.8.8.8:53
-	• See Effective security rules
-
-Network Security Groups (NSG)
-	• Azure resources that be associated with netints and subnets
-	• Rules for in/outbound
-	• Subnets
-		○ Look at network security group, rules applied to all vms in the subnet
-	• Network interfaces
-		○ Effective sec rules
-			§ Inbound rules
-	• Default rules
-		○ Load balancing 
-		○ Inter-vnet comms
-		○ Incoming internet traffic blocked
-		○ Outbound internet traffic allowed
-	• RulePriority value
-		○ When you create a rule, assign a priority value that is smaller than the defaults 65000, a 300 would get checked first regardless of in/out
-			§ So lower has more priority
-	• Rule Actions allows/Deny
-	• Can apply NSGs to subnets and interfaces
-		○ Traffic inbound will get checked at subnet first then interface
-		○ Traffic outbound will get checked at interface then subnet
-
-Managing NSGs Using the portal
-	• Portal.azure.com
-	• Either in interface or subnet, "associate" button will tie to the nsg
-	• When adding a rule with 1+ ports, do it like 80,443,53
-
-Managing NSGs Using the CLI
-	• Get command help
-		○ Az network --help
-		○ Az network nsg --help
-
-	• Create a NSG
-		○ Az network nsg create -g App1 -n App1NSG
-
-	• List nsg
-		Az network nsg list --query [].name
-
-	• Create a rule
-		○ Az network rule nsg create -g App1 --nsg-name App1NSG -n Rule1 --priority 500 --source-address-prefixes 71.4.45.0/24 --destination-port-ranges 80 443 --destination-address-prefixes '*' --access Allow --protocol Tcp --description "Allow inbound HTTP and HTTPS traffic"
-
-	• Check detail of specific nsg
-		○ Az network nsg list -g app1 --nsg-name app1nsg
-
-
-
-Managing NSGs Using Powershell
-
-	• Command help
-		○ Get-command *networksecurity*
-		○ Get-command *securityrule*
-
-	• Create rule
-		○ $rdp_allow_rule= New-AzNetworkSecurityRuleConfig -Name "allow-inbound-rdp" -SourcePortRange * -Protocol TCP -SourceAddressPrefix Internet -Access Allow -Priority 110 -Direction Inbound -DestinationPortRange 3389 -DestinationAddressPrefix * 
-	• Check rule is set
-		○ $rdp_allow_rule
-
-	• Create NSG
-		○ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName App1 -Location eastus -Name "Windows_Management_Rules" -SecurityRules $rdp_allow_rule
-			§ We need to set this to a subnet or an interface
-				□ Get-command *networksubnetconfig*
-				□ Create virt net
-					® $vnet=Get-AzVirtualNetwork -name vnet3 -resourcegroupname app1
-			§ $nsg
-				□ Set-AzVirtualNetworkSubnetConfig -Name subnet1 -VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $nsg
-			§ $vnet | Set-AzVirtualNetwork
-
-Vnet peering
-	• Improve network performance and private ip connectivity
-	• Linking vnets together
-	• Vnets can be within or spread among az subs, regions
-	• Peering is complete when the peering status says "connected"
-	• Vnet peering is not transitive if v1<->v2 & v2<->v2, cant v1<->v3 (have to be peered together)
-	• Can allow traffic forwarded from remote site (from a vpn)
-	• Note between clouds (az pub and az gov)
-	• Peered traffic stays on az global network backbone, never goes out over the internet
-	• Hub and spoke vnet peering
-		○ All of the vnet connectinos would be set to allow forwarded traffic
-	• 
-Peering Vnets using the portal 
-	• Have 2 vnets, app2-vnet1
-	• Vnets > net > peering,
-	• Name peering link : app1vnet-To-App2vnet
-	• No gw for vpns
-	• Name the remote vnet
-		○ Peering link name - for traffic coming into the opposite way
-			§ App2vnet-To-App1vnet
-	• MAKE SURE YOU GET BOTH SETUP
-	• To Delete
-		○ 3 dots on the left
-	• Peering allows routing from 1 ip space to a different ip space
-		○ A vpn could do that. 
-Peering Vnets using the CLI
-	• bash
-	• Create 2 vnets
-		○ Vnet3=$(az network vnet show --resource-group App1 --name Vnet3 --query id --out tsv)
-		○ Echo $vnet3
-	• Do it again with the peer
-		○ Vnet4=$(az network vnet show --resource-group App1 --name Vnet4 --query id --out tsv)
-		○ Echo $vnet4
-Create peering
-	• Az network vnet --help
-	• Az network vnet peering --help
-	• Link from 3 to 4
-		○ Az network vnet peering create --name Vnet3ToVnet4 --resource-group App1 --vnet-name Vnet3 --remote-net $vnet4 --allow-vnet-access
-	• Link from 4 to 3
-		○ Az network vnet peering create --name Vnet4ToVnet3 --resource-group App1 --vnet-name Vnet4 --remote-net $vnet3 --allow-vnet-access
-Peering Vnets using powershell
-	• $vnet3 = Get-AzVirtualNetwork -Name Vnet3 -ResourceGroupName App1
-		○ $vnet3
-	• $vnet4 = Get-AzVirtualNetwork -Name Vnet4 -ResourceGroupName App1
-Need id
-	• $vnet.id
-	• Add-AzVirtualNetworkPeering -Name Vnet3-4 -VirtualNetwork $vnet3 `
-	>> -RemoteVirtualNetworkID $vnet4.Id 
-		○ This is a backtick
-		○ Can add | Out-Null
-	• Now the other side
-
-		○ Add-AzVirtualNetworkPeering -Name Vnet4-3 -VirtualNetwork $vnet4 `
-		>> -RemoteVirtualNetworkID $vnet3.Id 
-	• Get peering state from perspective vnet3
-	• (Get-AzVirtualNetworkPeering -ResourceGroupName App1 -VirtualNetworkName Vnet3 | Select PeeringState).PeeringState
-	• Changed # to see reverse
-TEST
-... (full test questions preserved in Q&A below) ...
-    ```
-
-    ---
-    ## Senior‑Level Context & Theory
-    - **Addressing**: Plan RFC1918 blocks with future growth; keep subnets within VNet prefixes. IPv6 subnets are /64.
-- **NSG evaluation**: Lowest numeric priority first; defaults (65000+) last. Inbound path: Subnet ➜ NIC; Outbound: NIC ➜ Subnet.
-- **Network Watcher**: Use *IP flow verify* to test allow/deny, *Effective security rules* to view resultant policy, *Topology* for dependency maps.
-- **Peering**: Non‑transitive. Enable *allow forwarded traffic* when using NVAs in hub‑and‑spoke. Peered traffic stays on the Microsoft backbone.
-
-    ---
-    ## Validated Commands – PowerShell
-    ```powershell
-    # Create VNet + Subnet
-$sub = New-AzVirtualNetworkSubnetConfig -Name Subnet1 -AddressPrefix 30.0.1.0/24
-New-AzVirtualNetwork -ResourceGroupName App1 -Location eastus -Name vnet4 -AddressPrefix 30.0.0.0/16 -Subnet $sub
-
-# Add another subnet
-$vnet = Get-AzVirtualNetwork -Name vnet4 -ResourceGroupName App1
-Add-AzVirtualNetworkSubnetConfig -Name Subnet2 -VirtualNetwork $vnet -AddressPrefix 30.0.2.0/24
-$vnet | Set-AzVirtualNetwork
-
-# NSG and rule, attach to subnet
-$rule = New-AzNetworkSecurityRuleConfig -Name allow-inbound-rdp -Access Allow -Protocol Tcp -Direction Inbound `
-  -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-$nsg  = New-AzNetworkSecurityGroup -ResourceGroupName App1 -Location eastus -Name Windows_Management_Rules -SecurityRules $rule
-$vnet = Get-AzVirtualNetwork -Name vnet3 -ResourceGroupName App1
-Set-AzVirtualNetworkSubnetConfig -Name subnet1 -VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $nsg
-$vnet | Set-AzVirtualNetwork
-
-# Peering
-$v3 = Get-AzVirtualNetwork -Name Vnet3 -ResourceGroupName App1
-$v4 = Get-AzVirtualNetwork -Name Vnet4 -ResourceGroupName App1
-Add-AzVirtualNetworkPeering -Name Vnet3-4 -VirtualNetwork $v3 -RemoteVirtualNetworkId $v4.Id | Out-Null
-Add-AzVirtualNetworkPeering -Name Vnet4-3 -VirtualNetwork $v4 -RemoteVirtualNetworkId $v3.Id | Out-Null
-(Get-AzVirtualNetworkPeering -ResourceGroupName App1 -VirtualNetworkName Vnet3 | Select-Object PeeringState).PeeringState
-    ```
-
-    ## Validated Commands – Azure CLI
-    ```bash
-    # Create VNet + Subnet
-az network vnet create -g MyResourceGroup -n MyVnet --address-prefixes 192.0.0.0/16   --subnet-name MySubnet --subnet-prefixes 192.168.1.0/24
-
-# List VNets and subnets
+**Get VNet Names:**
+```bash
 az network vnet list --query [].name
+```
+
+**Show All Subnets in All VNets:**
+```bash
 az network vnet list --query [].subnets[].name
+```
+*Note: The `[]` syntax is used because we have a collection of subnet names in a collection of VNets*
 
-# Create subnet
+### Subnet Management
+
+**Create Subnet:**
+```bash
 az network vnet subnet create -g App1 --vnet-name vnet3 -n subnet2 --address-prefixes 192.168.2.0/24
+```
+*Where `-g` = resource group*
 
-# NSG + rule
+---
+
+## Managing VNets Using PowerShell
+
+### Command Discovery
+
+**Find Available Commands:**
+```powershell
+Get-Command *virtualnetwork*
+```
+
+### VNet and Subnet Creation
+
+**Create VNet with Subnet:**
+```powershell
+# Subnet configuration must fall within VNet range
+$subnet = New-AzVirtualNetworkSubnetConfig -Name Subnet1 -AddressPrefix 30.0.1.0/24
+$subnet
+New-AzVirtualNetwork -ResourceGroupName App1 -Location eastus -Name vnet4 -AddressPrefix 30.0.0.0/16 -Subnet $subnet
+```
+
+### Adding Additional Subnets
+
+**Planning:** Pre-plan address space - subnet needs to fit within VNet
+
+**Add Subnet Process:**
+```powershell
+# Get reference stored to variable
+$vnet = Get-AzVirtualNetwork -Name vnet4 -ResourceGroupName App1
+Add-AzVirtualNetworkSubnetConfig -Name Subnet2 -VirtualNetwork $vnet -AddressPrefix "30.0.2.0/24"
+# Commit changes using Set
+$vnet | Set-AzVirtualNetwork
+```
+
+---
+
+## Configuring Network Watcher
+
+### Overview
+
+**Navigation:** Search "Network Watcher" by region
+
+**Capabilities:**
+- Monitors traffic connection between components or between VNets
+- Monitors components like VM interface in VNet reaching out to internet
+- Can capture internet ingress network traffic
+- Check routing problems
+
+### Key Features
+
+**Topology Monitoring:**
+- **Navigation:** Monitoring → Topology
+- Choose Azure subscription, resource group, VNet
+- Visual representation of network components
+
+**IP Flow Verify:**
+- Test specific connectivity scenarios
+- **Example:** Network interface, UDP, outbound, local IP `10.0.0.4:65000`, Remote IP `8.8.8.8:53`
+- Determines allow/deny decisions
+
+**Effective Security Rules:**
+- View combined security rules from NSGs
+- Shows resultant policy after rule evaluation
+
+---
+
+## Network Security Groups (NSGs)
+
+### Overview
+
+NSGs are Azure resources that can be associated with network interfaces and subnets to control traffic flow.
+
+**Rule Types:**
+- **Inbound rules** - Control traffic coming into resources
+- **Outbound rules** - Control traffic leaving resources
+
+### NSG Application Points
+
+**Subnets:**
+- Look at Network Security Group
+- Rules applied to all VMs in the subnet
+
+**Network Interfaces:**
+- **Effective Security Rules** show combined rules
+- Individual VM-level control
+
+### Default Rules
+
+**Built-in Rules:**
+- **Load balancing** - Allow Azure Load Balancer traffic
+- **Inter-VNet communications** - Allow traffic between peered VNets
+- **Incoming internet traffic blocked** - Deny inbound from internet
+- **Outbound internet traffic allowed** - Allow outbound to internet
+
+### Rule Priority System
+
+**Priority Values:**
+- **Lower numbers = Higher priority**
+- Custom rules: 100-4096
+- **Default rules:** 65000+ (lowest priority)
+- **Example:** Priority 300 gets checked before 65000, regardless of inbound/outbound
+
+**Rule Actions:**
+- **Allow** - Permit traffic
+- **Deny** - Block traffic
+
+### Traffic Flow Evaluation
+
+**Inbound Traffic Path:**
+1. **Subnet NSG** evaluated first
+2. **Network Interface NSG** evaluated second
+
+**Outbound Traffic Path:**
+1. **Network Interface NSG** evaluated first
+2. **Subnet NSG** evaluated second
+
+---
+
+## Managing NSGs Using the Portal
+
+### Association Process
+
+**Navigation:** `Portal.azure.com`
+
+**Association Options:**
+- **Interface level** - Click "Associate" button to tie NSG to network interface
+- **Subnet level** - Click "Associate" button to tie NSG to subnet
+
+**Multiple Ports:** When adding rule with multiple ports, format: `80,443,53`
+
+---
+
+## Managing NSGs Using the CLI
+
+### Command Help
+
+**Available Commands:**
+```bash
+az network --help
+az network nsg --help
+```
+
+### NSG Management
+
+**Create NSG:**
+```bash
 az network nsg create -g App1 -n App1NSG
-az network nsg rule create -g App1 --nsg-name App1NSG -n Rule1 --priority 500   --source-address-prefixes 71.4.45.0/24 --destination-port-ranges 80 443   --destination-address-prefixes '*' --access Allow --protocol Tcp   --description "Allow inbound HTTP and HTTPS traffic"
+```
+
+**List NSGs:**
+```bash
 az network nsg list --query [].name
+```
 
-# Peering
-vnet3=$(az network vnet show -g App1 -n Vnet3 --query id -o tsv)
-vnet4=$(az network vnet show -g App1 -n Vnet4 --query id -o tsv)
-az network vnet peering create -g App1 --vnet-name Vnet3 -n Vnet3ToVnet4 --remote-vnet $vnet4 --allow-vnet-access
-az network vnet peering create -g App1 --vnet-name Vnet4 -n Vnet4ToVnet3 --remote-vnet $vnet3 --allow-vnet-access
-    ```
+**Create Rule:**
+```bash
+az network nsg rule create -g App1 --nsg-name App1NSG -n Rule1 --priority 500 --source-address-prefixes 71.4.45.0/24 --destination-port-ranges 80 443 --destination-address-prefixes '*' --access Allow --protocol Tcp --description "Allow inbound HTTP and HTTPS traffic"
+```
 
-    ---
-    ## Q&A – AZ‑500 Focus (✅ Correct Answers)
-    - **What is the benefit of peering vnets together?**
-  - Peered vnet routing tables are merged and treated as one
-  - ✅ Communication across vnets using private IP addresses
-  - Inter-vnet traffic sent over the Internet through a VPN tunnel
-  - Communication across vnets using public IP addresses
-- **Which vnet monitoring tool should you use to check a specific TCP port reachability from the Internet?**
-  - Packet capture
-  - Next hop
-  - NSG flow diagnostics
-  - ✅ IP flow verify
-- **You plan on peering VNET1 to VNET2. A VPN connects on-prem to VNET1. Ensure traffic to VNET2 from VNET1 originated from VNET1.**
-  - ✅ Block traffic that originates from outside the remote virtual network
-  - Use the remote virtual network’s gateway or Route Server
-  - Block all traffic to the remote virtual network
-  - Block traffic that originates from within the remote virtual network
-- **You need to show all network security groups using the CLI. Which command should you use?**
-  - az nsg list
-  - ✅ az network nsg list
-  - az vnet nsg list
-  - az network nsg get
-- **To which Azure resources can a network security group be directly associated?**
-  - Virtual machines
-  - RDS instances
-  - ✅ Subnets
-  - Network interfaces
-- **Which PowerShell cmdlet is used to associate a network security group with a subnet?**
-  - ✅ Set-AzVirtualNetworkSubnetConfig
-  - Add-AzVirtualNetworkSubnetConfig
-  - New-AzNetworkSecurityGroup
-  - Add-AzVirtualNetworkSecurityGroup
-- **How can subnets be created using the portal?**
-  - Create the subnet within the existing virtual machine
-  - Create a new subnet resource
-  - ✅ Create the subnet within the existing vnet
-  - Create the subnet by uploading an ARM template
-- **Which CLI command can be used to show subnets for a given vnet?**
-  - ✅ az network vnet subnet list --resource-group App1 --vnet-name vnet3
-  - az vnet network subnet list --resource-group App1 --vnet-name vnet3
-  - az network vnet subnet show --resource-group App1 --vnet-name vnet3
-  - az vnet subnet list --resource-group App1 --vnet-name vnet3
-- **Which CLI command peers vnets together?**
-  - ✅ az network vnet peering create
-  - az network create peer
-  - az network vnet show
-  - az vnet peer create
-- **What is wrong with the following PowerShell expression?  New-AzVirtualNetwork ... -AddressPrefix 30.0.0.0/64**
-  - The 30 IP address range cannot be used with Azure vnets
-  - “CanadaEast” is not a valid Azure region
-  - ✅ A /64 mask is not possible
-  - There is no cmdlet named “New-AzVirtuaNetwork”
-- **You have multiple NSG rules (allow SSH vs deny SSH). How do you control which rule is processed first?**
-  - Weight value
-  - ✅ Priority number
-  - DNS round robin
-  - You cannot control the rule processing order
-- **Which PowerShell expression sets up one way of a vnet peering connection?**
-  - Add-AzVirtualNetworkPeering -Name Vnet3-Vnet4 -VirtualNetwork $vnet3 -RemoteVirtualNetworkId “Vnet4”
-  - Add-AzVirtualNetworkPeering -Name Vnet3-Vnet4 -VirtualNetwork $vnet3 -RemoteVirtualNetworkId $vnet4
-  - Add-AzVirtualNetworkPeering -Name Vnet3-Vnet4 -VirtualNetwork “Vnet3” -RemoteVirtualNetworkId $vnet4.Id
-  - ✅ Add-AzVirtualNetworkPeering -Name Vnet3-Vnet4 -VirtualNetwork $vnet3 -RemoteVirtualNetworkId $vnet4.Id
+**Check Specific NSG Details:**
+```bash
+az network nsg show -g App1 --name App1NSG
+```
+
+---
+
+## Managing NSGs Using PowerShell
+
+### Command Discovery
+
+**Find Available Commands:**
+```powershell
+Get-Command *networksecurity*
+Get-Command *securityrule*
+```
+
+### Rule Creation
+
+**Create Security Rule:**
+```powershell
+$rdp_allow_rule = New-AzNetworkSecurityRuleConfig -Name "allow-inbound-rdp" -SourcePortRange * -Protocol TCP -SourceAddressPrefix Internet -Access Allow -Priority 110 -Direction Inbound -DestinationPortRange 3389 -DestinationAddressPrefix *
+```
+
+**Check Rule Configuration:**
+```powershell
+$rdp_allow_rule
+```
+
+### NSG Creation and Association
+
+**Create NSG:**
+```powershell
+$nsg = New-AzNetworkSecurityGroup -ResourceGroupName App1 -Location eastus -Name "Windows_Management_Rules" -SecurityRules $rdp_allow_rule
+```
+
+**Associate NSG to Subnet:**
+```powershell
+# Get VNet reference
+$vnet = Get-AzVirtualNetwork -Name vnet3 -ResourceGroupName App1
+# Associate NSG with subnet
+Set-AzVirtualNetworkSubnetConfig -Name subnet1 -VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $nsg
+# Commit changes
+$vnet | Set-AzVirtualNetwork
+```
+
+---
+
+## VNet Peering
+
+### Overview and Benefits
+
+**Purpose:**
+- Improve network performance and private IP connectivity
+- Linking VNets together for seamless communication
+
+**Scope:**
+- VNets can be within or spread among Azure subscriptions
+- VNets can span different regions
+- **Status:** Peering is complete when peering status shows "Connected"
+
+### Important Characteristics
+
+**Non-Transitive:**
+- If V1 ↔ V2 and V2 ↔ V3, then V1 cannot communicate with V3
+- Must be explicitly peered together for communication
+
+**Traffic Forwarding:**
+- Can allow traffic forwarded from remote site (from VPN)
+- Enable "Allow forwarded traffic" for hub-and-spoke scenarios
+
+**Network Backbone:**
+- Peered traffic stays on Azure global network backbone
+- **Never goes over internet** - always private
+
+**Cross-Cloud Support:**
+- Works between Azure Public and Azure Government clouds
+
+### Hub-and-Spoke Architecture
+
+**Configuration:**
+- All VNet connections set to "allow forwarded traffic"
+- Central hub VNet connects to multiple spoke VNets
+- Spokes communicate through hub
+
+---
+
+## Peering VNets Using the Portal
+
+### Setup Process
+
+**Prerequisites:** Have 2 VNets (e.g., app1-vnet, app2-vnet1)
+
+**Configuration Steps:**
+1. **Navigate:** VNets → Select VNet → Peering
+2. **Peering Link Name:** app1vnet-To-App2vnet
+3. **Gateway Settings:** No gateway for VPNs (unless using VPN gateway)
+4. **Remote VNet Configuration:**
+   - **Remote Peering Link Name:** App2vnet-To-App1vnet
+
+**Critical:** Make sure you get both directions set up
+
+### Management Operations
+
+**Delete Peering:**
+- Click 3 dots on the left side of peering entry
+- Confirm deletion
+
+**Functionality:**
+- Peering allows routing from one IP space to different IP space
+- Alternative: VPN could provide similar functionality but with different characteristics
+
+---
+
+## Peering VNets Using the CLI
+
+### Variable Setup
+
+**Create Variables for VNet IDs:**
+```bash
+vnet3=$(az network vnet show --resource-group App1 --name Vnet3 --query id --out tsv)
+echo $vnet3
+vnet4=$(az network vnet show --resource-group App1 --name Vnet4 --query id --out tsv)
+echo $vnet4
+```
+
+### Command Help
+
+**Available Commands:**
+```bash
+az network vnet --help
+az network vnet peering --help
+```
+
+### Create Peering
+
+**Link from Vnet3 to Vnet4:**
+```bash
+az network vnet peering create --name Vnet3ToVnet4 --resource-group App1 --vnet-name Vnet3 --remote-vnet $vnet4 --allow-vnet-access
+```
+
+**Link from Vnet4 to Vnet3:**
+```bash
+az network vnet peering create --name Vnet4ToVnet3 --resource-group App1 --vnet-name Vnet4 --remote-vnet $vnet3 --allow-vnet-access
+```
+
+---
+
+## Peering VNets Using PowerShell
+
+### VNet Reference Setup
+
+**Get VNet References:**
+```powershell
+$vnet3 = Get-AzVirtualNetwork -Name Vnet3 -ResourceGroupName App1
+$vnet3
+$vnet4 = Get-AzVirtualNetwork -Name Vnet4 -ResourceGroupName App1
+```
+
+**Get VNet ID:**
+```powershell
+$vnet4.Id
+```
+
+### Create Peering Connections
+
+**First Direction (Vnet3 to Vnet4):**
+```powershell
+Add-AzVirtualNetworkPeering -Name Vnet3-4 -VirtualNetwork $vnet3 `
+    -RemoteVirtualNetworkId $vnet4.Id
+```
+*Note: This uses backtick (`) for line continuation*
+*Optional: Add `| Out-Null` to suppress output*
+
+**Second Direction (Vnet4 to Vnet3):**
+```powershell
+Add-AzVirtualNetworkPeering -Name Vnet4-3 -VirtualNetwork $vnet4 `
+    -RemoteVirtualNetworkId $vnet3.Id
+```
+
+### Check Peering Status
+
+**Get Peering State from VNet3 Perspective:**
+```powershell
+(Get-AzVirtualNetworkPeering -ResourceGroupName App1 -VirtualNetworkName Vnet3 | Select-Object PeeringState).PeeringState
+```
+
+---
+
+## AZ-500 Practice Questions & Answers
+
+### Question Set 1: VNet Peering Benefits
+
+**Q1: What is the benefit of peering VNets together?**
+- ❌ Peered VNet routing tables are merged and treated as one
+- ✅ **Communication across VNets using private IP addresses**
+- ❌ Inter-VNet traffic sent over Internet through VPN tunnel
+- ❌ Communication across VNets using public IP addresses
+
+### Question Set 2: Network Watcher Tools
+
+**Q2: Which VNet monitoring tool should you use to check specific TCP port reachability from the Internet?**
+- ❌ Packet capture
+- ❌ Next hop
+- ❌ NSG flow diagnostics
+- ✅ **IP flow verify**
+
+### Question Set 3: VNet Peering Traffic Control
+
+**Q3: You plan on peering VNET1 to VNET2. A VPN connects on-premises to VNET1. Ensure traffic to VNET2 from VNET1 originated from VNET1.**
+- ✅ **Block traffic that originates from outside the remote virtual network**
+- ❌ Use the remote virtual network's gateway or Route Server
+- ❌ Block all traffic to the remote virtual network
+- ❌ Block traffic that originates from within the remote virtual network
+
+### Question Set 4: CLI Commands
+
+**Q4: You need to show all network security groups using CLI. Which command should you use?**
+- ❌ az nsg list
+- ✅ **az network nsg list**
+- ❌ az vnet nsg list
+- ❌ az network nsg get
+
+### Question Set 5: NSG Association
+
+**Q5: To which Azure resources can a network security group be directly associated?**
+- ❌ Virtual machines
+- ❌ RDS instances
+- ✅ **Subnets**
+- ✅ **Network interfaces**
+
+### Question Set 6: PowerShell NSG Management
+
+**Q6: Which PowerShell cmdlet is used to associate a network security group with a subnet?**
+- ✅ **Set-AzVirtualNetworkSubnetConfig**
+- ❌ Add-AzVirtualNetworkSubnetConfig
+- ❌ New-AzNetworkSecurityGroup
+- ❌ Add-AzVirtualNetworkSecurityGroup
+
+### Question Set 7: Subnet Creation
+
+**Q7: How can subnets be created using the portal?**
+- ❌ Create the subnet within the existing virtual machine
+- ❌ Create a new subnet resource
+- ✅ **Create the subnet within the existing VNet**
+- ❌ Create the subnet by uploading an ARM template
+
+### Question Set 8: CLI Subnet Commands
+
+**Q8: Which CLI command can be used to show subnets for a given VNet?**
+- ✅ **az network vnet subnet list --resource-group App1 --vnet-name vnet3**
+- ❌ az vnet network subnet list --resource-group App1 --vnet-name vnet3
+- ❌ az network vnet subnet show --resource-group App1 --vnet-name vnet3
+- ❌ az vnet subnet list --resource-group App1 --vnet-name vnet3
+
+### Question Set 9: VNet Peering CLI
+
+**Q9: Which CLI command peers VNets together?**
+- ✅ **az network vnet peering create**
+- ❌ az network create peer
+- ❌ az network vnet show
+- ❌ az vnet peer create
+
+### Question Set 10: PowerShell Syntax Error
+
+**Q10: What is wrong with the following PowerShell expression?**
+```powershell
+New-AzVirtualNetwork ... -AddressPrefix 30.0.0.0/64
+```
+- ❌ The 30 IP address range cannot be used with Azure VNets
+- ❌ "CanadaEast" is not a valid Azure region
+- ✅ **A /64 mask is not possible for IPv4 networks**
+- ❌ There is no cmdlet named "New-AzVirtualNetwork"
+
+### Question Set 11: NSG Rule Priority
+
+**Q11: You have multiple NSG rules (allow SSH vs deny SSH). How do you control which rule is processed first?**
+- ❌ Weight value
+- ✅ **Priority number**
+- ❌ DNS round robin
+- ❌ You cannot control the rule processing order
+
+### Question Set 12: PowerShell Peering Syntax
+
+**Q12: Which PowerShell expression sets up one way of a VNet peering connection?**
+- ❌ `Add-AzVirtualNetworkPeering -Name Vnet3-Vnet4 -VirtualNetwork $vnet3 -RemoteVirtualNetworkId "Vnet4"`
+- ❌ `Add-AzVirtualNetworkPeering -Name Vnet3-Vnet4 -VirtualNetwork $vnet3 -RemoteVirtualNetworkId $vnet4`
+- ❌ `Add-AzVirtualNetworkPeering -Name Vnet3-Vnet4 -VirtualNetwork "Vnet3" -RemoteVirtualNetworkId $vnet4.Id`
+- ✅ **`Add-AzVirtualNetworkPeering -Name Vnet3-Vnet4 -VirtualNetwork $vnet3 -RemoteVirtualNetworkId $vnet4.Id`**
+
+---
+
+## Key Takeaways for AZ-500
+
+### Critical Concepts
+
+**VNet Planning:**
+- Plan RFC1918 address blocks with future growth in mind
+- Keep subnets within VNet prefixes
+- IPv6 subnets are always /64
+
+**NSG Evaluation Order:**
+- **Lowest numeric priority first** (100 before 65000)
+- **Inbound path:** Subnet → Network Interface
+- **Outbound path:** Network Interface → Subnet
+- Default rules have priority 65000+
+
+**Network Watcher Tools:**
+- **IP flow verify** - Test allow/deny for specific traffic
+- **Effective security rules** - View combined NSG policies
+- **Topology** - Visual dependency mapping
+
+**VNet Peering Characteristics:**
+- **Non-transitive** - A↔B and B↔C doesn't mean A↔C
+- **Enable "allow forwarded traffic"** for hub-and-spoke with NVAs
+- **Traffic stays on Microsoft backbone** - never goes over internet
+
+**Command Syntax:**
+- CLI uses `az network` prefix for networking commands
+- PowerShell uses `$variable.Id` for resource references
+- Backtick (`) used for PowerShell line continuation
+- NSG association requires `Set-AzVirtualNetworkSubnetConfig`
+
+**Security Best Practices:**
+- Apply NSGs at both subnet and network interface levels
+- Use priority numbers to control rule evaluation order
+- Monitor effective security rules to verify intended behavior
+- Plan peering relationships carefully for security boundaries

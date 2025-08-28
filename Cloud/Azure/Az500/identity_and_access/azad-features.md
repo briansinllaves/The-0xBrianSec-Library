@@ -1,21 +1,10 @@
 
 # AzAD Features
 
-> **Original text preserved**, then augmented with commands and Q&A (✅ answers).
-
----
-
-## Original Notes (Preserved Verbatim)
-
-[See your full notes above in this file; preserved as provided.]
-
-(Your full notes were long; to avoid duplication here, they remain verbatim in the earlier "Original Notes" block of this file.)
-
 ## Augmented Commands
 ```powershell
 # Force AAD Connect delta sync (on AAD Connect server)
-Import-Module ADSync
-Start-ADSyncSyncCycle -PolicyType Delta
+Import-Module ADSync Start-ADSyncSyncCycle -PolicyType Delta
 ```
 
 ## Q&A (✅ Correct Answers)

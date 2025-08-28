@@ -1,244 +1,460 @@
-Deploying Az SQL
-
-    • Create a db
-    • Home|Az SQL> create single db, options include elastic pool/db server, ties to a sql db, create new link, auth method-use both sql and az ad auth., set ad admin, 
-        ○ So now you have az admin & sql admin creds to know
-        ○ Set Server admin login
-            § Username: sqlserveradmin
-        ○ Choose workload env: development
-        ○ Backup: locally redundant backup storage
-    • Networking/RemoteManagement
-        ○ Can use ssms to manage it from public.
-        ○ Set connectvity method: public
-    • FW
-        ○ Yes
-            § Allow az services and resources to access this server
-            § Add current client ip address
-        ○ Connection policy
-            § Redirect - Clients establish connections directly to the node hosing the db
-    • Security
-        ○ Can add 'defender for sql'
-    • Add. Settings
-        ○ Use existing data-Sample
-    • Create
-    • Home>sql overview >
-        ○ To see data, Query editor> sign in
-        ○ Select * from salesit.customer
-        ○ Compute+storage
-        ○ Replica button for HA
-     
-Managing SQL Login Creds
+# Deploying Azure SQL
 
-Setup sql in az
-• Allow client ip inbound through firewall
-• Add sqladmin role
-Create Account In SMSS
-    • Server name: example.database.windows.net
-    • Login: sqladmin   nmae created in azure
-    • On left explorer, db > security > rght click "Logins"
-    • 
+## Creating Azure SQL Database
 
-• Create a user
-    • Exapnd "Databases" > Security > right clcik Users > 
-    
-• 
+### Initial Deployment
 
+**Navigation:** `Home → Azure SQL → Create Single Database`
 
-Configuring DB authentication
+**Database Options:**
+- Single database
+- Elastic pool/database server (ties to a SQL database)
 
-Azure/Server login
-We can use entra id to connect to az sql dbs, connect az sql to smss
-Security>Logins, we can manage logins specific to sql 
-The logins apply to the server, 
+### Server Configuration
 
-For db login
-Under the db > security > login, 
+**Authentication Methods:**
+- **SQL Authentication** - Traditional username/password
+- **Azure AD Authentication** - Integrated with Entra ID
+- **Recommended:** Use both SQL and Azure AD auth
 
+**Admin Accounts to Track:**
+- **Azure AD Admin** - Set during creation
+- **SQL Server Admin** - Username: `sqlserveradmin`
 
-Allow db access to az user:
+**Environment Settings:**
+- **Workload Environment:** Development (affects sizing and costs)
+- **Backup Storage:** Locally redundant backup storage
 
-This wont work
+### Networking Configuration
 
+**Connectivity Method:** Public endpoint
 
+**Firewall Rules:**
+- **Allow Azure services and resources** to access this server
+- **Add current client IP address** for management access
 
-Connect to sql server> for authentication use Az AD- pw
+**Connection Policy Options:**
+- **Redirect** - Clients establish connections directly to the node hosting the database
+- **Proxy** - All connections routed through Azure SQL Database gateway
+- **Default** - Redirect for Azure connections, Proxy for external connections
 
-Put in the user principal
+### Security Options
 
+**Available Security Features:**
+- **Microsoft Defender for SQL** - Advanced threat protection
+- **Transparent Data Encryption (TDE)** - Data at rest encryption (enabled by default)
+- **Dynamic Data Masking** - Hide sensitive data from non-privileged users
+- **Azure SQL Auditing** - Track database events
 
-Managing Az SQL Settings
+**Additional Settings:**
+- **Use existing data** - Sample database option
+- **Collation** - Database character set and sorting rules
 
+### Post-Deployment Access
 
-• Security options can include:
-    • Replicas
-    • Sync
-    • Azure SQL Auditing
-        ○ Storage account keys
-        ○ Enable Ledger cryptographic proof of data integrity
-            § Proof no tampering has happened
-    • Dynamic data masking
-    • Defender for Cloud
-    • Transparent data encryption
-        ○ Storage/data at rest
-        ○ On by default
-    
-    • If sqlserver logins and az ad logins, don’t check Support AzAD auth only. 
-    • IAM
-    • Backups, retention policy
-    • Sql server | Identity
-        ○ Managed ID
-            § If you need to grant SQL permissions to other resources
-    
+**Query Editor Access:**
+1. Navigate to `SQL Database → Query Editor`
+2. Sign in with SQL or Azure AD credentials
+3. Execute queries: `SELECT * FROM SalesLT.Customer`
 
+**Management Options:**
+- **Compute + Storage** - Scale resources up/down
+- **Replica** button for high availability configuration
 
+---
 
+## Managing SQL Login Credentials
 
+### SQL Server Management Studio (SSMS) Setup
 
-Enabling Az SQL High Availability
+**Connection Configuration:**
+- **Server name:** `example.database.windows.net`
+- **Authentication:** SQL Server Authentication or Azure Active Directory
+- **Login:** Use admin account created during deployment
 
-• Sqlserver overview | data management | replicas
-• Go to properties of same sql db different server(maybe in a diff region),
-• Connection Strings to connect to db
-• GEO- is  the replica - readable
-Can choose "Forced failover" due to region outage. Can cause short connectivity loss.
-If you stop replication, geo will become a standalone
+### Creating SQL Server Logins
 
+**Server-Level Logins:**
+1. Connect to server in SSMS
+2. Expand **Security** → **Logins**
+3. Right-click **Logins** → **New Login**
+4. Configure login properties and permissions
 
-Managing SQL Information Protection Policy
+**Login Properties:**
+- Login name and authentication method
+- Default database assignment
+- Server role membership
+- User mapping to databases
 
+### Creating Database Users
 
-• SQL db overview|Security| Data Discovery and classification (must have correct perms)
-Information Protection
+**Database-Level Users:**
+1. Expand **Databases** → Select target database
+2. Expand **Security** → **Users**
+3. Right-click **Users** → **New User**
+4. Map user to login or create contained user
 
+**User Types:**
+- **SQL user with login** - Maps to server login
+- **SQL user without login** - Contained database user
+- **Windows user** - For Azure AD integration
+- **Azure AD user** - For cloud-based authentication
 
-• SQL Information Protection
-• Microsoft Information Protection
+---
 
-• Policy labels:
-Confidental - GPDR, CC, finance, banking, L,M,H.
+## Configuring Database Authentication
 
-• Add a classifications and labels
-• Review Dashboard charts
+### Authentication Methods
 
+**Azure/Server Login:**
+- Server-level authentication
+- Managed at SQL Server instance level
+- Applies to all databases on the server
 
+**Database Login:**
+- Database-specific authentication
+- Contained within individual database
+- Independent of server-level logins
 
-Configuring SQL Role Access using Portal
+### Azure AD Integration
 
-Give IAM sql admin role:
-    • Management
-    • Resource group
-    • Not at the sql db level, but on server
-        ○ Sql db contributor
-        ○ Add resource group
+**Entra ID Connection:**
+- Use Azure AD credentials to connect to SQL databases
+- Connect through SSMS with Azure AD authentication
+- Supports multi-factor authentication (MFA)
 
+**Azure AD User Access:**
+To allow database access to Azure AD users:
 
+1. Connect to SQL Server with Azure AD authentication
+2. Use Azure AD - Password authentication method
+3. Enter the user principal name (UPN)
 
-Configuring SQL Role Access using CLI
+**Important:** Must sign in with Azure AD account to manage Azure AD users in database
 
->az role --help
-Ø Az role assignment --help
-Ø Az role assignment create --help
+---
 
-Create/Delete role assignment
-    > Az role assignment create --role "SQL DB Contributor" --assignee user@test.onmicrosoft.com --resource-group app1
-    • Check
-        ○ Resource group app1 > IAM > see sql db contributor
+## Managing Azure SQL Settings
 
-Verify / List
-> az role assignment list --resource-group App1
+### Security Configuration Options
 
+**Available Security Features:**
 
-Configuring SQL Role Access using PwSh
+**Replicas:**
+- High availability and disaster recovery
+- Read replicas for performance scaling
+- Geo-replication across regions
 
-GET-COMMAND *roleassign*
+**Synchronization:**
+- Data synchronization between databases
+- Conflict resolution policies
+- Bidirectional data flow
 
-Set new role:
+**Azure SQL Auditing:**
+- **Storage Account Keys** - Audit log storage configuration
+- **Enable Ledger** - Cryptographic proof of data integrity
+- **Tamper Detection** - Proof no data tampering has occurred
 
-> New-AzRoleAssignment -SignInName user@test.onmicrosoft.com -RoleDefinitionName "SQL DB Contributor" -ResourceGroupName App1
+**Dynamic Data Masking:**
+- Hide sensitive data from non-privileged users
+- Configure masking rules per column
+- Multiple masking functions available
 
-Get RBAC role at that scope
-> Get-AzRoleAssignment -SignInName user@test.onmicrosoft.com -ResourceGroupName App1
+**Microsoft Defender for Cloud:**
+- Advanced threat protection
+- Vulnerability assessments
+- Security recommendations
 
-Delete role assignment
-> Remove-AzRoleAssignment -SignInName user@test.onmicrosoft.com -RoleDefinitionName "SQL DB Contributor" -ResourceGroupName App1
+**Transparent Data Encryption (TDE):**
+- **Storage/Data at Rest** encryption
+- **Enabled by default** on new databases
+- Customer-managed keys supported
 
+### Authentication Configuration
 
+**Mixed Authentication Mode:**
+- Support both SQL Server logins and Azure AD logins
+- **Don't check "Support Azure AD auth only"** if using mixed mode
 
-TEST
+**Identity and Access Management (IAM):**
+- Role-based access control at resource level
+- Managed Identity configuration available
 
+**Backup Configuration:**
+- Retention policy settings
+- Point-in-time restore capabilities
+- Long-term retention options
 
- You have a new Azure subscription with no resources deployed. After deploying Azure SQL Database, how many resources will exist?
+**Managed Identity:**
+Located under `SQL Server → Identity`
+- **Use Case:** When SQL needs to grant permissions to other Azure resources
+- **System-assigned** or **user-assigned** identity options
 
+---
 
-3
-1
-2
-4
+## Enabling Azure SQL High Availability
 
-You have deployed Azure SQL but are unable to connect to the SQL server from your on-premises laptop computer. Which items should you check?
+### Replica Configuration
 
-Client IP has been added to firewall
-Azure AD authentication is enabled
-SQL public accessibility is enabled
-TDE is enabled
+**Navigation:** `SQL Server Overview → Data Management → Replicas`
 
+**Replica Properties:**
+- Same SQL database on different server (possibly different region)
+- **Connection Strings** available for application connectivity
+- **Geo-replica** is readable for read-only workloads
 
-You are attempting to add Azure AD users to a SQL database but keep getting errors even though the SQL syntax is correct. What is the most probable cause of the problem?
+### Failover Options
 
-Azure AD Connect has not been configured
-The SQL server is not running
-SQL TDE has not been configured
-You have not signed into SQL with an Azure AD account
+**Forced Failover:**
+- Use during region outages
+- **Warning:** May cause short connectivity loss
+- Primary becomes secondary after failover
 
+**Replication Management:**
+- **Stop Replication** - Geo-replica becomes standalone database
+- **Monitor Lag** - Track synchronization delay
+- **Test Failover** - Validate disaster recovery procedures
 
+### High Availability Features
 
-You need to map a SQL Server user to a database. Which SQL syntax should you use?
+**Built-in Availability:**
+- Automatic backups and point-in-time restore
+- Zone-redundant configuration options
+- 99.99% SLA for General Purpose tier
 
-New-Login
-CREATE USER
-New-User
-CREATE LOGIN 
+---
 
+## Managing SQL Information Protection Policy
 
-You need to grant RBAC role permissions for SQL to an Azure AD user using the CLI. What is wrong with the following expression?
- 
+### Data Discovery and Classification
+
+**Navigation:** `SQL Database Overview → Security → Data Discovery and Classification`
+
+**Prerequisites:** Must have correct permissions to access classification features
+
+**Information Protection Integration:**
+- **SQL Information Protection** - Database-specific policies
+- **Microsoft Information Protection** - Organization-wide policies
+
+### Policy Labels
+
+**Classification Categories:**
+- **Confidential** - GDPR, Credit Card, Financial, Banking data
+- **Sensitivity Levels:** Low, Medium, High
+- **Information Types:** Built-in and custom types
+
+### Classification Management
+
+**Adding Classifications:**
+1. Review recommended classifications
+2. **Add classifications and labels** manually
+3. **Accept recommendations** for automated discovery
+4. **Review Dashboard** charts for classification overview
+
+**Compliance Benefits:**
+- GDPR compliance reporting
+- Data governance insights
+- Risk assessment capabilities
+
+---
+
+## Configuring SQL Role Access using Portal
+
+### Resource-Level RBAC
+
+**Role Assignment Location:**
+- **Not at SQL database level**
+- **At SQL Server level** or higher (Resource Group/Subscription)
+
+**Common Roles:**
+- **SQL DB Contributor** - Manage databases but not access data
+- **SQL Server Contributor** - Manage SQL servers
+- **SQL Security Manager** - Manage security policies
+
+**Assignment Process:**
+1. Navigate to **Resource Group → Access Control (IAM)**
+2. **Add Role Assignment**
+3. Select **SQL DB Contributor** role
+4. **Assign access to:** User, group, or service principal
+5. **Select members** and assign
+
+---
+
+## Configuring SQL Role Access using CLI
+
+### CLI Role Management Commands
+
+**Get Help:**
+```bash
+az role --help
+az role assignment --help
+az role assignment create --help
+```
+
+### Create Role Assignment
+
+**Assign SQL DB Contributor Role:**
+```bash
+az role assignment create --role "SQL DB Contributor" --assignee user@test.onmicrosoft.com --resource-group app1
+```
+
+**Verification:**
+Check `Resource Group app1 → IAM` to see SQL DB Contributor assignment
+
+### List Role Assignments
+
+**Verify Assignment:**
+```bash
+az role assignment list --resource-group App1
+```
+
+**Filter by User:**
+```bash
+az role assignment list --assignee user@test.onmicrosoft.com --resource-group App1
+```
+
+---
+
+## Configuring SQL Role Access using PowerShell
+
+### PowerShell Role Management Commands
+
+**Discover Available Commands:**
+```powershell
+Get-Command *roleassign*
+```
+
+### Role Assignment Operations
+
+**Create New Role Assignment:**
+```powershell
+New-AzRoleAssignment -SignInName user@test.onmicrosoft.com -RoleDefinitionName "SQL DB Contributor" -ResourceGroupName App1
+```
+
+**Get RBAC Roles at Scope:**
+```powershell
+Get-AzRoleAssignment -SignInName user@test.onmicrosoft.com -ResourceGroupName App1
+```
+
+**Remove Role Assignment:**
+```powershell
+Remove-AzRoleAssignment -SignInName user@test.onmicrosoft.com -RoleDefinitionName "SQL DB Contributor" -ResourceGroupName App1
+```
+
+---
+
+## AZ-500 Practice Questions & Answers
+
+### Question Set 1: Deployment and Resources
+
+**Q1: You have a new Azure subscription with no resources deployed. After deploying Azure SQL Database, how many resources will exist?**
+- ❌ 3
+- ❌ 1
+- ✅ **2**
+- ❌ 4
+
+*Note: Azure SQL Database deployment creates both the SQL Server and the SQL Database resources*
+
+### Question Set 2: Connectivity Issues
+
+**Q2: You have deployed Azure SQL but are unable to connect to the SQL server from your on-premises laptop computer. Which items should you check?**
+- ✅ **Client IP has been added to firewall**
+- ❌ Azure AD authentication is enabled
+- ✅ **SQL public accessibility is enabled**
+- ❌ TDE is enabled
+
+### Question Set 3: Azure AD Integration
+
+**Q3: You are attempting to add Azure AD users to a SQL database but keep getting errors even though the SQL syntax is correct. What is the most probable cause?**
+- ❌ Azure AD Connect has not been configured
+- ❌ The SQL server is not running
+- ❌ SQL TDE has not been configured
+- ✅ **You have not signed into SQL with an Azure AD account**
+
+### Question Set 4: SQL Syntax
+
+**Q4: You need to map a SQL Server user to a database. Which SQL syntax should you use?**
+- ❌ New-Login
+- ✅ **CREATE USER**
+- ❌ New-User
+- ❌ CREATE LOGIN
+
+### Question Set 5: CLI Role Assignment
+
+**Q5: You need to grant RBAC role permissions for SQL to an Azure AD user using CLI. What is wrong with the following expression?**
+```bash
 az role assignment create --role "SQL DB Contributor" --user cblackwell@quick24x7testing.info
+```
+- ❌ The assignment scope has not been specified
+- ❌ "SQL DB Contributor" is not a valid role name
+- ✅ **"--user" should be "--assignee"**
+- ❌ "az role assignment create" should be "az sql role assignment create"
 
+### Question Set 6: Data Classification
 
+**Q6: What is the purpose of a SQL data sensitivity label?**
+- ❌ Define the sensitivity level of data stored in a row
+- ❌ Define the sensitivity level of data stored in a table
+- ✅ **Define the sensitivity level of data stored in a column**
+- ❌ Define the sensitivity level of data stored in a database
 
-The assignment scope has not been specified
-“SQL DB Contributor” is not a valid role name
-“--user” should be “--assignee”
-“az role assignment create” should be “az sql role assignment create”
+### Question Set 7: PowerShell RBAC
 
+**Q7: Which PowerShell cmdlet can be used to grant SQL permissions to an Azure AD user?**
+- ✅ **New-AzRoleAssignment**
+- ❌ Set-AzUser
+- ❌ Grant-AzUser
+- ❌ Grant-AzRoleAssignment
 
+### Question Set 8: Database Configuration
 
-What is the purpose of a SQL data sensitivity label?
+**Q8: Which SQL configuration allows multiple databases to use the same underlying resource configuration?**
+- ❌ TDE
+- ❌ DTU
+- ❌ Dynamic data masking
+- ✅ **Elastic pool**
 
-Define the sensitivity level of data stored in a row
-Define the sensitivity level of data stored in a table
-Define the sensitivity level of data stored in a column
-Define the sensitivity level of data store in a database
+### Question Set 9: Geo-Replication
 
+**Q9: You are adding an Azure SQL Database replica in a secondary region. SQL has not yet been deployed to the region. Which type of objects will be created in the secondary region upon successful replica configuration?**
+- ❌ Azure Key Vault
+- ✅ **Azure SQL Database**
+- ✅ **Azure SQL Server**
+- ❌ Azure Storage Account
 
-Which PowerShell cmdlet can be used to grant SQL permissions to an Azure AD user?
+---
 
-New-AzRoleAssignment
-Set-AzUser
-Grant-AzUser
-Grant-AzRoleAssignment
+## Key Takeaways for AZ-500
 
-Which SQL configuration allows multiple databases to use the same underlying resource configuration?
+### Critical Concepts
 
-TDE
-DTU
-Dynamic data masking
-Elastic pool
+**Authentication and Authorization:**
+- Azure AD authentication requires signing in with Azure AD account to manage Azure AD users
+- Mixed authentication mode supports both SQL and Azure AD logins
+- RBAC roles are assigned at server or resource group level, not database level
 
+**Security Features:**
+- TDE is enabled by default for data at rest encryption
+- Dynamic data masking hides sensitive data from non-privileged users
+- Microsoft Defender for SQL provides advanced threat protection
+- Data classification supports GDPR compliance and governance
 
-You are adding an Azure SQL Database replica in a secondary region. SQL has not yet been deployed to the region. Which type of objects will be created in the secondary region upon successful replica configuration?
+**High Availability:**
+- Geo-replicas provide disaster recovery and read scaling
+- Forced failover may cause brief connectivity interruption
+- Stopping replication converts geo-replica to standalone database
 
-Azure Key Vault
-Azure SQL Database
-Azure SQL Server
-Azure Storage Account
+**Command Syntax:**
+- CLI: Use `--assignee` parameter, not `--user`
+- PowerShell: `New-AzRoleAssignment` for creating role assignments
+- SQL: `CREATE USER` maps users to databases, `CREATE LOGIN` creates server-level logins
+
+**Network Security:**
+- Client IP must be added to firewall for external connections
+- Public accessibility must be enabled for internet connections
+- Azure services can be allowed through firewall rules
+
+**Resource Deployment:**
+- Azure SQL Database deployment creates both SQL Server and Database resources
+- Elastic pools allow resource sharing across multiple databases
+- Geo-replication creates additional server and database objects in target region

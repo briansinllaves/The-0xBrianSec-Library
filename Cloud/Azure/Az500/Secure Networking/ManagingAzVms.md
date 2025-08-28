@@ -1,139 +1,366 @@
+# Managing Azure VMs
 
-    # ManagingAzVms
+## Linux SSH Public Key Authentication
 
-    > **Your raw notes are preserved verbatim below**, then expanded with senior-operator theory, validated commands, and Q&A with ✅ marking the correct answers.
+### Overview
 
-    ---
-    ## Original Notes (Preserved Verbatim)
-    ```
-    (Your full ManagingAzVms notes pasted above are preserved in this file.)
+SSH public key authentication provides secure, password-less access to Linux VMs using cryptographic key pairs.
 
-ManagingAzVms 
-LINUX SSH PUBLIC KEY AUTHENTICATION
+**Key Components:**
+- **Public key** - Stored on the VM (server side)
+- **Private key** - Stored on client/admin workstation
+- **Authentication process** - Private key proves identity to public key
 
-Can create when your creating your vm
-GENERATING SSH KEY PAIRS
-	• Vm overview >  reset pw
-	• Putty - ssh keygen
-	• Public key stored in vm overview
-	• Private key is stored on client.
-	• For putty have to convert to ppk.
-		○ Ssh-auth. Puttykeygenpair.ppk
-CONFIGURING LINUX SSH PUB KEY AUTH
-Stored in .ssh/
-public
-MANAGING VMs THROUGH Az BASTION
-Windows vm internal has no public ip
-Winserver overview, click connect- choose bastion
-Basion enables you to rdp and ssh to vm without exposing a public ip on the vm, directly from the azure portal, without th need of any additional client/agent software. 
-you connect with username, auth type password/keyvault password and password. 
-ENABLING JIT VM ACCESS
-Only give perms for a specific amount of time from a particular location
-	• Go to the machine of interest
-		○ Configuration, enable JIT (click button)
-	• Defender for Cloud > Workload protections > servers> under advanced protect>JIT> Review configured and not configured, config port, ip, and time allowed. 
-		○ Requestor, Click server and then choose "request access", toggle, on, my ip, 1 hr. add in request justification, "openports"
-	• JIT will dynimcally modify nsg rules to allow for that port in that time. 
-ADDING Az VM EXTENSIONS
-	• Open virtual machine>settings>extenstions+applications
-	• Review status
-	• Click extension link for details.
-	• Can in/un install extensions from overview
-	• Click install, choose extension
-	• "Configure Custom Script for Linux Extension"
-		○ This will allow you to do a lot of config in the vm
-		○ Upload script, allows you to browse a Storage Account
-		○ Command: sh who.sh    create/deploy
-			§ Make sure script doesn’t require user input
-			§ No reboot statements, 98 minutes to run, can only be executed once. 
-	• Vm > identity, enable "system assigned", this means you can assign perms to this machine. 
-	• Check Storage account overview, IAM> role assignments> see permsions to read storage blob, 
-	• Look at Storage account>Contianer>scripts>who.sh, edit
-LIMITING VM ACESS USING ROLES
-	• Vm overview, IAM, add role assignments
-	• Resource group, IAM, add role, set vm perms to the whole resource group
-	• Subscription overview, IAM, add role, and it trickles down. 
-		○ Search "virtual machine "
-		○ Virtual machine contributor
-			§ Users group-
-			§ Managed id, is if its talking to another app
-	• If you delete machine that is "system assigned" be sure to delete that as well, 
-	• Userassigned, are associated with resources, not tied to resource lifecycle. 
-TEST
-	(Questions preserved below in Q&A)
-    ```
+### SSH Key Creation Options
 
-    ---
-    ## Senior‑Level Context & Theory
-    - **SSH key auth**: Public key lands in `~/.ssh/authorized_keys` on the VM; private key stays on admin station (`~/.ssh/id_rsa` or `.pem`). PuTTY requires `.ppk` conversion.
-- **Bastion**: Requires `AzureBastionSubnet` (/26+). No public IP on VMs; browser-based RDP/SSH; avoids inbound NSG holes.
-- **JIT**: Through Defender for Cloud; opens NSG rules just-in-time for specific IP/port/duration; default max commonly 3 hours.
-- **VM Extensions**: Lightweight agents (Custom Script, Diagnostics, Dependency agent, etc.). Custom Script is non-interactive and time-bounded.
-- **RBAC**: Assign at the narrowest scope that meets ops; RG-level is often the sweet spot for least effort + control.
+**During VM Creation:**
+- Generate key pair automatically during VM deployment
+- Upload existing public key during VM creation process
 
-    ---
-    ## Validated Commands – PowerShell
-    ```powershell
-    # Custom Script Extension (Linux)
-Set-AzVMExtension -ResourceGroupName App1 -VMName vm1 -Name "CustomScriptForLinux" -Publisher Microsoft.Azure.Extensions `
-  -ExtensionType "CustomScript" -TypeHandlerVersion 2.1 `
-  -SettingString '{ "fileUris": ["https://<storage>.blob.core.windows.net/scripts/who.sh"], "commandToExecute": "sh who.sh" }'
+**Post-Deployment:**
+- VM Overview → Reset Password → Configure SSH keys
+- Generate new key pairs using SSH tools
 
-# Enable System-Assigned Identity
-$vm = Get-AzVM -ResourceGroupName App1 -Name vm1
-Update-AzVM -ResourceGroupName App1 -VM $vm -IdentityType SystemAssigned
+---
 
-# List role assignments on a VM
-Get-AzRoleAssignment -Scope (Get-AzVM -Name vm1 -ResourceGroupName App1).Id
-    ```
+## Generating SSH Key Pairs
 
-    ## Validated Commands – Azure CLI
-    ```bash
-    # Generate SSH key (OpenSSH)
+### Key Generation Tools
+
+**PuTTY Key Generator:**
+- Use PuTTYgen for Windows environments
+- Generates key pairs in PuTTY format (.ppk)
+- Can convert between different key formats
+
+**OpenSSH (Linux/macOS/Windows):**
+```bash
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -C "admin@contoso"
+```
 
-# Create Bastion (requires AzureBastionSubnet existing)
-az network public-ip create -g App1 -n BastionPip --sku Standard
-az network bastion create -g App1 -n App1Bastion --public-ip-address BastionPip --vnet-name App1VNet --location eastus
+### Key Storage Locations
 
-# JIT via CLI
-az security jit-policy list -g App1
-    ```
+**Public Key Storage:**
+- **On VM:** `~/.ssh/authorized_keys` file
+- **Azure Portal:** VM Overview → SSH Keys section
 
-    ---
-    ## Q&A – AZ‑500 Focus (✅ Correct Answers)
-    - **What is the purpose of a Microsoft Azure virtual machine extension?**
-  - To provide the VM with access to a key vault
-  - ✅ To enable a small software agent in the VM to provide additional functionality
-  - To allow VM management through Azure Bastion
-  - To allow VM just-in-time (JIT) access
-- **What strategy allows management of some, but not all, VMs with the least administrative effort?**
-  - ✅ Apply RBAC roles to a resource group
-  - Apply RBAC roles to a management group
-  - Apply RBAC roles to individual VMs
-  - Apply RBAC roles to the entire subscription
-- **When configuring VM JIT access, what is the default maximum request time?**
-  - 1 hour
-  - 30 minutes
-  - ✅ 3 hours
-  - 15 minutes
-- **What is the benefit of managing Azure VMs through Bastion?**
-  - VMs do not need a private IP address
-  - Linux VMs do not require extensions
-  - Windows VMs do not require extensions
-  - ✅ VMs do not need a public IP address
-- **You configured SSH public key auth for a Linux VM. Where is the public key stored?**
-  - On the admin station in ~_rsa
-  - ✅ On the Linux server in ~/.ssh/authorized_keys
-  - On the Linux server in ~/id_rsa
-  - On the admin station in ~/.ssh/authorized_keys
-- **On a Linux admin station, where is the private key stored?**
-  - ~/.ssh/authorized_keys
-  - On the Linux server in ~/id_rsa
-  - On the Linux server in ~/.ssh/authorized_keys
-  - ✅ ~/.ssh/id_rsa
-- **Which type of key is used to decrypt (public-key crypto)?**
-  - Public
-  - Symmetrical
-  - Asymmetrical
-  - ✅ Private
+**Private Key Storage:**
+- **Client workstation:** `~/.ssh/id_rsa` (OpenSSH format)
+- **PuTTY:** Convert to `.ppk` format for PuTTY SSH client
+- **Authentication:** SSH client → Private key → Proves identity to VM
+
+### PuTTY Configuration
+
+**Private Key Format Conversion:**
+- **Requirement:** PuTTY requires `.ppk` format
+- **Process:** Use PuTTYgen to convert OpenSSH keys
+- **Configuration:** SSH → Auth → Browse to `.ppk` file
+
+---
+
+## Configuring Linux SSH Public Key Authentication
+
+### File System Storage
+
+**SSH Directory Structure:**
+- **Location:** `~/.ssh/` directory on Linux VM
+- **Public Key File:** `~/.ssh/authorized_keys`
+- **File Permissions:** Proper permissions critical for security
+
+**Key Management:**
+- Multiple public keys can be stored in `authorized_keys`
+- Each key typically on separate line
+- Comments help identify key owners
+
+---
+
+## Managing VMs Through Azure Bastion
+
+### Overview
+
+Azure Bastion enables secure RDP and SSH access to VMs without public IP addresses.
+
+**Key Benefits:**
+- **No public IP required** on target VMs
+- **Browser-based access** directly from Azure Portal
+- **No additional client software** needed
+- **Secure access** without exposing RDP/SSH ports to internet
+
+### Bastion Requirements
+
+**Network Requirements:**
+- **AzureBastionSubnet** - Dedicated subnet (/26 or larger)
+- **Standard SKU public IP** for Bastion host
+- **VNet integration** - Must be in same VNet as target VMs
+
+### Connection Process
+
+**Windows VM Access:**
+1. **Navigate to VM** → Overview
+2. **Click Connect** → Choose Bastion
+3. **Authentication options:**
+   - Username and password
+   - Key Vault stored credentials
+   - Azure AD authentication
+
+**Connection Details:**
+- **Protocol:** RDP for Windows, SSH for Linux
+- **Browser-based:** No external RDP/SSH client needed
+- **Secure tunnel:** Traffic encrypted through Azure backbone
+
+---
+
+## Enabling JIT VM Access
+
+### Overview
+
+Just-In-Time (JIT) VM Access provides time-limited, source IP-restricted access to VM management ports.
+
+**Security Benefits:**
+- **Temporary access** - Specific time duration
+- **Source IP restriction** - Limit access to specific locations
+- **Automatic cleanup** - Access automatically revoked after time expires
+
+### JIT Configuration
+
+**Enable JIT:**
+1. **Navigate to target VM** → Configuration
+2. **Click "Enable JIT"** button
+3. **Configure access policies** for different ports
+
+**Microsoft Defender for Cloud Integration:**
+1. **Defender for Cloud** → Workload Protections → Servers
+2. **Advanced Protection** → JIT
+3. **Review configured and not configured** VMs
+
+### JIT Access Request Process
+
+**Request Access:**
+1. **Click target server** in JIT dashboard
+2. **Choose "Request Access"**
+3. **Configure request parameters:**
+   - **Toggle ports** - Enable specific ports (RDP 3389, SSH 22)
+   - **Source IP** - "My IP" or custom range
+   - **Time duration** - Up to maximum allowed (default 3 hours)
+   - **Justification** - Reason for access request
+
+**Automatic NSG Modification:**
+- JIT dynamically modifies NSG rules
+- Allows specified port for specified time
+- Automatically removes rules when time expires
+
+---
+
+## Adding Azure VM Extensions
+
+### Overview
+
+VM Extensions are lightweight software agents that provide additional functionality to Azure VMs.
+
+**Navigation:** Virtual Machine → Settings → Extensions + Applications
+
+### Extension Management
+
+**Review Extension Status:**
+- **View installed extensions** and their status
+- **Click extension link** for detailed information
+- **Install/Uninstall** extensions from overview
+
+**Common Extension Types:**
+- **Custom Script Extension** - Execute scripts on VM
+- **Diagnostic Extension** - Monitoring and logging
+- **Dependency Agent** - Service mapping and monitoring
+- **Azure Monitor Agent** - Centralized monitoring
+
+### Custom Script Extension Configuration
+
+**Use Cases:**
+- **Post-deployment configuration** of VM settings
+- **Software installation** and configuration
+- **Application deployment** automation
+
+**Configuration Process:**
+1. **Click Install** → Choose "Custom Script Extension"
+2. **Script Source Options:**
+   - **Upload script file**
+   - **Browse Storage Account** for existing scripts
+3. **Command Configuration:**
+   - **Command:** `sh who.sh` (example for Linux)
+   - **Create/Deploy** extension
+
+### Custom Script Extension Limitations
+
+**Important Constraints:**
+- **Script must not require user input** - Fully automated execution
+- **No reboot statements** - Cannot restart VM during execution
+- **98-minute execution limit** - Maximum runtime constraint
+- **Single execution** - Can only be executed once per deployment
+
+### VM Managed Identity for Extensions
+
+**System-Assigned Identity:**
+1. **VM → Identity** → Enable "System Assigned"
+2. **Purpose:** Allows VM to authenticate to other Azure services
+3. **Permission Assignment:** Grant permissions to access required resources
+
+**Storage Account Access Example:**
+1. **Storage Account → IAM** → Role Assignments
+2. **Assign "Storage Blob Data Reader"** to VM's managed identity
+3. **VM can now access** Storage Account → Container → Scripts → who.sh
+
+---
+
+## Limiting VM Access Using Roles
+
+### RBAC Scope Options
+
+**Resource-Level Assignment:**
+- **VM Overview → IAM** → Add Role Assignments
+- **Granular control** over individual VMs
+- **Highest administrative overhead**
+
+**Resource Group-Level Assignment:**
+- **Resource Group → IAM** → Add Role
+- **VM permissions apply** to entire resource group
+- **Balanced approach** - good control with manageable overhead
+
+**Subscription-Level Assignment:**
+- **Subscription Overview → IAM** → Add Role
+- **Permissions trickle down** to all resources
+- **Broadest scope** - use carefully
+
+### Common VM Roles
+
+**Virtual Machine Contributor:**
+- **Manage VMs** but not access data
+- **Cannot manage** networking or storage independently
+- **Suitable for** VM administrators
+
+**Virtual Machine User Login:**
+- **Login to VM** using Azure AD credentials
+- **No administrative access** to VM
+- **Suitable for** end users needing VM access
+
+### Role Assignment Process
+
+**Search and Assign:**
+1. **Search "Virtual Machine"** roles
+2. **Select Virtual Machine Contributor**
+3. **Assign to:**
+   - **Users** - Individual user accounts
+   - **Groups** - User groups for easier management
+   - **Managed Identity** - For service-to-service communication
+
+### Managed Identity Lifecycle
+
+**System-Assigned Identity:**
+- **Tied to VM lifecycle** - Deleted when VM is deleted
+- **Automatic cleanup** - No orphaned identities
+- **Must manually clean up** role assignments if VM deleted
+
+**User-Assigned Identity:**
+- **Independent lifecycle** - Not tied to specific resource
+- **Can be shared** across multiple resources
+- **Persists after** resource deletion
+- **More complex management** but greater flexibility
+
+---
+
+## AZ-500 Practice Questions & Answers
+
+### Question Set 1: VM Extensions
+
+**Q1: What is the purpose of a Microsoft Azure virtual machine extension?**
+- ❌ To provide the VM with access to a key vault
+- ✅ **To enable a small software agent in the VM to provide additional functionality**
+- ❌ To allow VM management through Azure Bastion
+- ❌ To allow VM just-in-time (JIT) access
+
+### Question Set 2: RBAC Strategy
+
+**Q2: What strategy allows management of some, but not all, VMs with the least administrative effort?**
+- ✅ **Apply RBAC roles to a resource group**
+- ❌ Apply RBAC roles to a management group
+- ❌ Apply RBAC roles to individual VMs
+- ❌ Apply RBAC roles to the entire subscription
+
+### Question Set 3: JIT Access
+
+**Q3: When configuring VM JIT access, what is the default maximum request time?**
+- ❌ 1 hour
+- ❌ 30 minutes
+- ✅ **3 hours**
+- ❌ 15 minutes
+
+### Question Set 4: Bastion Benefits
+
+**Q4: What is the benefit of managing Azure VMs through Bastion?**
+- ❌ VMs do not need a private IP address
+- ❌ Linux VMs do not require extensions
+- ❌ Windows VMs do not require extensions
+- ✅ **VMs do not need a public IP address**
+
+### Question Set 5: SSH Public Key Storage
+
+**Q5: You configured SSH public key auth for a Linux VM. Where is the public key stored?**
+- ❌ On the admin station in ~/.ssh/id_rsa
+- ✅ **On the Linux server in ~/.ssh/authorized_keys**
+- ❌ On the Linux server in ~/id_rsa
+- ❌ On the admin station in ~/.ssh/authorized_keys
+
+### Question Set 6: SSH Private Key Storage
+
+**Q6: On a Linux admin station, where is the private key stored?**
+- ❌ ~/.ssh/authorized_keys
+- ❌ On the Linux server in ~/id_rsa
+- ❌ On the Linux server in ~/.ssh/authorized_keys
+- ✅ **~/.ssh/id_rsa**
+
+### Question Set 7: Cryptographic Keys
+
+**Q7: Which type of key is used to decrypt (public-key crypto)?**
+- ❌ Public
+- ❌ Symmetrical
+- ❌ Asymmetrical
+- ✅ **Private**
+
+---
+
+## Key Takeaways for AZ-500
+
+### Critical Concepts
+
+**SSH Key Authentication:**
+- **Public key** stored in `~/.ssh/authorized_keys` on VM
+- **Private key** stays on admin workstation (`~/.ssh/id_rsa`)
+- **PuTTY** requires `.ppk` format conversion
+- **Security benefit:** Eliminates password-based attacks
+
+**Azure Bastion:**
+- **Requires AzureBastionSubnet** (/26 or larger)
+- **No public IP needed** on target VMs
+- **Browser-based** RDP/SSH access through Azure Portal
+- **Eliminates need** for inbound NSG rules on management ports
+
+**Just-In-Time Access:**
+- **Managed through** Microsoft Defender for Cloud
+- **Dynamically modifies** NSG rules for temporary access
+- **Default maximum** commonly 3 hours
+- **Source IP restrictions** enhance security
+
+**VM Extensions:**
+- **Lightweight agents** providing additional functionality
+- **Custom Script Extension** for post-deployment automation
+- **Non-interactive execution** - no user input allowed
+- **Time-bounded** - 98-minute maximum execution
+
+**RBAC Best Practices:**
+- **Assign at narrowest scope** that meets operational requirements
+- **Resource group level** often provides best balance of control and effort
+- **System-assigned identities** tied to resource lifecycle
+- **User-assigned identities** independent of specific resources
+
+**Security Architecture:**
+- **Layer defense** using JIT, Bastion, and key-based authentication
+- **Minimize attack surface** by eliminating public IPs where possible
+- **Automate security** through extensions and managed identities
+- **Regular review** of role assignments and access patterns
