@@ -1,0 +1,1 @@
+[Best practices in cloud applications - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/best-practices/index-best-practices)

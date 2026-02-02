@@ -1,0 +1,1 @@
+[Technology choices for Azure solutions - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/technology-choices-overview?source=recommendations)
