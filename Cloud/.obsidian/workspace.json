@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/Describe the Microsoft Cybersecurity Reference Architecture.md",
+                "file": "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/4. DesignARsiliencyStrtegyForRsmwreAndOthrAttcksBsedOnMsftSecBstPrctices/1. Common cyberthreats and attack patterns.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Describe the Microsoft Cybersecurity Reference Architecture"
+              "title": "1. Common cyberthreats and attack patterns"
             }
           }
         ],
@@ -93,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 585.4999961853027
+    "width": 483.5
   },
   "right": {
     "id": "e6abfc786174cedc",
@@ -198,44 +198,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "be5f5137836bfe41",
+  "active": "da847f3fb085bf26",
   "lastOpenFiles": [
+    "Azure/SC-100/1sc100-pics/Pasted image 20260202134755.png",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/6. Design solutions that align to a Zero Trust rapid modernization plan.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/4. DesignARsiliencyStrtegyForRsmwreAndOthrAttcksBsedOnMsftSecBstPrctices/1. Common cyberthreats and attack patterns.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/5. Design AI solutions that align to the MCSB.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/4. Design solutions w- best pract for protct against int-ext-SupplyChain Attcks.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/3. Design solutions with best practices for capabilities and controls.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/2. Describe the MCSB.md",
+    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/7..md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/1. Describe the Microsoft Cybersecurity Reference Architecture.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/Msft CyberSec Reference Architecture.md",
     "Azure/Architecture/ArchCenter/Technology choices for Azure solutions.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/Describe the Microsoft Cybersecurity Reference Architecture.md",
     "Azure/Architecture/ArchCenter/Azure Government security.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/Msft CyberSec Reference Architecture.md",
     "Azure/Architecture/Azure Well-Architected Framework.md",
-    "Azure/Architecture/SC-100/SecuritySolutionsForInfrastructure/1.RequirementsForSecuring-SaaS-PaaS-IaaS-Services/4. Sec requirements for web workloads.md",
-    "Azure/Architecture/SC-100/SecuritySolutionsForInfrastructure/1.RequirementsForSecuring-SaaS-PaaS-IaaS-Services/3. Sec requirements for IoT workloads.md",
+    "Azure/SC-100/SecuritySolutionsForInfrastructure/1.RequirementsForSecuring-SaaS-PaaS-IaaS-Services/4. Sec requirements for web workloads.md",
+    "Azure/SC-100/SecuritySolutionsForInfrastructure/1.RequirementsForSecuring-SaaS-PaaS-IaaS-Services/3. Sec requirements for IoT workloads.md",
     "Azure/Architecture/DesignWrkloads-CloudDesignPatterns/Cloud design patterns.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/3. Accelerate ZTrust transformation-Zero Trust RaMP.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/2. best practices frameworks.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/1. Introduction to Zero Trust.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/4. Well-Architected Framework.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/5. Design a security and governance strategy.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/6. Design secure DevSecOps processes.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/3. Key security design decisions- Azure landing zones.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/0. Intro.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/2. Understand Azure landing zones.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/3. Accelerate ZTrust transformation-Zero Trust RaMP.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/2. best practices frameworks.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/1. Introduction to Zero Trust.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/4. Well-Architected Framework.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/5. Design a security and governance strategy.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/6. Design secure DevSecOps processes.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/3. Key security design decisions- Azure landing zones.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/0. Intro.md",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/2. Understand Azure landing zones.md",
     "Azure/Architecture/AI/Discovering AI security risks.md",
-    "Azure/Architecture/AI/Azure Notes_ AI Sec-DP and BP.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/1. CAF.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/2. AI security within the CAF.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/Zero Trust technology pillars/Secure data.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/Zero Trust technology pillars/Secure endpoints.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/Zero Trust technology pillars/Secure infrastructure.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/Zero Trust technology pillars/Secure networks.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/Zero Trust technology pillars/Securing Applications.md",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/Zero Trust technology pillars",
-    "Azure/Architecture/SC-100/1sc100-pics/Pasted image 20260201105425.png",
-    "Azure/Architecture/SC-100/1sc100-pics",
-    "Azure/Architecture/SC-100/SecOpsIdentityAndComplianceCapabilities/4. Design solutions for sec operations",
-    "Azure/Architecture/SC-100/SecOpsIdentityAndComplianceCapabilities/3 .Design solutions for securing privileged access",
-    "Azure/Architecture/SC-100/SecOpsIdentityAndComplianceCapabilities/2. Design solutions for identity and access management",
-    "Azure/Architecture/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/4. DesignARsiliencyStrtegyForRsmwreAndOthrAttcksBsedOnMsftSecBstPrctices",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF",
-    "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks"
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/Zero Trust technology pillars",
+    "Azure/SC-100/1sc100-pics/Pasted image 20260201105425.png",
+    "Azure/SC-100/1sc100-pics",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/4. Design solutions for sec operations",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/3 .Design solutions for securing privileged access",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/2. Design solutions for identity and access management",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/4. DesignARsiliencyStrtegyForRsmwreAndOthrAttcksBsedOnMsftSecBstPrctices",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF",
+    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks"
   ]
 }
