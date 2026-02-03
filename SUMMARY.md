@@ -109,7 +109,7 @@
         * [Restricting Resource Access with Roles (RBAC)](Cloud/Azure/Az500/identity_and_access/rbac-restricting-access.md)
         * [Securing Az AD Users – Authentication, Authorization and Identity Federation](Cloud/Azure/Az500/identity_and_access/securing-azad-users.md)
 * [Cyber Writing](cyber-writing/README.md)
-  * [How Hackers Use Cloud Services — What Small Business Owners Should Know](<Cyber Writing/Hackers-in-Cloud.md>)
+  * [How Hackers Use Cloud Services and What Small Business Owners Should Know](<Cyber Writing/Hackers-in-Cloud.md>)
   * [Modern Cybersecurity Trends Beyond Zero Trust](<Cyber Writing/current-cyber-trends-beyond-zta.md>)
   * [How CxOs and Multi-Context Architectures Are Shaping Workspaces](<Cyber Writing/executive-trends-n8n-architecture.md>)
   * [Where Malware Is Today: APIs, Internals, and Obfuscation](<Cyber Writing/malware-evolution-apis-obfuscation.md>)
