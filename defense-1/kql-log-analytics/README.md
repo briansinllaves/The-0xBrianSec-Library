@@ -1,2 +1,0 @@
-# KQL-Log Analytics
-
