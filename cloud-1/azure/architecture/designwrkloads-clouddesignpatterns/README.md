@@ -1,2 +1,0 @@
-# DesignWrkloads-CloudDesignPatterns
-
