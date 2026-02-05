@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance/3. compliance  reqs by using Msft Purview.md",
+                "file": "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/3 .Design solutions for securing privileged access/Secure privileged access.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3. compliance  reqs by using Msft Purview"
+              "title": "Secure privileged access"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.49999618530273
+    "width": 316.5
   },
   "right": {
     "id": "e6abfc786174cedc",
@@ -185,8 +185,18 @@
   },
   "active": "2783aee03d9ecd29",
   "lastOpenFiles": [
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/2. Design solutions for identity and access management/5. My ext ID to KeyVault Access note.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/3 .Design solutions for securing privileged access/Secure privileged access.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/2. Design solutions for identity and access management/4. solution to manage secrets, keys, and certificates.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/2. Design solutions for identity and access management/3. Reqs for securing AD DS.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/2. Design solutions for identity and access management/2. align Conditional Access policies with a Zero Trust strategy.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/2. Design solutions for identity and access management/1. Access strategy design.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance/5. Az policy for sec and compliance reqs.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance/3. compliance reqs by using Msft Purview.md",
+    "Azure/SC-100/SecuritySolutionsForInfrastructure/1.RequirementsForSecuring-SaaS-PaaS-IaaS-Services/2. Sec baselines for SaaS, PaaS, and IaaS services.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance/6. Evaluate and validate alignment w- reg standards and bnchmrks using Msft Defender.md",
+    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance/4. Address privacy reqs with MSFT Priva.md",
     "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance/2. Translate compli reqs into sec controls.md",
-    "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance/3. compliance  reqs by using Msft Purview.md",
     "Azure/SC-100/SecOpsIdentityAndComplianceCapabilities/1. Design solutions for regulatory compliance/1. AI compliance considerations.md",
     "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/4. AResilientStrtegyForRsmwreAndOthrAttcksBsedOnBstPrctices/5. Evaluate solutions for security updates.md",
     "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/4. AResilientStrtegyForRsmwreAndOthrAttcksBsedOnBstPrctices/4. BCDR & secure backup and restore.md",
@@ -202,16 +212,6 @@
     "Azure/Architecture/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/7..md",
     "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/1. Describe the Microsoft Cybersecurity Reference Architecture.md",
     "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/3. Design solutions that align with MCRA and MCSB/Msft CyberSec Reference Architecture.md",
-    "Azure/Architecture/ArchCenter/Technology choices for Azure solutions.md",
-    "Azure/Architecture/ArchCenter/Azure Government security.md",
-    "Azure/Architecture/Azure Well-Architected Framework.md",
-    "Azure/SC-100/SecuritySolutionsForInfrastructure/1.RequirementsForSecuring-SaaS-PaaS-IaaS-Services/4. Sec requirements for web workloads.md",
-    "Azure/SC-100/SecuritySolutionsForInfrastructure/1.RequirementsForSecuring-SaaS-PaaS-IaaS-Services/3. Sec requirements for IoT workloads.md",
-    "Azure/Architecture/DesignWrkloads-CloudDesignPatterns/Cloud design patterns.md",
-    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/3. Accelerate ZTrust transformation-Zero Trust RaMP.md",
-    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/2. best practices frameworks.md",
-    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/1. Introduction to Zero Trust.md",
-    "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/2. Design Sec Solutions That Align With CAF And WAF/4. Well-Architected Framework.md",
     "Azure/SC-100/DesignSolutionstThatAlignWithSecBestPracticesAndPriorities/1. Introduction to Zero Trust and best practice frameworks/Zero Trust technology pillars",
     "Azure/SC-100/1sc100-pics/Pasted image 20260201105425.png",
     "Azure/SC-100/1sc100-pics",
